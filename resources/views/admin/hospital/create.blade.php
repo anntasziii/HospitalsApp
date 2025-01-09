@@ -5,18 +5,28 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h3>Add Category
-                    <a href="{{ url('admin/category/create') }}" class="btn btn-danger btn-sm text-white float-end">Back</a>
+                <h3>Add Hospital
+                    <a href="{{ url('admin/hospital/create') }}" class="btn btn-danger btn-sm text-white float-end">Back</a>
                 </h3>
             </div>
             <div class="card-body">
-                <form action="{{ url('admin/category') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ url('admin/hospital') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label>Name</label>
                             <input type="text" name="name" class="form-control" />
                             @error('name') <small class="text-danger">{{$message}}</small> @enderror
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label>Sity</label>
+                            <input type="text" name="sity" class="form-control" />
+                            @error('sity') <small class="text-danger">{{$message}}</small> @enderror
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label>Region</label>
+                            <input type="text" name="region" class="form-control" />
+                            @error('region') <small class="text-danger">{{$message}}</small> @enderror
                         </div>
                         <div class="col-md-6 mb-3">
                             <label>Slug</label>
@@ -52,7 +62,7 @@
                             <textarea name="meta_description" class="form-control" rows="3"></textarea>
                         </div>
                         <div class="col-md-12 mb-3">
-                            <button type="submit" class="btn btn-primary float-end">Save</button>
+                            <button type="submit" class="btn btn-primary float-end">Save Hospital</button>
                         </div>
                     </div>
                 </form>

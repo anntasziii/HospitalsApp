@@ -2,6 +2,7 @@
 
 @section('content')
 <div>
-    <livewire:admin.category.index />
+    {{-- <livewire:admin.hospital.index /> --}}
+    <a>krhf</a>
 </div>
 @endsection

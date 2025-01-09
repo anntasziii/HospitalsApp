@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Admin\HospitalController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -50,13 +51,13 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function(){
     //     Route::get('sliders/{slider}/delete', 'destroy');
     // });
 
-    // Route::controller(App\Http\Controllers\Admin\CategoryController::class)->group(function (){
-    //     Route::get('/category', 'index');
-    //     Route::get('/category/create', 'create');
-    //     Route::post('/category', 'store');
-    //     Route::get('/category/{category}/edit', 'edit');
-    //     Route::put('/category/{category}', 'update');
-    // });
+    Route::controller(App\Http\Controllers\Admin\HospitalController::class)->group(function (){
+        Route::get('/hospital', 'index');
+        Route::get('/hospital/create', 'create');
+        Route::post('/hospital', 'store');
+        Route::get('/hospital/{hospital}/edit', 'edit');
+        Route::put('/hospital/{hospital}', 'update');
+    });
 
     // Route::controller(App\Http\Controllers\Admin\ProductController::class)->group(function (){
     //     Route::get('/products', 'index');
