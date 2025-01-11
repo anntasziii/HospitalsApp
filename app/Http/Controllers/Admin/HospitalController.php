@@ -55,6 +55,8 @@ class HospitalController extends Controller
         $hospital = Hospital::findOrFail($hospitalId);
 
         $hospital->name = $validatedData['name'];
+        $hospital->sity = $validatedData['sity'];
+        $hospital->region = $validatedData['region'];
         $hospital->slug = Str::slug($validatedData['slug']);
         $hospital->description = $validatedData['description'];
 

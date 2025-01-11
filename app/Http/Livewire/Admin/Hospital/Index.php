@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Admin\Hospital;
+namespace App\Http\Livewire\Admin\Hospital;
 
 use App\Models\Hospital;
 use Livewire\Component;
@@ -12,7 +12,8 @@ class Index extends Component
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
     public $hospital_id;
-    public function deleteHospital($hospital_id){
+    public function deleteHospital($hospital_id)
+    {
         $this->hospital_id = $hospital_id;
     }
     public function destroyHospital(){
@@ -28,6 +29,8 @@ class Index extends Component
     public function render()
     {
         $hospitals = Hospital::orderBy('id', 'DESC')->paginate(10);
-        return view('livewire.admin.hospital.index',['hospitals' => $hospitals]);
+        return view('livewire.admin.hospital.index', ['hospitals' => $hospitals]);
     }
+
 }
+
