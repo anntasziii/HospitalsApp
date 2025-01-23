@@ -72,7 +72,7 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function(){
     //     Route::get('product-year/{prod_year_id}/delete', 'deleteProdYear');
     // });
 
-    // Route::get('/brands', App\Http\Livewire\Admin\Brand\Index::class);
+    Route::get('/types', App\Http\Livewire\Admin\Type\Index::class);
 
     // Route::controller(App\Http\Controllers\Admin\YearController::class)->group(function (){
     //     Route::get('/years', 'index');

@@ -39,6 +39,8 @@
                             <tr>
                                 <th>Id</th>
                                 <th>Name</th>
+                                <th>City</th>
+                                <th>Region</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
@@ -48,6 +50,8 @@
                             <tr>
                                 <td>{{ $hospital->id }}</td>
                                 <td>{{ $hospital->name }}</td>
+                                <td>{{ $hospital->sity }}</td>
+                                <td>{{ $hospital->region }}</td>
                                 <td>{{ $hospital->status == '1' ? 'Hidden':'Visible' }}</td>
                                 <td>
                                     <a href="{{ url('admin/hospital/'.$hospital->id.'/edit') }}" class="btn btn-success">Edit</a>

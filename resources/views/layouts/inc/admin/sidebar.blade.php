@@ -9,13 +9,13 @@
       <li class="nav-item">
         <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false">
           <i class="mdi mdi-circle-outline menu-icon"></i>
-          <span class="menu-title">Category</span>
+          <span class="menu-title">Hospitals</span>
           <i class="menu-arrow"></i>
         </a>
         <div class="collapse" id="ui-basic">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="{{ url('admin/category/create') }}">Add Category</a></li>
-            <li class="nav-item"> <a class="nav-link" href="{{ url('admin/category')}}">View Category</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{ url('admin/hospital/create') }}">Add Hospital</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{ url('admin/hospital')}}">View Hospital</a></li>
           </ul>
         </div>
       </li>
@@ -32,10 +32,10 @@
           </ul>
         </div>
       </li>
-      <li class="nav-item {{Request::is('admin/brands' ? 'active':'')}}">
-        <a class="nav-link" href="{{ url('admin/brands')}}">
+      <li class="nav-item {{Request::is('admin/types' ? 'active':'')}}">
+        <a class="nav-link" href="{{ url('admin/types')}}">
           <i class="mdi mdi-circle-outline menu-icon"></i>
-          <span class="menu-title">Brands</span>
+          <span class="menu-title">Types</span>
         </a>
       </li>
       <li class="nav-item {{Request::is('admin/years' ? 'active':'')}}">
