@@ -1,13 +1,13 @@
 
  <div>
-    {{-- @include('livewire.admin.type.modal-form') --}}
+    @include('livewire.admin.type.modal-form')
     <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
                     <h4>
                         Types List
-                        <a href="#" data-bs-toggle="modal" data-bs-target="#addBrandModal" class="btn btn-primary btn-sm float-end">Add Type</a>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#addTypeModal" class="btn btn-primary btn-sm float-end">Add Type</a>
                     </h4>
                 </div>
                 <div class="card-body">
@@ -23,7 +23,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- @forelse ($types as $type)
+                            @forelse ($types as $type)
                                 <tr>
                                     <td>{{$type->id}}</td>
                                     <td>{{$type->name}}</td>
@@ -45,11 +45,11 @@
                                 <tr>
                                     <td colspan="5">No Types Found</td>
                                 </tr>
-                            @endforelse --}}
+                            @endforelse
                         </tbody>
                     </table>
                     <div>
-                        {{-- {{ $types->links() }} --}}
+                        {{ $types->links() }}
                     </div>
                 </div>
             </div>
