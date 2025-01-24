@@ -79,7 +79,7 @@
                         </div>
                         <div class="mb-3">
                             <label>Status</label> <br />
-                            <input type="checkbox" wire:model.defer="status" style="width:70px; height=70px;"/> Checked=Hidden, Un-Checked=Visible
+                            <input type="checkbox" wire:model.defer="status" style="width:70px; height=70px;"/> Checked = Hidden, Un-Checked = Visible
                             @error('status') <small class="text-danger">{{$message}}</small> @enderror
                         </div>
                     </div>
