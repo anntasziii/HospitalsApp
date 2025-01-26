@@ -22,13 +22,26 @@
       <li class="nav-item">
         <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false">
           <i class="mdi mdi-circle-outline menu-icon"></i>
-          <span class="menu-title">Products</span>
+            <span class="menu-title">Doctors</span>
           <i class="menu-arrow"></i>
         </a>
         <div class="collapse" id="ui-basic">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="{{ url('admin/products/create') }}">Add Products</a></li>
-            <li class="nav-item"> <a class="nav-link" href="{{ url('admin/products') }}">View Products</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{ url('admin/doctors/create') }}">Add Doctors</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{ url('admin/doctors') }}">View Doctors</a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false">
+          <i class="mdi mdi-circle-outline menu-icon"></i>
+            <span class="menu-title">Analysis</span>
+          <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="ui-basic">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item"> <a class="nav-link" href="{{ url('admin/analysis/create') }}">Add Analysis</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{ url('admin/analysis') }}">View Analysis</a></li>
           </ul>
         </div>
       </li>

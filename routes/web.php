@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Admin\HospitalController;
+use App\Http\Controllers\Admin\DoctorController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -59,10 +60,10 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function(){
         Route::put('/hospital/{hospital}', 'update');
     });
 
-    // Route::controller(App\Http\Controllers\Admin\ProductController::class)->group(function (){
-    //     Route::get('/products', 'index');
-    //     Route::get('/products/create', 'create');
-    //     Route::post('/products', 'store');
+     Route::controller(App\Http\Controllers\Admin\DoctorController::class)->group(function (){
+        Route::get('/doctors', 'index');
+        Route::get('/doctors/create', 'create');
+        Route::post('/doctors', 'store');
     //     Route::get('/products/{product}/edit', 'edit');
     //     Route::put('/products/{product}', 'update');
     //     Route::get('products/{product_id}/delete', 'destroy');
@@ -70,7 +71,7 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function(){
 
     //     Route::post('product-year/{prod_year_id}', 'updateProdYearQty');
     //     Route::get('product-year/{prod_year_id}/delete', 'deleteProdYear');
-    // });
+     });
 
     Route::get('/types', App\Http\Livewire\Admin\Type\Index::class);
 
