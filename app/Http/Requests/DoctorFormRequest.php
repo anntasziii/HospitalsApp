@@ -22,10 +22,7 @@ class DoctorFormRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'hospitals_id' => [
-                'required',
-                'integer'
-            ],
+            'hospital_id' => 'required|exists:hospitals,id',
             'name' => [
                 'required',
                 'string'

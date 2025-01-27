@@ -64,13 +64,13 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function(){
         Route::get('/doctors', 'index');
         Route::get('/doctors/create', 'create');
         Route::post('/doctors', 'store');
-    //     Route::get('/products/{product}/edit', 'edit');
-    //     Route::put('/products/{product}', 'update');
-    //     Route::get('products/{product_id}/delete', 'destroy');
-    //     Route::get('product-image/{product_image_id}/delete', 'destroyImage');
+        Route::get('/doctors/{doctor}/edit', 'edit');
+        Route::put('/doctors/{doctor}', 'update');
+        Route::get('doctors/{doctor_id}/delete', 'destroy');
+        Route::get('doctor-image/{doctor_image_id}/delete', 'destroyImage');
 
-    //     Route::post('product-year/{prod_year_id}', 'updateProdYearQty');
-    //     Route::get('product-year/{prod_year_id}/delete', 'deleteProdYear');
+        // Route::post('doctor-year/{doctor_year_id}', 'updateProdYearQty');
+        // Route::get('doctor-year/{doctor_year_id}/delete', 'deleteProdYear');
      });
 
     Route::get('/types', App\Http\Livewire\Admin\Type\Index::class);

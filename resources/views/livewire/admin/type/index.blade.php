@@ -43,7 +43,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="5">No Types Found</td>
+                                    <td colspan="6">No Types Found</td>
                                 </tr>
                             @endforelse
                         </tbody>

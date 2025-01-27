@@ -14,4 +14,9 @@ class DoctorImage extends Model
         'doctor_id',
         'image'
     ];
+    public function doctor()
+    {
+        return $this->belongsTo(Doctor::class);
+    }
+
 }

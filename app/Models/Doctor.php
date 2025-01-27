@@ -28,9 +28,9 @@ class Doctor extends Model
         'meta_description'
     ];
 
-    // public function category(){
-    //     return $this->belongsTo(Category::class, 'category_id', 'id');
-    // }
+    public function hospital(){
+        return $this->belongsTo(Hospital::class, 'hospitals_id', 'id');
+    }
     public function doctorImages(){
         return $this->hasMany(DoctorImage::class, 'doctor_id', 'id');
     }

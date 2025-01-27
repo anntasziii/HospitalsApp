@@ -8,8 +8,8 @@
         @endif
         <div class="card">
             <div class="card-header">
-                <h3>Edit Products
-                    <a href="{{ url('admin/products') }}" class="btn btn-danger btn-sm text-white float-end">
+                <h3>Edit Doctors
+                    <a href="{{ url('admin/doctors') }}" class="btn btn-danger btn-sm text-white float-end">
                         Back
                     </a>
                 </h3>
@@ -22,7 +22,7 @@
                         @endforeach
                     </div>
                 @endif
-                <form action="{{ url('admin/products/'.$product->id) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ url('admin/doctors/'.$doctor->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -43,66 +43,74 @@
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="image-tab" data-bs-toggle="tab" data-bs-target="#image-tab-pane" type="button" role="tab" aria-controls="image-tab-pane" aria-selected="false">
-                                Product Image
+                                Doctor Image
                             </button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="years-tab" data-bs-toggle="tab" data-bs-target="#years-tab-pane" type="button">
-                                Product Years
+                                Doctor Years
                             </button>
                         </li>
                     </ul>
                     <div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade border p-3 show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
                             <div class="mb-3">
-                                <label class="mb-2 mt-3">Category</label>
-                                <select name="category_id" class="form-control">
-                                    @foreach ($categories as $category)
-                                        <option value="{{ $category->id }}" {{ $category->id == $product->category_id ? 'selected':'' }}>
-                                            {{ $category->name }}
+                                <label class="mb-2 mt-3">Hospital</label>
+                                <select name="hospital_id" class="form-control">
+                                    @foreach ($hospitals as $hospital)
+                                        <option value="{{ $hospital->id }}" {{ $hospital->id == $doctor->hospital_id ? 'selected':'' }}>
+                                            {{ $hospital->name }}
                                         </option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="mb-3">
-                                <label class="mb-2 mt-2">Product Name</label>
-                                <input type="text" name="name" value="{{ $product->name }}" class="form-control" />
+                                <label class="mb-2 mt-2">Doctor Specialty</label>
+                                <input type="text" name="name_of_specialty" value="{{ $doctor->name_of_specialty }}" class="form-control" />
                             </div>
                             <div class="mb-3">
-                                <label class="mb-2 mt-2">Product Slug</label>
-                                <input type="text" name="slug" value="{{ $product->slug }}" class="form-control" />
+                                <label class="mb-2 mt-2">Doctor Name</label>
+                                <input type="text" name="name" value="{{ $doctor->name }}" class="form-control" />
                             </div>
                             <div class="mb-3">
-                                <label class="mb-2 mt-2">Select Brand</label>
-                                <select name="brand" class="form-control">
-                                    @foreach ($brands as $brand)
-                                        <option value="{{ $brand->name }}" {{ $brand->name == $product->brand ? 'selected':'' }}>
-                                            {{ $brand->name }}
+                                <label class="mb-2 mt-2">Doctor Surname</label>
+                                <input type="text" name="surname" value="{{ $doctor->surname }}" class="form-control" />
+                            </div>
+                            <div class="mb-3">
+                                <label class="mb-2 mt-2">Doctor Slug</label>
+                                <input type="text" name="slug" value="{{ $doctor->slug }}" class="form-control" />
+                            </div>
+                            <div class="mb-3">
+                                <label class="mb-2 mt-2">Select Type</label>
+                                <select name="type" class="form-control">
+                                    @foreach ($types as $type)
+                                        <option value="{{ $type->name }}" {{ $type->name == $doctor->type ? 'selected':'' }}>
+                                            {{ $type->name }}
                                         </option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="mb-3">
                                 <label class="mb-2 mt-2">Small Description (500 words)</label>
-                                <textarea name="small_description" class="form-control" rows="4">{{ $product->small_description }}</textarea>
+                                <textarea name="small_description" class="form-control" rows="4">{{ $doctor->small_description }}</textarea>
                             </div>
                             <div class="mb-3">
                                 <label class="mb-2 mt-2">Description</label>
-                                <textarea name="description" class="form-control" rows="4">{{ $product->description }}</textarea>
+                                <textarea name="description" class="form-control" rows="4">{{ $doctor->description }}</textarea>
                             </div>
                         </div>
                         <div class="tab-pane fade border p-3" id="seotag-tab-pane" role="tabpanel" aria-labelledby="seotag-tab" tabindex="0">
                             <div class="mb-3">
                                 <label class="mb-2 mt-3">Meta Title</label>
-                                <input type="text" name="meta_title" value="{{ $product->meta_title }}" class="form-control" />
+                                <input type="text" name="meta_title" value="{{ $doctor->meta_title }}" class="form-control" />
                             </div>
                             <div class="mb-3">
                                 <label class="mb-2 mt-2">Meta Description</label>
-                                <textarea name="meta_description" class="form-control" rows="4">{{ $product->meta_description }}</textarea>
+                                <textarea name="meta_description" class="form-control" rows="4">{{ $doctor->meta_description }}</textarea>
                             </div>
                             <div class="mb-3">
                                 <label class="mb-2 mt-2">Meta Keyword</label>
-                                <textarea name="meta_keyword" class="form-control" rows="4">{{ $product->meta_keyword }}</textarea>
+                                <textarea name="meta_keyword" class="form-control" rows="4">{{ $doctor->meta_keyword }}</textarea>
                             </div>
                         </div>
                         <div class="tab-pane fade border p-3" id="details-tab-pane" role="tabpanel" aria-labelledby="details-tab" tabindex="0">
@@ -110,66 +118,59 @@
                                 <div class="col-md-4">
                                     <div class="mb-3">
                                         <label class="mb-2 mt-3">Original Price</label>
-                                        <input type="text" name="original_price" value="{{ $product->original_price }}" class="form-control" />
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="mb-3">
-                                        <label class="mb-2 mt-3">Selling Price</label>
-                                        <input type="text" name="selling_price" value="{{ $product->selling_price }}" class="form-control" />
+                                        <input type="text" name="original_price" value="{{ $doctor->original_price }}" class="form-control" />
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="mb-3">
                                         <label class="mb-2 mt-3">Quantity</label>
-                                        <input type="number" name="quantity" value="{{ $product->quantity }}" class="form-control" />
+                                        <input type="number" name="quantity" value="{{ $doctor->quantity }}" class="form-control" />
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="mb-3">
                                         <label class="mb-2 mt-2">Trending</label>
-                                        <input type="checkbox" name="trending" {{ $product->trending == '1' ? 'checked':'' }} slyle="width: 50px; height: 50px;" />
+                                        <input type="checkbox" name="trending" {{ $doctor->trending == '1' ? 'checked':'' }} slyle="width: 50px; height: 50px;" />
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="mb-3">
                                         <label class="mb-2 mt-2">Featured</label>
-                                        <input type="checkbox" name="featured" {{ $product->featured == '1' ? 'checked':'' }} slyle="width: 50px; height: 50px;" />
+                                        <input type="checkbox" name="featured" {{ $doctor->featured == '1' ? 'checked':'' }} slyle="width: 50px; height: 50px;" />
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="mb-3">
                                         <label class="mb-2 mt-2">Status</label>
-                                        <input type="checkbox" name="status" {{ $product->status == '1' ? 'checked':'' }} slyle="width: 50px; height: 50px;" />
+                                        <input type="checkbox" name="status" {{ $doctor->status == '1' ? 'checked':'' }} slyle="width: 50px; height: 50px;" />
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="tab-pane fade border p-3" id="image-tab-pane" role="tabpanel" aria-labelledby="image-tab" tabindex="0">
                             <div class="mb-3">
-                                <label class="mb-2 mt-3">Upload Product Images</label>
+                                <label class="mb-2 mt-3">Upload Doctor Images</label>
                                 <input type="file" name="image[]" multiple class="form-control" />
                             </div>
                             <div>
-                                @if($product->productImages)
-                                    <div class="row">
-                                        @foreach($product->productImages as $image)
-                                            <div class="col-md-2">
-                                                <img src="{{ asset($image->image) }}" style="width: 100px;height:80px"
-                                                class="me-4 border" alt="Img" />
-                                                <a href="{{ url('admin/product-image/'.$image->id.'/delete') }}" class="d-block" style="color: rgb(33, 8, 193); text-decoration: none;">Remove</a>
+                                @if($doctor->doctorImages->isNotEmpty())
+                                <div class="row">
+                                    @foreach($doctor->doctorImages as $image)
+                                        <div class="col-md-2">
+                                            <img src="{{ asset($image->image) }}" style="width: 100px; height: 80px" class="me-4 border" alt="Img" />
+                                            <a href="{{ url('admin/doctor-image/'.$image->id.'/delete') }}" class="d-block" style="color: rgb(33, 8, 193); text-decoration: none;">Remove</a>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            @else
+                                <h5>No Image Added</h5>
+                            @endif
 
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                @else
-                                    <h5>No Image Added</h5>
-                                @endif
                             </div>
                         </div>
                         <div class="tab-pane fade border p-3" id="years-tab-pane" role="tabpanel" tabindex="0">
-                            <div class="mb-3">
-                                <h4>Add product year</h4>
+                            {{-- <div class="mb-3">
+                                <h4>Add doctor year</h4>
                                 <label>Select Year</label>
                                 <hr/>
                                 <div class="row">
@@ -188,8 +189,8 @@
                                         </div>
                                     @endforelse
                                 </div>
-                            </div>
-                            <div class="table-responsive">
+                            </div> --}}
+                            {{-- <div class="table-responsive">
                                 <table class="table table-sm table-bordered">
                                     <thead>
                                         <tr>
@@ -199,7 +200,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($product->productYears as $prodYear)
+                                        @foreach ($doctor->doctorYears as $prodYear)
                                         <tr class="prod-year-tr">
                                             <td>
                                                 @if($prodYear->year)
@@ -210,18 +211,18 @@
                                             </td>
                                             <td>
                                                 <div class="input-group mb-3" style="width: 150px">
-                                                    <input type="text" value="{{ $prodYear->quantity }}" class="productYearQuantity form-control form-control-sm" />
-                                                    <button type="button" value="{{ $prodYear->id }}" class="updateProductYearBtn btn btn-primary btn-sm text-white">Update</button>
+                                                    <input type="text" value="{{ $prodYear->quantity }}" class="doctorYearQuantity form-control form-control-sm" />
+                                                    <button type="button" value="{{ $prodYear->id }}" class="updateDoctorYearBtn btn btn-primary btn-sm text-white">Update</button>
                                                 </div>
                                             </td>
                                             <td>
-                                                <button type="button" value="{{$prodYear->id}}" class="deleteProductYearBtn btn btn-danger btn-sm text-white">Delete</button>
+                                                <button type="button" value="{{$prodYear->id}}" class="deleteDoctorYearBtn btn btn-danger btn-sm text-white">Delete</button>
                                             </td>
                                         </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                     <div>
@@ -235,17 +236,17 @@
 @endsection
 
 @section('scripts')
-<script>
+{{-- <script>
     $(document).ready(function(){
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-        $(document).on('click', '.updateProductYearBtn', function(){
-            var product_id = "{{$product->id}}";
+        $(document).on('click', '.updateDoctorYearBtn', function(){
+            var doctor_id = "{{$doctor->id}}";
             var prod_year_id = $(this).val();
-            var qty = $(this).closest('.prod-year-tr').find('.productYearQuantity').val();
+            var qty = $(this).closest('.prod-year-tr').find('.doctorYearQuantity').val();
             //alert(prod_year_id);
 
             if(qty <= 0){
@@ -253,24 +254,24 @@
                 return false;
             }
             var data = {
-                'product_id': product_id,
+                'doctor_id': doctor_id,
                 'qty': qty
             };
             $.ajax({
                 type: "POST",
-                url: "/admin/product-year/"+prod_year_id,
+                url: "/admin/doctor-year/"+prod_year_id,
                 data: data,
                 success: function(response){
                     alert(response.message)
                 }
             });
         });
-        $(document).on('click', '.deleteProductYearBtn', function(){
+        $(document).on('click', '.deleteDoctorYearBtn', function(){
             var prod_year_id = $(this).val();
             var thisClick = $(this);
             $.ajax({
                 type: "GET",
-                url: "/admin/product-year/"+prod_year_id+"/delete",
+                url: "/admin/doctor-year/"+prod_year_id+"/delete",
                 success: function(response){
                     thisClick.closest('.prod-year-tr').remove();
                     alert(response.message)
@@ -278,5 +279,5 @@
             });
         });
     });
-</script>
+</script> --}}
 @endsection

@@ -19,7 +19,7 @@
                     <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Category</th>
+                            <th>Hospital</th>
                             <th>Doctor</th>
                             <th>Name</th>
                             <th>Surname</th>
@@ -34,24 +34,17 @@
                             <tr>
                                 <td>{{ $doctor->id }}</td>
                                 <td>
-                                    @if($doctor->category)
-                                        {{ $doctor->category->name }}
+                                    @if($doctor->hospital)
+                                        {{ $doctor->hospital->name }}
                                     @else
-                                        No Category
+                                        No Hospital
                                     @endif
                                 </td>
                                 <td>{{ $doctor->name_of_specialty }}</td>
                                 <td>{{ $doctor->name }}</td>
                                 <td>{{ $doctor->surname }}</td>
                                 <td>{{ $doctor->original_price }}</td>
-                                <td>{{ $doctor->id }}</td>
-                                {{-- <td>
-                                    @if($doctor->type)
-                                        {{ $doctor->type->name }}
-                                    @else
-                                        No Type
-                                    @endif
-                                </td> --}}
+                                <td>{{ $doctor->type }}</td>
                                 <td>{{ $doctor->status == '1' ? 'Hidden':'Visible' }}</td>
                                 <td>
                                     <a href="{{ url('admin/doctors/'.$doctor->id.'/edit') }}" class="btn btn-sm btn-success">Edit</a>
