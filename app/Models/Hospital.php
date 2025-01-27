@@ -27,6 +27,10 @@ class Hospital extends Model
     public function doctors(){
         return $this->hasMany(Doctor::class, 'hospitals_id', 'id');
     }
+    public function analyses()
+    {
+        return $this->hasMany(Analysis::class, 'hospitals_id', 'id');
+    }
     // public function brands(){
     //     return $this->hasMany(Brand::class, 'category_id', 'id')->where('status', '0');
     // }

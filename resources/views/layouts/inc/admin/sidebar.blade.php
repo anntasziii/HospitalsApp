@@ -40,8 +40,8 @@
         </a>
         <div class="collapse" id="ui-basic">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="{{ url('admin/analysis/create') }}">Add Analysis</a></li>
-            <li class="nav-item"> <a class="nav-link" href="{{ url('admin/analysis') }}">View Analysis</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{ url('admin/analyses/create') }}">Add Analyses</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{ url('admin/analyses') }}">View Analyses</a></li>
           </ul>
         </div>
       </li>

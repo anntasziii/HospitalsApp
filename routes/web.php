@@ -73,6 +73,19 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function(){
         // Route::get('doctor-year/{doctor_year_id}/delete', 'deleteProdYear');
      });
 
+     Route::controller(App\Http\Controllers\Admin\AnalysisController::class)->group(function (){
+        Route::get('/analyses', 'index');
+        Route::get('/analyses/create', 'create');
+        Route::post('/analyses', 'store');
+        Route::get('/analyses/{analysis}/edit', 'edit');
+        Route::put('/analyses/{analysis}', 'update');
+        Route::get('analyses/{analysis_id}/delete', 'destroy');
+        Route::get('analysis-image/{analysis_image_id}/delete', 'destroyImage');
+
+        // Route::post('doctor-year/{doctor_year_id}', 'updateProdYearQty');
+        // Route::get('doctor-year/{doctor_year_id}/delete', 'deleteProdYear');
+     });
+
     Route::get('/types', App\Http\Livewire\Admin\Type\Index::class);
 
     // Route::controller(App\Http\Controllers\Admin\YearController::class)->group(function (){
