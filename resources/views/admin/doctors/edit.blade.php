@@ -56,9 +56,9 @@
                         <div class="tab-pane fade border p-3 show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
                             <div class="mb-3">
                                 <label class="mb-2 mt-3">Hospital</label>
-                                <select name="hospital_id" class="form-control">
+                                <select name="hospitals_id" class="form-control">
                                     @foreach ($hospitals as $hospital)
-                                        <option value="{{ $hospital->id }}" {{ $hospital->id == $doctor->hospital_id ? 'selected':'' }}>
+                                        <option value="{{ $hospital->id }}" {{ $hospital->id == $doctor->hospitals_id ? 'selected':'' }}>
                                             {{ $hospital->name }}
                                         </option>
                                     @endforeach

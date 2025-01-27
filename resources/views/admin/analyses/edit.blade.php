@@ -8,8 +8,8 @@
         @endif
         <div class="card">
             <div class="card-header">
-                <h3>Edit Doctors
-                    <a href="{{ url('admin/doctors') }}" class="btn btn-danger btn-sm text-white float-end">
+                <h3>Edit Analyses
+                    <a href="{{ url('admin/analyses') }}" class="btn btn-danger btn-sm text-white float-end">
                         Back
                     </a>
                 </h3>
@@ -22,7 +22,7 @@
                         @endforeach
                     </div>
                 @endif
-                <form action="{{ url('admin/doctors/'.$doctor->id) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ url('admin/analyses/'.$analysis->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -43,12 +43,12 @@
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="image-tab" data-bs-toggle="tab" data-bs-target="#image-tab-pane" type="button" role="tab" aria-controls="image-tab-pane" aria-selected="false">
-                                Doctor Image
+                                Analysis Image
                             </button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="years-tab" data-bs-toggle="tab" data-bs-target="#years-tab-pane" type="button">
-                                Doctor Years
+                                Analysis Years
                             </button>
                         </li>
                     </ul>
@@ -56,35 +56,27 @@
                         <div class="tab-pane fade border p-3 show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
                             <div class="mb-3">
                                 <label class="mb-2 mt-3">Hospital</label>
-                                <select name="hospital_id" class="form-control">
+                                <select name="hospitals_id" class="form-control">
                                     @foreach ($hospitals as $hospital)
-                                        <option value="{{ $hospital->id }}" {{ $hospital->id == $doctor->hospital_id ? 'selected':'' }}>
+                                        <option value="{{ $hospital->id }}" {{ $hospital->id == $analysis->hospitals_id ? 'selected':'' }}>
                                             {{ $hospital->name }}
                                         </option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="mb-3">
-                                <label class="mb-2 mt-2">Doctor Specialty</label>
-                                <input type="text" name="name_of_specialty" value="{{ $doctor->name_of_specialty }}" class="form-control" />
+                                <label class="mb-2 mt-2">Analysis Name</label>
+                                <input type="text" name="name" value="{{ $analysis->name }}" class="form-control" />
                             </div>
                             <div class="mb-3">
-                                <label class="mb-2 mt-2">Doctor Name</label>
-                                <input type="text" name="name" value="{{ $doctor->name }}" class="form-control" />
-                            </div>
-                            <div class="mb-3">
-                                <label class="mb-2 mt-2">Doctor Surname</label>
-                                <input type="text" name="surname" value="{{ $doctor->surname }}" class="form-control" />
-                            </div>
-                            <div class="mb-3">
-                                <label class="mb-2 mt-2">Doctor Slug</label>
-                                <input type="text" name="slug" value="{{ $doctor->slug }}" class="form-control" />
+                                <label class="mb-2 mt-2">Analysis Slug</label>
+                                <input type="text" name="slug" value="{{ $analysis->slug }}" class="form-control" />
                             </div>
                             <div class="mb-3">
                                 <label class="mb-2 mt-2">Select Type</label>
                                 <select name="type" class="form-control">
                                     @foreach ($types as $type)
-                                        <option value="{{ $type->name }}" {{ $type->name == $doctor->type ? 'selected':'' }}>
+                                        <option value="{{ $type->name }}" {{ $type->name == $analysis->type ? 'selected':'' }}>
                                             {{ $type->name }}
                                         </option>
                                     @endforeach
@@ -92,25 +84,25 @@
                             </div>
                             <div class="mb-3">
                                 <label class="mb-2 mt-2">Small Description (500 words)</label>
-                                <textarea name="small_description" class="form-control" rows="4">{{ $doctor->small_description }}</textarea>
+                                <textarea name="small_description" class="form-control" rows="4">{{ $analysis->small_description }}</textarea>
                             </div>
                             <div class="mb-3">
                                 <label class="mb-2 mt-2">Description</label>
-                                <textarea name="description" class="form-control" rows="4">{{ $doctor->description }}</textarea>
+                                <textarea name="description" class="form-control" rows="4">{{ $analysis->description }}</textarea>
                             </div>
                         </div>
                         <div class="tab-pane fade border p-3" id="seotag-tab-pane" role="tabpanel" aria-labelledby="seotag-tab" tabindex="0">
                             <div class="mb-3">
                                 <label class="mb-2 mt-3">Meta Title</label>
-                                <input type="text" name="meta_title" value="{{ $doctor->meta_title }}" class="form-control" />
+                                <input type="text" name="meta_title" value="{{ $analysis->meta_title }}" class="form-control" />
                             </div>
                             <div class="mb-3">
                                 <label class="mb-2 mt-2">Meta Description</label>
-                                <textarea name="meta_description" class="form-control" rows="4">{{ $doctor->meta_description }}</textarea>
+                                <textarea name="meta_description" class="form-control" rows="4">{{ $analysis->meta_description }}</textarea>
                             </div>
                             <div class="mb-3">
                                 <label class="mb-2 mt-2">Meta Keyword</label>
-                                <textarea name="meta_keyword" class="form-control" rows="4">{{ $doctor->meta_keyword }}</textarea>
+                                <textarea name="meta_keyword" class="form-control" rows="4">{{ $analysis->meta_keyword }}</textarea>
                             </div>
                         </div>
                         <div class="tab-pane fade border p-3" id="details-tab-pane" role="tabpanel" aria-labelledby="details-tab" tabindex="0">
@@ -118,31 +110,31 @@
                                 <div class="col-md-4">
                                     <div class="mb-3">
                                         <label class="mb-2 mt-3">Original Price</label>
-                                        <input type="text" name="original_price" value="{{ $doctor->original_price }}" class="form-control" />
+                                        <input type="text" name="original_price" value="{{ $analysis->original_price }}" class="form-control" />
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="mb-3">
                                         <label class="mb-2 mt-3">Quantity</label>
-                                        <input type="number" name="quantity" value="{{ $doctor->quantity }}" class="form-control" />
+                                        <input type="number" name="quantity" value="{{ $analysis->quantity }}" class="form-control" />
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="mb-3">
                                         <label class="mb-2 mt-2">Trending</label>
-                                        <input type="checkbox" name="trending" {{ $doctor->trending == '1' ? 'checked':'' }} slyle="width: 50px; height: 50px;" />
+                                        <input type="checkbox" name="trending" {{ $analysis->trending == '1' ? 'checked':'' }} slyle="width: 50px; height: 50px;" />
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="mb-3">
                                         <label class="mb-2 mt-2">Featured</label>
-                                        <input type="checkbox" name="featured" {{ $doctor->featured == '1' ? 'checked':'' }} slyle="width: 50px; height: 50px;" />
+                                        <input type="checkbox" name="featured" {{ $analysis->featured == '1' ? 'checked':'' }} slyle="width: 50px; height: 50px;" />
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="mb-3">
                                         <label class="mb-2 mt-2">Status</label>
-                                        <input type="checkbox" name="status" {{ $doctor->status == '1' ? 'checked':'' }} slyle="width: 50px; height: 50px;" />
+                                        <input type="checkbox" name="status" {{ $analysis->status == '1' ? 'checked':'' }} slyle="width: 50px; height: 50px;" />
                                     </div>
                                 </div>
                             </div>
@@ -153,12 +145,12 @@
                                 <input type="file" name="image[]" multiple class="form-control" />
                             </div>
                             <div>
-                                @if($doctor->doctorImages->isNotEmpty())
+                                @if($analysis->analysisImages->isNotEmpty())
                                 <div class="row">
-                                    @foreach($doctor->doctorImages as $image)
+                                    @foreach($analysis->analysisImages as $image)
                                         <div class="col-md-2">
                                             <img src="{{ asset($image->image) }}" style="width: 100px; height: 80px" class="me-4 border" alt="Img" />
-                                            <a href="{{ url('admin/doctor-image/'.$image->id.'/delete') }}" class="d-block" style="color: rgb(33, 8, 193); text-decoration: none;">Remove</a>
+                                            <a href="{{ url('admin/analysis-image/'.$image->id.'/delete') }}" class="d-block" style="color: rgb(33, 8, 193); text-decoration: none;">Remove</a>
                                         </div>
                                     @endforeach
                                 </div>
@@ -170,7 +162,7 @@
                         </div>
                         <div class="tab-pane fade border p-3" id="years-tab-pane" role="tabpanel" tabindex="0">
                             {{-- <div class="mb-3">
-                                <h4>Add doctor year</h4>
+                                <h4>Add analysis year</h4>
                                 <label>Select Year</label>
                                 <hr/>
                                 <div class="row">
@@ -200,7 +192,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($doctor->doctorYears as $prodYear)
+                                        @foreach ($analysis->analysisYears as $prodYear)
                                         <tr class="prod-year-tr">
                                             <td>
                                                 @if($prodYear->year)
@@ -211,12 +203,12 @@
                                             </td>
                                             <td>
                                                 <div class="input-group mb-3" style="width: 150px">
-                                                    <input type="text" value="{{ $prodYear->quantity }}" class="doctorYearQuantity form-control form-control-sm" />
-                                                    <button type="button" value="{{ $prodYear->id }}" class="updateDoctorYearBtn btn btn-primary btn-sm text-white">Update</button>
+                                                    <input type="text" value="{{ $prodYear->quantity }}" class="analysisYearQuantity form-control form-control-sm" />
+                                                    <button type="button" value="{{ $prodYear->id }}" class="updateAnalysisYearBtn btn btn-primary btn-sm text-white">Update</button>
                                                 </div>
                                             </td>
                                             <td>
-                                                <button type="button" value="{{$prodYear->id}}" class="deleteDoctorYearBtn btn btn-danger btn-sm text-white">Delete</button>
+                                                <button type="button" value="{{$prodYear->id}}" class="deleteAnalysisYearBtn btn btn-danger btn-sm text-white">Delete</button>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -243,10 +235,10 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-        $(document).on('click', '.updateDoctorYearBtn', function(){
-            var doctor_id = "{{$doctor->id}}";
+        $(document).on('click', '.updateAnalysisYearBtn', function(){
+            var analysis_id = "{{$analysis->id}}";
             var prod_year_id = $(this).val();
-            var qty = $(this).closest('.prod-year-tr').find('.doctorYearQuantity').val();
+            var qty = $(this).closest('.prod-year-tr').find('.analysisYearQuantity').val();
             //alert(prod_year_id);
 
             if(qty <= 0){
@@ -254,24 +246,24 @@
                 return false;
             }
             var data = {
-                'doctor_id': doctor_id,
+                'analysis_id': analysis_id,
                 'qty': qty
             };
             $.ajax({
                 type: "POST",
-                url: "/admin/doctor-year/"+prod_year_id,
+                url: "/admin/analysis-year/"+prod_year_id,
                 data: data,
                 success: function(response){
                     alert(response.message)
                 }
             });
         });
-        $(document).on('click', '.deleteDoctorYearBtn', function(){
+        $(document).on('click', '.deleteAnalysisYearBtn', function(){
             var prod_year_id = $(this).val();
             var thisClick = $(this);
             $.ajax({
                 type: "GET",
-                url: "/admin/doctor-year/"+prod_year_id+"/delete",
+                url: "/admin/analysis-year/"+prod_year_id+"/delete",
                 success: function(response){
                     thisClick.closest('.prod-year-tr').remove();
                     alert(response.message)

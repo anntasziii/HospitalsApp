@@ -86,11 +86,11 @@ class DoctorController extends Controller
     }
     public function update(DoctorFormRequest $request, int $doctor_id){
         $validatedData = $request->validated();
-        $doctor = Hospital::findOrFail($validatedData['hospital_id'])
+        $doctor = Hospital::findOrFail($validatedData['hospitals_id'])
                     ->doctors()->where('id', $doctor_id)->first();
         if($doctor){
             $doctor->update([
-                'hospital_id' => $validatedData['hospital_id'],
+                'hospitals_id' => $validatedData['hospitals_id'],
                 'name' => $validatedData['name'],
                 'name_of_specialty' => $validatedData['name_of_specialty'],
                 'surname' => $validatedData['surname'],

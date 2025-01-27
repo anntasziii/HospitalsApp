@@ -71,4 +71,83 @@ class AnalysisController extends Controller
 
         return redirect('/admin/analyses')->with('message', 'Analysis Added Successfully');
     }
+    public function edit(int $analysis_id){
+        $hospitals = Hospital::all();
+        $types = Type::all();
+        $analysis = Analysis::findOrFail($analysis_id);
+        //$analysis_year = $analysis->analysisYears->pluck('year_id')->toArray();
+        //$years = Year::whereNotIn('id',$analysis_year)->get();
+        return view('admin.analyses.edit', compact('hospitals', 'types', 'analysis'));
+    }
+    public function update(AnalysisFormRequest $request, int $analysis_id){
+        $validatedData = $request->validated();
+        $analysis = Hospital::findOrFail($validatedData['hospitals_id'])
+                    ->analyses()->where('id', $analysis_id)->first();
+        if($analysis){
+            $analysis->update([
+                'hospitals_id' => $validatedData['hospitals_id'],
+                'name' => $validatedData['name'],
+                'slug' => Str::slug($validatedData['slug']),
+                'type' => $validatedData['type'],
+                'small_description' => $validatedData['small_description'],
+                'description' => $validatedData['description'],
+                'original_price' => $validatedData['original_price'],
+                'quantity' => $validatedData['quantity'],
+                'trending' => $request->trending == true ? '1':'0',
+                'featured' => $request->featured == true ? '1':'0',
+                'status' => $request->status == true ? '1':'0',
+                'meta_title' => $validatedData['meta_title'],
+                'meta_keyword' => $validatedData['meta_keyword'],
+                'meta_description' => $validatedData['meta_description'],
+            ]);
+            if($request->hasFile('image')){
+                $uploadPath = 'uploads/analyses/';
+                $i = 1;
+                foreach($request->file('image') as $imageFile){
+                    $extention = $imageFile->getClientOriginalExtension();
+                    $filename = time().$i++.'.'.$extention;
+                    $imageFile->move($uploadPath,$filename);
+                    $finalImagePathName = $uploadPath.$filename;
+
+                    $analysis->analysisImages()->create([
+                        'analysis_id' => $analysis->id,
+                        'image' => $finalImagePathName,
+                    ]);
+                }
+            }
+            // if($request->years){
+            //     foreach($request->years as $key => $year){
+            //         $analysis->analysisYears()->create([
+            //             'analysis_id' => $analysis->id,
+            //             'year_id' => $year,
+            //             'quantity' => $request->yearquantity[$key] ?? 0
+            //         ]);
+            //     }
+            // }
+            return redirect('/admin/analyses')->with('message', 'Analysis Updated Successfully');
+        }
+        else{
+            return redirect('admin/analyses')->with('message', 'No Such Analyses Id Found');
+        }
+    }
+    public function destroyImage(int $analysis_image_id){
+        $analysisImage = AnalysisImage::findOrFail($analysis_image_id);
+        if(File::exists($analysisImage->image)){
+            File::delete($analysisImage->image);
+        }
+        $analysisImage->delete();
+        return redirect()->back()->with('message', 'Analysis Image Deleted');
+    }
+    public function destroy(int $analysis_id){
+        $analysis = Analysis::findOrFail($analysis_id);
+        if($analysis->analysisImages()){
+            foreach($analysis->analysisImages as $image){
+                if(File::exists($image->image)){
+                    File::delete($image->image);
+                }
+            }
+        }
+        $analysis->delete();
+        return redirect()->back()->with('message', 'Analysis Deleted with all images');
+    }
 }
