@@ -69,8 +69,8 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function(){
         Route::get('doctors/{doctor_id}/delete', 'destroy');
         Route::get('doctor-image/{doctor_image_id}/delete', 'destroyImage');
 
-        // Route::post('doctor-time/{doctor_time_id}', 'updateProdtimeQty');
-        // Route::get('doctor-time/{doctor_time_id}/delete', 'deleteProdtime');
+        Route::post('doctor-time/{doctor_time_id}', 'updateDoctorTimeQty');
+        Route::get('doctor-time/{doctor_time_id}/delete', 'deleteDoctorTime');
      });
 
      Route::controller(App\Http\Controllers\Admin\AnalysisController::class)->group(function (){
@@ -82,8 +82,9 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function(){
         Route::get('analyses/{analysis_id}/delete', 'destroy');
         Route::get('analysis-image/{analysis_image_id}/delete', 'destroyImage');
 
-        // Route::post('doctor-time/{doctor_time_id}', 'updateProdtimeQty');
-        // Route::get('doctor-time/{doctor_time_id}/delete', 'deleteProdtime');
+        Route::post('analysis-time/{analysis_time_id}', 'updateAnalysisTimeQty');
+        Route::get('analysis-time/{analysis_time_id}/delete', 'deleteAnalysisTime');
+
      });
 
     Route::get('/types', App\Http\Livewire\Admin\Type\Index::class);

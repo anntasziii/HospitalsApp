@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Analysis;
 use App\Models\Hospital;
 use App\Models\AnalysisImage;
+use App\Models\AnalysisTime;
 use App\Models\Type;
 use App\Models\Time;
 
@@ -76,9 +77,11 @@ class AnalysisController extends Controller
         $hospitals = Hospital::all();
         $types = Type::all();
         $analysis = Analysis::findOrFail($analysis_id);
-        //$analysis_year = $analysis->analysisYears->pluck('year_id')->toArray();
-        //$years = Year::whereNotIn('id',$analysis_year)->get();
-        return view('admin.analyses.edit', compact('hospitals', 'types', 'analysis'));
+
+        $analysis_time = $analysis->analysisTimes->pluck('time_id')->toArray();
+        $times = Time::whereNotIn('id',$analysis_time)->get();
+
+        return view('admin.analyses.edit', compact('hospitals', 'types', 'analysis', 'times'));
     }
     public function update(AnalysisFormRequest $request, int $analysis_id){
         $validatedData = $request->validated();
@@ -116,15 +119,15 @@ class AnalysisController extends Controller
                     ]);
                 }
             }
-            // if($request->years){
-            //     foreach($request->years as $key => $year){
-            //         $analysis->analysisYears()->create([
-            //             'analysis_id' => $analysis->id,
-            //             'year_id' => $year,
-            //             'quantity' => $request->yearquantity[$key] ?? 0
-            //         ]);
-            //     }
-            // }
+            if($request->times){
+                foreach($request->times as $key => $time){
+                    $analysis->analysisTimes()->create([
+                        'analysis_id' => $analysis->id,
+                        'time_id' => $time,
+                        'quantity' => $request->timequantity[$key] ?? 0
+                    ]);
+                }
+            }
             return redirect('/admin/analyses')->with('message', 'Analysis Updated Successfully');
         }
         else{
@@ -150,5 +153,18 @@ class AnalysisController extends Controller
         }
         $analysis->delete();
         return redirect()->back()->with('message', 'Analysis Deleted with all images');
+    }
+    public function updateAnalysisTimeQty(Request $request, $analysis_time_id){
+        $analysisTimeData = Analysis::findOrFail($request->analysis_id)
+                                ->analysisTimes()->where('id', $analysis_time_id)->first();
+        $analysisTimeData->update([
+            'quantity' => $request->qty
+        ]);
+        return response()->json(['message'=>'Analysis Time Qty Updated']);
+    }
+    public function deleteAnalysisTime($analysis_time_id){
+        $analysisTime = AnalysisTime::findOrFail($analysis_time_id);
+        $analysisTime->delete();
+        return response()->json(['message'=>'Analysis Time Deleted']);
     }
 }

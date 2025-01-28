@@ -47,8 +47,8 @@
                             </button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="years-tab" data-bs-toggle="tab" data-bs-target="#years-tab-pane" type="button">
-                                Doctor Years
+                            <button class="nav-link" id="times-tab" data-bs-toggle="tab" data-bs-target="#times-tab-pane" type="button">
+                                Doctor Times
                             </button>
                         </li>
                     </ul>
@@ -168,61 +168,61 @@
 
                             </div>
                         </div>
-                        <div class="tab-pane fade border p-3" id="years-tab-pane" role="tabpanel" tabindex="0">
-                            {{-- <div class="mb-3">
-                                <h4>Add doctor year</h4>
-                                <label>Select Year</label>
+                        <div class="tab-pane fade border p-3" id="times-tab-pane" role="tabpanel" tabindex="0">
+                            <div class="mb-3">
+                                <h4>Add Doctor Time</h4>
+                                <label>Select Time</label>
                                 <hr/>
                                 <div class="row">
-                                    @forelse ($years as $yearitem)
+                                    @forelse ($times as $timeitem)
                                         <div class="col-md-3">
                                             <div class="p-2 border mb-3">
-                                                Year: <input type="checkbox" name="years[{{$yearitem->id}}]" value="{{$yearitem->id}}" />
-                                                {{$yearitem->name}}
+                                                Time: <input type="checkbox" name="times[{{$timeitem->id}}]" value="{{$timeitem->id}}" />
+                                                {{$timeitem->name}}
                                                 <br/>
-                                                Quantity: <input type="number" name="yearquantity[{{ $yearitem->id }}]" style="width:70px; border: 1px solid" />
+                                                Quantity: <input type="number" name="timequantity[{{ $timeitem->id }}]" style="width:70px; border: 1px solid" />
                                             </div>
                                         </div>
                                     @empty
                                         <div class="col-md-12">
-                                            <h1>No years found</h1>
+                                            <h1>No times found</h1>
                                         </div>
                                     @endforelse
                                 </div>
-                            </div> --}}
-                            {{-- <div class="table-responsive">
+                            </div>
+                            <div class="table-responsive">
                                 <table class="table table-sm table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>Year</th>
+                                            <th>Time</th>
                                             <th>Quantity</th>
                                             <th>Delete</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($doctor->doctorYears as $prodYear)
-                                        <tr class="prod-year-tr">
+                                        @foreach ($doctor->doctorTimes as $doctorTime)
+                                        <tr class="doctor-time-tr">
                                             <td>
-                                                @if($prodYear->year)
-                                                    {{$prodYear->year->name}}
+                                                @if($doctorTime->time)
+                                                    {{$doctorTime->time->name}}
                                                 @else
-                                                    No Year Found
+                                                    No Time Found
                                                 @endif
                                             </td>
                                             <td>
                                                 <div class="input-group mb-3" style="width: 150px">
-                                                    <input type="text" value="{{ $prodYear->quantity }}" class="doctorYearQuantity form-control form-control-sm" />
-                                                    <button type="button" value="{{ $prodYear->id }}" class="updateDoctorYearBtn btn btn-primary btn-sm text-white">Update</button>
+                                                    <input type="text" value="{{ $doctorTime->quantity }}" class="doctorTimeQuantity form-control form-control-sm" />
+                                                    <button type="button" value="{{ $doctorTime->id }}" class="updateDoctorTimeBtn btn btn-primary btn-sm text-white">Update</button>
                                                 </div>
                                             </td>
                                             <td>
-                                                <button type="button" value="{{$prodYear->id}}" class="deleteDoctorYearBtn btn btn-danger btn-sm text-white">Delete</button>
+                                                <button type="button" value="{{$doctorTime->id}}" class="deleteDoctorTimeBtn btn btn-danger btn-sm text-white">Delete</button>
                                             </td>
                                         </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
-                            </div> --}}
+                            </div>
                         </div>
                     </div>
                     <div>
@@ -236,18 +236,18 @@
 @endsection
 
 @section('scripts')
-{{-- <script>
+<script>
     $(document).ready(function(){
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-        $(document).on('click', '.updateDoctorYearBtn', function(){
+        $(document).on('click', '.updateDoctorTimeBtn', function(){
             var doctor_id = "{{$doctor->id}}";
-            var prod_year_id = $(this).val();
-            var qty = $(this).closest('.prod-year-tr').find('.doctorYearQuantity').val();
-            //alert(prod_year_id);
+            var doctor_time_id = $(this).val();
+            var qty = $(this).closest('.doctor-time-tr').find('.doctorTimeQuantity').val();
+            //alert(doctor_time_id);
 
             if(qty <= 0){
                 alert('Quantity is required');
@@ -259,25 +259,25 @@
             };
             $.ajax({
                 type: "POST",
-                url: "/admin/doctor-year/"+prod_year_id,
+                url: "/admin/doctor-time/"+doctor_time_id,
                 data: data,
                 success: function(response){
                     alert(response.message)
                 }
             });
         });
-        $(document).on('click', '.deleteDoctorYearBtn', function(){
-            var prod_year_id = $(this).val();
+        $(document).on('click', '.deleteDoctorTimeBtn', function(){
+            var doctor_time_id = $(this).val();
             var thisClick = $(this);
             $.ajax({
                 type: "GET",
-                url: "/admin/doctor-year/"+prod_year_id+"/delete",
+                url: "/admin/doctor-time/"+doctor_time_id+"/delete",
                 success: function(response){
-                    thisClick.closest('.prod-year-tr').remove();
+                    thisClick.closest('.doctor-time-tr').remove();
                     alert(response.message)
                 }
             });
         });
     });
-</script> --}}
+</script>
 @endsection

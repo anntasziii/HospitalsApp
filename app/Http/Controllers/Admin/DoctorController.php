@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Doctor;
 use App\Models\Hospital;
 use App\Models\DoctorImage;
+use App\Models\DoctorTime;
 use App\Models\Type;
 use App\Models\Time;
 
@@ -82,9 +83,11 @@ class DoctorController extends Controller
         $hospitals = Hospital::all();
         $types = Type::all();
         $doctor = Doctor::findOrFail($doctor_id);
-        //$doctor_year = $doctor->doctorYears->pluck('year_id')->toArray();
-        //$years = Year::whereNotIn('id',$doctor_year)->get();
-        return view('admin.doctors.edit', compact('hospitals', 'types', 'doctor'));
+
+        $doctor_time = $doctor->doctorTimes->pluck('time_id')->toArray();
+        $times = Time::whereNotIn('id',$doctor_time)->get();
+
+        return view('admin.doctors.edit', compact('hospitals', 'types', 'doctor', 'times'));
     }
     public function update(DoctorFormRequest $request, int $doctor_id){
         $validatedData = $request->validated();
@@ -124,15 +127,15 @@ class DoctorController extends Controller
                     ]);
                 }
             }
-            // if($request->years){
-            //     foreach($request->years as $key => $year){
-            //         $doctor->doctorYears()->create([
-            //             'doctor_id' => $doctor->id,
-            //             'year_id' => $year,
-            //             'quantity' => $request->yearquantity[$key] ?? 0
-            //         ]);
-            //     }
-            // }
+            if($request->times){
+                foreach($request->times as $key => $time){
+                    $doctor->doctorTimes()->create([
+                        'doctor_id' => $doctor->id,
+                        'time_id' => $time,
+                        'quantity' => $request->timequantity[$key] ?? 0
+                    ]);
+                }
+            }
             return redirect('/admin/doctors')->with('message', 'Doctor Updated Successfully');
         }
         else{
@@ -158,6 +161,19 @@ class DoctorController extends Controller
         }
         $doctor->delete();
         return redirect()->back()->with('message', 'Doctor Deleted with all images');
+    }
+    public function updateDoctorTimeQty(Request $request, $doctor_time_id){
+        $doctorTimeData = Doctor::findOrFail($request->doctor_id)
+                                ->doctorTimes()->where('id', $doctor_time_id)->first();
+        $doctorTimeData->update([
+            'quantity' => $request->qty
+        ]);
+        return response()->json(['message'=>'Doctor Time Qty Updated']);
+    }
+    public function deleteDoctorTime($doctor_time_id){
+        $doctorTime = DoctorTime::findOrFail($doctor_time_id);
+        $doctorTime->delete();
+        return response()->json(['message'=>'Doctor Time Deleted']);
     }
 }
 

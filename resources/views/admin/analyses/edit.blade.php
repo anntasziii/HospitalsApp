@@ -47,8 +47,8 @@
                             </button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="years-tab" data-bs-toggle="tab" data-bs-target="#years-tab-pane" type="button">
-                                Analysis Years
+                            <button class="nav-link" id="times-tab" data-bs-toggle="tab" data-bs-target="#times-tab-pane" type="button">
+                                Analysis Timess
                             </button>
                         </li>
                     </ul>
@@ -141,7 +141,7 @@
                         </div>
                         <div class="tab-pane fade border p-3" id="image-tab-pane" role="tabpanel" aria-labelledby="image-tab" tabindex="0">
                             <div class="mb-3">
-                                <label class="mb-2 mt-3">Upload Doctor Images</label>
+                                <label class="mb-2 mt-3">Upload analysis Images</label>
                                 <input type="file" name="image[]" multiple class="form-control" />
                             </div>
                             <div>
@@ -160,61 +160,61 @@
 
                             </div>
                         </div>
-                        <div class="tab-pane fade border p-3" id="years-tab-pane" role="tabpanel" tabindex="0">
-                            {{-- <div class="mb-3">
-                                <h4>Add analysis year</h4>
-                                <label>Select Year</label>
+                        <div class="tab-pane fade border p-3" id="times-tab-pane" role="tabpanel" tabindex="0">
+                            <div class="mb-3">
+                                <h4>Add Analysis Time</h4>
+                                <label>Select Time</label>
                                 <hr/>
                                 <div class="row">
-                                    @forelse ($years as $yearitem)
+                                    @forelse ($times as $timeitem)
                                         <div class="col-md-3">
                                             <div class="p-2 border mb-3">
-                                                Year: <input type="checkbox" name="years[{{$yearitem->id}}]" value="{{$yearitem->id}}" />
-                                                {{$yearitem->name}}
+                                                Time: <input type="checkbox" name="times[{{$timeitem->id}}]" value="{{$timeitem->id}}" />
+                                                {{$timeitem->name}}
                                                 <br/>
-                                                Quantity: <input type="number" name="yearquantity[{{ $yearitem->id }}]" style="width:70px; border: 1px solid" />
+                                                Quantity: <input type="number" name="timequantity[{{ $timeitem->id }}]" style="width:70px; border: 1px solid" />
                                             </div>
                                         </div>
                                     @empty
                                         <div class="col-md-12">
-                                            <h1>No years found</h1>
+                                            <h1>No times found</h1>
                                         </div>
                                     @endforelse
                                 </div>
-                            </div> --}}
-                            {{-- <div class="table-responsive">
+                            </div>
+                            <div class="table-responsive">
                                 <table class="table table-sm table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>Year</th>
+                                            <th>Time</th>
                                             <th>Quantity</th>
                                             <th>Delete</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($analysis->analysisYears as $prodYear)
-                                        <tr class="prod-year-tr">
+                                        @foreach ($analysis->analysisTimes as $analysisTime)
+                                        <tr class="analysis-time-tr">
                                             <td>
-                                                @if($prodYear->year)
-                                                    {{$prodYear->year->name}}
+                                                @if($analysisTime->time)
+                                                    {{$analysisTime->time->name}}
                                                 @else
-                                                    No Year Found
+                                                    No Time Found
                                                 @endif
                                             </td>
                                             <td>
                                                 <div class="input-group mb-3" style="width: 150px">
-                                                    <input type="text" value="{{ $prodYear->quantity }}" class="analysisYearQuantity form-control form-control-sm" />
-                                                    <button type="button" value="{{ $prodYear->id }}" class="updateAnalysisYearBtn btn btn-primary btn-sm text-white">Update</button>
+                                                    <input type="text" value="{{ $analysisTime->quantity }}" class="analysisTimeQuantity form-control form-control-sm" />
+                                                    <button type="button" value="{{ $analysisTime->id }}" class="updateAnalysisTimeBtn btn btn-primary btn-sm text-white">Update</button>
                                                 </div>
                                             </td>
                                             <td>
-                                                <button type="button" value="{{$prodYear->id}}" class="deleteAnalysisYearBtn btn btn-danger btn-sm text-white">Delete</button>
+                                                <button type="button" value="{{$analysisTime->id}}" class="deleteAnalysisTimeBtn btn btn-danger btn-sm text-white">Delete</button>
                                             </td>
                                         </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
-                            </div> --}}
+                            </div>
                         </div>
                     </div>
                     <div>
@@ -228,18 +228,18 @@
 @endsection
 
 @section('scripts')
-{{-- <script>
+<script>
     $(document).ready(function(){
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-        $(document).on('click', '.updateAnalysisYearBtn', function(){
+        $(document).on('click', '.updateAnalysisTimeBtn', function(){
             var analysis_id = "{{$analysis->id}}";
-            var prod_year_id = $(this).val();
-            var qty = $(this).closest('.prod-year-tr').find('.analysisYearQuantity').val();
-            //alert(prod_year_id);
+            var analysis_time_id = $(this).val();
+            var qty = $(this).closest('.analysis-time-tr').find('.analysisTimeQuantity').val();
+            //alert(analysis_time_id);
 
             if(qty <= 0){
                 alert('Quantity is required');
@@ -251,25 +251,25 @@
             };
             $.ajax({
                 type: "POST",
-                url: "/admin/analysis-year/"+prod_year_id,
+                url: "/admin/analysis-time/"+analysis_time_id,
                 data: data,
                 success: function(response){
                     alert(response.message)
                 }
             });
         });
-        $(document).on('click', '.deleteAnalysisYearBtn', function(){
-            var prod_year_id = $(this).val();
+        $(document).on('click', '.deleteAnalysisTimeBtn', function(){
+            var analysis_time_id = $(this).val();
             var thisClick = $(this);
             $.ajax({
                 type: "GET",
-                url: "/admin/analysis-year/"+prod_year_id+"/delete",
+                url: "/admin/analysis-time/"+analysis_time_id+"/delete",
                 success: function(response){
-                    thisClick.closest('.prod-year-tr').remove();
+                    thisClick.closest('.analysis-time-tr').remove();
                     alert(response.message)
                 }
             });
         });
     });
-</script> --}}
+</script>
 @endsection
