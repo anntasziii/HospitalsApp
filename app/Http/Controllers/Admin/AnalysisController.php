@@ -7,6 +7,7 @@ use App\Models\Analysis;
 use App\Models\Hospital;
 use App\Models\AnalysisImage;
 use App\Models\Type;
+use App\Models\Time;
 
 use App\Http\Requests\AnalysisFormRequest;
 use Illuminate\Support\Facades\File;
@@ -22,8 +23,8 @@ class AnalysisController extends Controller
     public function create(){
         $hospitals = Hospital::all();
         $types = Type::all();
-        //$years = Year::where('status', '0')->get();
-        return view('admin.analyses.create', compact('hospitals', 'types'));
+        $times = Time::where('status', '0')->get();
+        return view('admin.analyses.create', compact('hospitals', 'types', 'times'));
     }
     public function store(AnalysisFormRequest $request){
         $validatedData = $request->validated();
@@ -59,15 +60,15 @@ class AnalysisController extends Controller
                 ]);
             }
         }
-        // if($request->years){
-        //     foreach($request->years as $key => $year){
-        //         $analysis->analysisYears()->create([
-        //             'analysis_id' => $analysis->id,
-        //             'year_id' => $year,
-        //             'quantity' => $request->yearquantity[$key] ?? 0
-        //         ]);
-        //     }
-        // }
+        if($request->times){
+            foreach($request->times as $key => $time){
+                $analysis->analysisTimes()->create([
+                    'analysis_id' => $analysis->id,
+                    'time_id' => $time,
+                    'quantity' => $request->timequantity[$key] ?? 0
+                ]);
+            }
+        }
 
         return redirect('/admin/analyses')->with('message', 'Analysis Added Successfully');
     }

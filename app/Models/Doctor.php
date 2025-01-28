@@ -34,8 +34,8 @@ class Doctor extends Model
     public function doctorImages(){
         return $this->hasMany(DoctorImage::class, 'doctor_id', 'id');
     }
-    // public function productYears(){
-    //     return $this->hasMany(ProductYear::class, 'product_id', 'id');
-    // }
+    public function doctorTimes(){
+        return $this->hasMany(DoctorTime::class, 'doctor_id', 'id');
+    }
 
 }

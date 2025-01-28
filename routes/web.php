@@ -69,8 +69,8 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function(){
         Route::get('doctors/{doctor_id}/delete', 'destroy');
         Route::get('doctor-image/{doctor_image_id}/delete', 'destroyImage');
 
-        // Route::post('doctor-year/{doctor_year_id}', 'updateProdYearQty');
-        // Route::get('doctor-year/{doctor_year_id}/delete', 'deleteProdYear');
+        // Route::post('doctor-time/{doctor_time_id}', 'updateProdtimeQty');
+        // Route::get('doctor-time/{doctor_time_id}/delete', 'deleteProdtime');
      });
 
      Route::controller(App\Http\Controllers\Admin\AnalysisController::class)->group(function (){
@@ -82,20 +82,21 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function(){
         Route::get('analyses/{analysis_id}/delete', 'destroy');
         Route::get('analysis-image/{analysis_image_id}/delete', 'destroyImage');
 
-        // Route::post('doctor-year/{doctor_year_id}', 'updateProdYearQty');
-        // Route::get('doctor-year/{doctor_year_id}/delete', 'deleteProdYear');
+        // Route::post('doctor-time/{doctor_time_id}', 'updateProdtimeQty');
+        // Route::get('doctor-time/{doctor_time_id}/delete', 'deleteProdtime');
      });
 
     Route::get('/types', App\Http\Livewire\Admin\Type\Index::class);
 
-    // Route::controller(App\Http\Controllers\Admin\YearController::class)->group(function (){
-    //     Route::get('/years', 'index');
-    //     Route::get('/years/create', 'create');
-    //     Route::post('/years/create', 'store');
-    //     Route::get('/years/{year}/edit', 'edit');
-    //     Route::put('/years/{year_id}', 'update');
-    //     Route::get('years/{year_id}/delete', 'destroy');
-    // });
+    Route::controller(App\Http\Controllers\Admin\TimeController::class)->group(function (){
+        Route::get('/times', 'index');
+        Route::get('/times/create', 'create');
+        Route::post('/times/create', 'store');
+        Route::get('/times/{time}/edit', 'edit');
+        Route::put('/times/{time_id}', 'update');
+        Route::get('times/{time_id}/delete', 'destroy');
+    });
+
     // Route::controller(App\Http\Controllers\Admin\OrderController::class)->group(function (){
     //     Route::get('/orders', 'index');
     //     Route::get('/orders/{orderId}', 'show');

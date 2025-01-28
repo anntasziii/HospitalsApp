@@ -51,10 +51,10 @@
           <span class="menu-title">Types</span>
         </a>
       </li>
-      <li class="nav-item {{Request::is('admin/years' ? 'active':'')}}">
-        <a class="nav-link" href="{{ url('admin/years')}}">
+      <li class="nav-item {{Request::is('admin/times' ? 'active':'')}}">
+        <a class="nav-link" href="{{ url('admin/times')}}">
           <i class="mdi mdi-circle-outline menu-icon"></i>
-          <span class="menu-title">Years</span>
+          <span class="menu-title">Times</span>
         </a>
       </li>
       <li class="nav-item {{Request::is('admin/sliders' ? 'active':'')}}">

@@ -31,7 +31,7 @@ class Analysis extends Model
     public function analysisImages(){
         return $this->hasMany(AnalysisImage::class, 'analysis_id', 'id');
     }
-    // public function productYears(){
-    //     return $this->hasMany(ProductYear::class, 'product_id', 'id');
-    // }
+    public function analysisTimes(){
+        return $this->hasMany(AnalysisTime::class, 'analysis_id', 'id');
+    }
 }
