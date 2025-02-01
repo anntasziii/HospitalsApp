@@ -34,7 +34,7 @@
                     <div class="mb-3">
                         <label>Status</label><br />
                         <input type="checkbox" name="status" {{$slider->status == '1' ? 'checked':''}} slyle="width:50px;height:50px"/>
-                         Checked=Hidden, UnChacked=Visible
+                         Checked = Hidden, UnChacked = Visible
                     </div>
                     <div class="mb-3">
                         <button type="submit" class="btn btn-primary">Update</button>
