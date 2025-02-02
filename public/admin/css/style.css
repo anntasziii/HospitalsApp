@@ -20,7 +20,7 @@
     + Color Functions Mixins
     + Badge Mixins
     + Blockquote Mixins
-    
+
   * Core Styles
     + Reset Styles
     + Fonts
@@ -43,7 +43,7 @@
     + Lists
     + Tables
   * Plugin overrides
-    + Data-tables  
+    + Data-tables
   * Landing screens
     + Auth
   * Layout
@@ -23188,3 +23188,123 @@ dl li {
 }
 
 /*# sourceMappingURL=maps/style.css.map */
+.checkbox-wrapper-7 .tgl {
+    display: none;
+  }
+  .checkbox-wrapper-7 .tgl,
+  .checkbox-wrapper-7 .tgl:after,
+  .checkbox-wrapper-7 .tgl:before,
+  .checkbox-wrapper-7 .tgl *,
+  .checkbox-wrapper-7 .tgl *:after,
+  .checkbox-wrapper-7 .tgl *:before,
+  .checkbox-wrapper-7 .tgl + .tgl-btn {
+    box-sizing: border-box;
+  }
+  .checkbox-wrapper-7 .tgl::-moz-selection,
+  .checkbox-wrapper-7 .tgl:after::-moz-selection,
+  .checkbox-wrapper-7 .tgl:before::-moz-selection,
+  .checkbox-wrapper-7 .tgl *::-moz-selection,
+  .checkbox-wrapper-7 .tgl *:after::-moz-selection,
+  .checkbox-wrapper-7 .tgl *:before::-moz-selection,
+  .checkbox-wrapper-7 .tgl + .tgl-btn::-moz-selection,
+  .checkbox-wrapper-7 .tgl::selection,
+  .checkbox-wrapper-7 .tgl:after::selection,
+  .checkbox-wrapper-7 .tgl:before::selection,
+  .checkbox-wrapper-7 .tgl *::selection,
+  .checkbox-wrapper-7 .tgl *:after::selection,
+  .checkbox-wrapper-7 .tgl *:before::selection,
+  .checkbox-wrapper-7 .tgl + .tgl-btn::selection {
+    background: none;
+  }
+  .checkbox-wrapper-7 .tgl + .tgl-btn {
+    outline: 0;
+    display: block;
+    width: 4em;
+    height: 2em;
+    position: relative;
+    cursor: pointer;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+  }
+  .checkbox-wrapper-7 .tgl + .tgl-btn:after,
+  .checkbox-wrapper-7 .tgl + .tgl-btn:before {
+    position: relative;
+    display: block;
+    content: "";
+    width: 50%;
+    height: 100%;
+  }
+  .checkbox-wrapper-7 .tgl + .tgl-btn:after {
+    left: 0;
+  }
+  .checkbox-wrapper-7 .tgl + .tgl-btn:before {
+    display: none;
+  }
+  .checkbox-wrapper-7 .tgl:checked + .tgl-btn:after {
+    left: 50%;
+  }
+
+  .checkbox-wrapper-7 .tgl-ios + .tgl-btn {
+    background: #fbfbfb;
+    border-radius: 2em;
+    padding: 2px;
+    transition: all 0.4s ease;
+    border: 1px solid #e8eae9;
+  }
+  .checkbox-wrapper-7 .tgl-ios + .tgl-btn:after {
+    border-radius: 2em;
+    background: #fbfbfb;
+    transition: left 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), padding 0.3s ease, margin 0.3s ease;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 4px 0 rgba(0, 0, 0, 0.08);
+  }
+  .checkbox-wrapper-7 .tgl-ios + .tgl-btn:hover:after {
+    will-change: padding;
+  }
+  .checkbox-wrapper-7 .tgl-ios + .tgl-btn:active {
+    box-shadow: inset 0 0 0 2em #e8eae9;
+  }
+  .checkbox-wrapper-7 .tgl-ios + .tgl-btn:active:after {
+    padding-right: 0.8em;
+  }
+  .checkbox-wrapper-7 .tgl-ios:checked + .tgl-btn {
+    background: #4d83ff;
+  }
+  .checkbox-wrapper-7 .tgl-ios:checked + .tgl-btn:active {
+    box-shadow: none;
+  }
+  .checkbox-wrapper-7 .tgl-ios:checked + .tgl-btn:active:after {
+    margin-left: -0.8em;
+  }
+  .header-admin{
+    border-bottom: 0px; background-color: #FFFFFF; margin-top: 10px; margin-left: 15px; margin-right: 15px;
+  }
+.card-admin{
+    border-radius: 10px;
+    height: 100px;
+    font-size: 24px;
+}
+.card-admin-1{
+    background-color: #6699ff;
+}
+.card-admin-2{
+    background-color: #99bbff;
+}
+.card-admin-3{
+    background-color: #6699ff;
+}
+.card-admin-4{
+    background-color: #99bbff;
+}
+.text-view{
+    margin-top: 7px;
+    font-size: 18px;
+    text-decoration: none;
+    border: 2px solid white;
+    padding: 4px 8px;
+    display: inline-block;
+    border-radius: 10px;
+    width: 70px;
+    text-align: center;
+}

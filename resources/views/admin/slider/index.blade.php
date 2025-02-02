@@ -7,7 +7,7 @@
             <div class="alert alert-success">{{session('message')}}</div>
         @endif
         <div class="card">
-            <div class="card-header" style="border-bottom: 0px; background-color: #FFFFFF; margin-top: 10px; margin-left: 15px; margin-right: 15px;">
+            <div class="card-header header-admin">
                 <h2><a>SLIDER LIST:</a>
                     <a href="{{ url('admin/sliders/create') }}" class="btn btn-sm float-end" style="background-color: #C0E5B6; width: 150px;">
                         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier">
