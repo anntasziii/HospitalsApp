@@ -21,7 +21,7 @@
         </a>
         <div class="collapse" id="ui-basic-1">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="{{ url('admin/hospital/create') }}">Add Hospital</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{ url('admin/hospital/create/#') }}">Add Hospital</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{ url('admin/hospital/')}}">View Hospital</a></li>
           </ul>
         </div>
@@ -39,7 +39,7 @@
         </a>
         <div class="collapse" id="ui-basic-2">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="{{ url('admin/doctors/create') }}">Add Doctors</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{ url('admin/doctors/create/#') }}">Add Doctors</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{ url('admin/doctors') }}">View Doctors</a></li>
           </ul>
         </div>
@@ -54,7 +54,7 @@
         </a>
         <div class="collapse" id="ui-basic-3">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="{{ url('admin/analyses/create') }}">Add Analyses</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{ url('admin/analyses/create/#') }}">Add Analyses</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{ url('admin/analyses') }}">View Analyses</a></li>
           </ul>
         </div>
@@ -110,7 +110,7 @@
         </a>
         <div class="collapse" id="ui-basic-4">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="{{ url('admin/users/create') }}">Add User</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{ url('admin/users/create/#') }}">Add User</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{ url('admin/users') }}">View Users</a></li>
           </ul>
         </div>

@@ -2,7 +2,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLable">Add Type</h5>
+                <h5 class="modal-title" id="exampleModalLable">ADD TYPE</h5>
                 <button type="button" wire:click="closeModal" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form wire:submit.prevent="storeType">
@@ -21,23 +21,25 @@
                     </div> --}}
                     <div class="mb-3">
                         <label>Type Name</label>
-                        <input type="text" wire:model.defer="name" class="form-control">
+                        <input style="border-radius: 5px" type="text" wire:model.defer="name" class="form-control">
                         @error('name') <small class="text-danger">{{$message}}</small> @enderror
                     </div>
                     <div class="mb-3">
                         <label>Type Slug</label>
-                        <input type="text" wire:model.defer="slug" class="form-control">
+                        <input style="border-radius: 5px" type="text" wire:model.defer="slug" class="form-control">
                         @error('slug') <small class="text-danger">{{$message}}</small> @enderror
                     </div>
                     <div class="mb-3">
-                        <label>Status</label> <br />
-                        <input type="checkbox" wire:model.defer="status"/> Checked = Hidden, Un-Checked = Visible
-                        @error('status') <small class="text-danger">{{$message}}</small> @enderror
+                        <label class="mb-2">Status (Checked = Hidden, UnChacked = Visible)</label><br />
+                        <div class="checkbox-wrapper-7">
+                            <input class="tgl tgl-ios" id="cb2-7" wire:model.defer="status" type="checkbox"/>
+                            <label class="tgl-btn" for="cb2-7">
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" wire:click="closeModal" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="submit" class="btn text-white btn-primary">Save</button>
                 </div>
             </form>
         </div>
@@ -49,7 +51,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLable">Update Type</h5>
+                <h5 class="modal-title" id="exampleModalLable">UPDATE TYPE</h5>
                 <button type="button" class="btn-close" wire:click="closeModal" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div>
@@ -69,23 +71,35 @@
                         </div> --}}
                         <div class="mb-3">
                             <label>Type Name</label>
-                            <input type="text" wire:model.defer="name" class="form-control">
+                            <input style="border-radius: 5px" type="text" wire:model.defer="name" class="form-control">
                             @error('name') <small class="text-danger">{{$message}}</small> @enderror
                         </div>
                         <div class="mb-3">
                             <label>Type Slug</label>
-                            <input type="text" wire:model.defer="slug" class="form-control">
+                            <input style="border-radius: 5px" type="text" wire:model.defer="slug" class="form-control">
                             @error('slug') <small class="text-danger">{{$message}}</small> @enderror
                         </div>
-                        <div class="mb-3">
+
+                        {{-- <div class="mb-3">
                             <label>Status</label> <br />
                             <input type="checkbox" wire:model.defer="status" style="width:70px; height=70px;"/> Checked = Hidden, Un-Checked = Visible
                             @error('status') <small class="text-danger">{{$message}}</small> @enderror
+                        </div> --}}
+
+                        <div class="mb-3" >
+                            <label class="mb-2">Status (Checked = Hidden, UnChecked = Visible)</label><br />
+                            <div class="checkbox-wrapper-7">
+                                <input class="tgl tgl-ios" id="cb2-7" type="checkbox" wire:model.defer="status" style="width:70px; height:70px;"/>
+                                <label class="tgl-btn" for="cb2-7"></label>
+                                @error('status') <small class="text-danger">{{$message}}</small> @enderror
+                            </div>
                         </div>
+
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" wire:click="closeModal" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Update</button>
+                        <button type="submit" class="btn text-white btn-primary">Update</button>
                     </div>
                 </form>
             </div>
