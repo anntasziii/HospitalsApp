@@ -80,35 +80,61 @@
     }
 }
 
-/* Category */
-.category-card{
-    border: 1px solid #ddd;
-    box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%);
+/* Hospital */
+.hospital-card{
+    box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 15%);
+    border-radius: 10px;
     margin-bottom: 24px;
     background-color: #fff;
+    width: 100%;
+    height: 270px;
 }
-.category-card a{
+.hospital-card a{
     text-decoration: none;
 }
-.category-card .category-card-img{
+.hospital-card .hospital-card-img{
+    border-radius: 10px 10px 0 0;
     max-height: 260px;
     overflow: hidden;
-    border-bottom: 1px solid #ccc;
 }
-.category-card .category-card-body{
+.hospital-card .hospital-card-body{
     padding: 10px 16px;
 }
-.category-card .category-card-body h5{
+.hospital-card .hospital-card-body h5{
     margin-bottom: 0px;
     font-size: 18px;
-    font-weight: 600;
-    color: #000;
+    color: #002b80;
     text-align: center;
+    letter-spacing: 1px;
+}
+.stylized-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    color: #0044cc;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    background: linear-gradient(to right,#3498db, #8e44ad);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding: 10px 0;
+    position: relative;
+}
+
+.stylized-title::after {
+    content: "";
+    display: block;
+    width: 160px;
+    height: 4px;
+    background: #753291;
+    margin: 5px auto 0;
+    border-radius: 2px;
 }
 /* Product */
 .product-card{
+    box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 15%);
     background-color: #fff;
-    border: 1px solid #ccc;
+    border-radius: 10px;
     margin-bottom: 24px;
 }
 .product-card a{
@@ -117,15 +143,15 @@
 .product-card .stock{
     position: absolute;
     color: #fff;
-    border-radius: 4px;
+    border-radius: 6px;
     padding: 2px 12px;
-    margin: 8px;
+    margin: 10px;
     font-size: 12px;
 }
 .product-card .product-card-img{
+    border-radius: 10px 10px 0 0;
     max-height: 260px;
     overflow: hidden;
-    border-bottom: 1px solid #ccc;
 }
 .product-card .product-card-img img{
     width: 100%;
@@ -142,7 +168,7 @@
     text-overflow: ellipsis;
     overflow: hidden;
 }
-.product-card .product-card-body .product-name{
+.product-card .product-card-body{
     font-size: 20px;
     font-weight: 600;
     color: #000;
@@ -171,11 +197,17 @@
 }
 
 /* Product View */
+
 .product-view .product-name{
     font-size: 24px;
-    color: #2874f0;
+    color: #002266;
+    padding: 4px 13px;
+    border-radius: 5px;
+    color: #fff;
+    box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%);
+    float: right;
 }
-.product-view .product-name .label-stock{
+.product-view .label-stock{
     font-size: 13px;
     padding: 4px 13px;
     border-radius: 5px;
@@ -251,7 +283,7 @@
     padding: 10px 10px;
     margin-top: 10px;
 }
-.shopping-cart .cart-item .product-name{
+.shopping-cart .cart-item{
     font-size: 16px;
     font-weight: 600;
     width: 100%;
@@ -316,4 +348,39 @@
     margin: 0px 10px;
     color: #fff;
     width: 20px;
+}
+.radio-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.radio-container input[type="radio"] {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #003399;
+    border-radius: 50%;
+    margin-right: 10px;
+    position: relative;
+    transition: background 0.3s, border-color 0.3s;
+    cursor: pointer;
+}
+.radio-container input[type="radio"]:checked {
+    background-color: #003399;
+}
+.radio-container input[type="radio"]::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.radio-container input[type="radio"]:checked::before {
+    opacity: 1;
 }

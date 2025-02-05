@@ -3,7 +3,7 @@
         <div class="container-fluid">
             <div class="row" style="margin-left: 10px;">
                 <div class="col-md-2 my-auto d-none d-sm-none d-md-block d-lg-block">
-                    <h3 class="brand-name">{{$appSetting->website_name ?? 'website name'}}</h3>
+                    <h3 style="letter-spacing: 1.5px;" class="brand-name">{{$appSetting->website_name ?? 'website name'}}</h3>
                 </div>
                 <div class="col-md-5 my-auto">
                     <form action="{{url('search')}}" method="GET" role="search">
@@ -81,20 +81,26 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <b><ul style="color: #002266;" class="navbar-nav me-auto mb-2 mb-lg-0">
+                <ul style="color: #002266;" class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a style="color: #002266;" class="nav-link" href="{{url('/')}}">Main page</a>
+                        <a style="color: #002266; letter-spacing: 0.5px;" class="nav-link" href="{{url('/')}}">Main page</a>
                     </li>
                     <li class="nav-item">
-                        <a style="color: #002266;" class="nav-link" href="{{url('/collections')}}">Hospitals</a>
+                        <a style="color: #002266; letter-spacing: 0.5px;" class="nav-link" href="{{url('/hospitals')}}">Hospitals</a>
                     </li>
                     <li class="nav-item">
-                        <a style="color: #002266;" class="nav-link" href="{{url('/new-arrivals')}}">Doctors</a>
+                        <a style="color: #002266; letter-spacing: 0.5px;" class="nav-link" href="{{url('/doctors')}}">Doctors</a>
                     </li>
                     <li class="nav-item">
-                        <a style="color: #002266;" class="nav-link" href="{{url('/featured-products')}}">Analysys</a>
+                        <a style="color: #002266; letter-spacing: 0.5px;" class="nav-link" href="{{url('/analysys')}}">Analysys</a>
                     </li>
-                </ul></b>
+                    <li class="nav-item">
+                        <a style="color: #002266; letter-spacing: 0.5px;" class="nav-link" href="{{url('/new-arrivals')}}">Doctors arrivals</a>
+                    </li>
+                    <li class="nav-item">
+                        <a style="color: #002266; letter-spacing: 0.5px;" class="nav-link" href="{{url('/featured-products')}}">Analysys featured</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>

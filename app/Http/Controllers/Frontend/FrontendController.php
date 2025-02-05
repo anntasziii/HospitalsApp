@@ -20,4 +20,26 @@ class FrontendController extends Controller
         return view('frontend.index', compact('sliders'));
         // return view('frontend.index', compact('sliders', 'trendingProducts', 'newArrivalsProducts', 'featuredProducts'));
     }
+    public function hospitals(){
+        $hospitals = Hospital::where('status', '0')->get();
+        return view('frontend.collections.hospital.index', compact('hospitals'));
+    }
+    public function doctors($hospital_slug){
+        $hospital = Hospital::where('slug', $hospital_slug)->first();
+        if($hospital){
+            return view('frontend.collections.doctors.index', compact('hospital'));
+        }
+        else{
+            return redirect()->back();
+        }
+    }
+    // public function analysys($analysis_slug){
+    //     $analysis = Analysis::where('slug', $analysis_slug)->first();
+    //     if($analysis){
+    //         return view('frontend.collections.analyses.index', compact('analysis'));
+    //     }
+    //     else{
+    //         return redirect()->back();
+    //     }
+    // }
 }
