@@ -24,7 +24,7 @@ class FrontendController extends Controller
         $hospitals = Hospital::where('status', '0')->get();
         return view('frontend.collections.hospital.index', compact('hospitals'));
     }
-    public function doctors($hospital_slug){
+    public function doctors_analyses($hospital_slug){
         $hospital = Hospital::where('slug', $hospital_slug)->first();
         if($hospital){
             return view('frontend.collections.doctors.index', compact('hospital'));

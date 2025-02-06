@@ -7,7 +7,7 @@ use App\Models\Wishlist;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
-class ViewDoctor extends Component
+class ViewAnalysis extends Component
 {
     public $category, $product, $prodYearSelectedQuantity, $quantityCount = 1, $productYearId;
     public function addToWishList($productId){

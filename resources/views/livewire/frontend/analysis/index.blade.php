@@ -3,7 +3,7 @@
         <div class="col-md-3">
             @if ($hospital->types)
                 <div class="card">
-                    <div class="card-header"><h4>Type of doctors and analysys</h4></div>
+                    <div class="card-header"><h4>Type of analyses</h4></div>
                     <div class="card-body">
                         @foreach ($hospital->types as $typeItem)
                             <label class="d-block">
@@ -29,36 +29,31 @@
         </div>
         <div class="col-md-9">
             <div class="row">
-                @forelse ($doctors as $doctorItem)
+                @forelse ($analyses as $analysisItem)
                     <div class="col-md-4">
                         <div class="product-card">
                             <div class="product-card-img" style="width: 100%; height: 250px; text-align: center;">
-                                @if ($doctorItem->quantity > 0)
+                                @if ($analysisItem->quantity > 0)
                                     <label class="stock bg-success">Appointment available</label>
                                 @else
                                     <label class="stock bg-danger">Appointment available</label>
                                 @endif
-                                @if ($doctorItem->doctorImages->count()>0)
-                                    <a href="{{url('/collections/'.$doctorItem->hospital->slug.'/'.$doctorItem->slug)}}">
-                                        <img src="{{asset($doctorItem->doctorImages[0]->image)}}" alt="{{$doctorItem->name}}"
+                                @if ($analysisItem->analysisImages->count()>0)
+                                    <a href="{{url('/collections/'.$analysisItem->hospital->slug.'/'.$analysisItem->slug)}}">
+                                        <img src="{{asset($analysisItem->analysisImages[0]->image)}}" alt="{{$analysisItem->name}}"
                                         style="max-width: 100%; display: inline-block; vertical-align: middle;">
                                     </a>
                                 @endif
                             </div>
                             <div class="product-card-body">
-                                <p class="product-brand">{{$doctorItem->type}}</p>
+                                <p class="product-brand">{{$analysisItem->type}}</p>
                                 <h5 class="product-name">
-                                    <a href="{{url('/collections/'.$doctorItem->hospital->slug.'/'.$doctorItem->slug)}}">
-                                            {{$doctorItem->name_of_specialty}}
-                                    </a>
-                                </h5>
-                                <h5 class="product-name">
-                                    <a href="{{url('/collections/'.$doctorItem->hospital->slug.'/'.$doctorItem->slug)}}">
-                                            {{$doctorItem->name}}
+                                    <a href="{{url('/collections/'.$analysisItem->hospital->slug.'/'.$analysisItem->slug)}}">
+                                            {{$analysisItem->name}}
                                     </a>
                                 </h5>
                                 <div>
-                                    <span>₴ {{$doctorItem->original_price}}</span>
+                                    <span>₴ {{$analysisItem->original_price}}</span>
                                 </div>
                             </div>
                         </div>
@@ -66,7 +61,7 @@
                 @empty
                     <div class="col-md-12">
                         <div class="p-2">
-                            <h5 style="color: #002266">No Doctor Available for {{$hospital->name}}</h5>
+                            <h5 style="color: #002266">No Analysis Available for {{$hospital->name}}</h5>
                         </div>
                     </div>
                 @endforelse

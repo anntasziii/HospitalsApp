@@ -14,7 +14,7 @@ Auth::routes();
 Route::controller(App\Http\Controllers\Frontend\FrontendController::class)->group(function (){
     Route::get('/','index');
     Route::get('/hospitals','hospitals');
-    Route::get('/collections/{hospital_slug}','doctors');
+    Route::get('/collections/{hospital_slug}','doctors_analyses');
     // Route::get('/hospitals/{hospital_slug}',action: 'anatysys');
     // Route::get('/collections/{category_slug}/{product_slug}','productView');
     // Route::get('/new-arrivals', 'newArrival');
