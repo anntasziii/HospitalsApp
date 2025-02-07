@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Doctor;
+use App\Models\Type;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -31,7 +32,4 @@ class Hospital extends Model
     {
         return $this->hasMany(Analysis::class, 'hospitals_id', 'id');
     }
-    // public function brands(){
-    //     return $this->hasMany(Brand::class, 'category_id', 'id')->where('status', '0');
-    // }
 }

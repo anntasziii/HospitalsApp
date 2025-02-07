@@ -1,13 +1,13 @@
 <div>
     <div class="row">
         <div class="col-md-3">
-            @if ($hospital->types)
-                <div class="card">
-                    <div class="card-header"><h4>Type of doctors and analysys</h4></div>
-                    <div class="card-body">
-                        @foreach ($hospital->types as $typeItem)
-                            <label class="d-block">
-                                <input type="checkbox" wire:model="typeInputs" value="{{$typeItem->name}}" /> {{$typeItem->name}}
+            @if($types)
+                <div class="product-card">
+                    <div class="card-header"><h4>Type of analyses</h4></div>
+                    <div class="card-body checkbox-container">
+                        @foreach ($types as $typeItem)
+                            <label class="mb-2 d-block">
+                                <input type="checkbox" wire:model="typeInputs" value="{{ $typeItem->name }}" /> {{ $typeItem->name }}
                             </label>
                         @endforeach
                     </div>
@@ -23,6 +23,19 @@
                     <label>
                         <input type="radio" name="priceSort" wire:model="priceInput" value="low-to-high" />
                         Lowest - Highest
+                    </label>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="card-header"><h4>Name of specialty</h4></div>
+                <div class="card-body radio-container">
+                    <label>
+                        <input type="radio" name="nameSort" wire:model="nameInput" value="a-z" />
+                        Ascending (A-Z)
+                    </label>
+                    <label>
+                        <input type="radio" name="nameSort" wire:model="nameInput" value="z-a" />
+                        Descending (Z-A)
                     </label>
                 </div>
             </div>
