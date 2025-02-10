@@ -13,9 +13,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h4 class="mb-4 stylized-title">Doctors available at the hospital: {{$hospital->name}}:</h4>
+                    <h4 class="mb-4 stylized-title">Analyses available at the hospital: {{$hospital->name}}:</h4>
                 </div>
-                <livewire:frontend.doctor.index :hospital="$hospital" />
+                <livewire:frontend.analysis.index :hospital="$hospital" />
             </div>
         </div>
     </div>

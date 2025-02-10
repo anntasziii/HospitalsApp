@@ -24,22 +24,62 @@ class FrontendController extends Controller
         $hospitals = Hospital::where('status', '0')->get();
         return view('frontend.collections.hospital.index', compact('hospitals'));
     }
-    public function doctors_analyses($hospital_slug){
+    public function choose($hospital_slug)
+    {
         $hospital = Hospital::where('slug', $hospital_slug)->first();
-        if($hospital){
-            return view('frontend.collections.doctors.index', compact('hospital'));
+
+        if ($hospital) {
+            return view('frontend.collections.hospital.choose', compact('hospital'));
         }
         else{
             return redirect()->back();
         }
     }
-    // public function analysys($analysis_slug){
-    //     $analysis = Analysis::where('slug', $analysis_slug)->first();
-    //     if($analysis){
-    //         return view('frontend.collections.analyses.index', compact('analysis'));
-    //     }
-    //     else{
-    //         return redirect()->back();
-    //     }
-    // }
+
+    public function doctors($hospital_slug){
+        $hospital = Hospital::where('slug', $hospital_slug)->first();
+        if($hospital){
+            return view('frontend.collections.doctors.index', compact('hospital'));
+        }
+    }
+    public function analyses($hospital_slug){
+        $hospital = Hospital::where('slug', $hospital_slug)->first();
+        if($hospital){
+            return view('frontend.collections.analyses.index', compact('hospital'));
+        }
+    }
+
+    public function doctorView(string $hospital_slug, string $doctor_slug){
+        $hospital = Hospital::where('slug', $hospital_slug)->first();
+        if($hospital){
+            $doctor = $hospital->doctors()->where('slug', $doctor_slug)->where('status', '0')->first();
+            if($doctor)
+            {
+                return view('frontend.collections.doctors.view', compact('doctor', 'hospital'));
+            }
+            else{
+                return redirect()->back();
+            }
+        }
+        else{
+            return redirect()->back();
+        }
+    }
+    public function analysisView(string $hospital_slug, string $analysis_slug){
+        $hospital = Hospital::where('slug', $hospital_slug)->first();
+        if($hospital){
+            $analysis = $hospital->analyses()->where('slug', $analysis_slug)->where('status', '0')->first();
+            if($analysis)
+            {
+                return view('frontend.collections.analyses.view', compact('analysis', 'hospital'));
+            }
+            else{
+                return redirect()->back();
+            }
+        }
+        else{
+            return redirect()->back();
+        }
+    }
+
 }
