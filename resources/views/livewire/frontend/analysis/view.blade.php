@@ -40,7 +40,7 @@
                             @if ($analysis->analysisTimes->count()>0)
                                 @if($analysis->analysisTimes)
                                     @foreach ($analysis->analysisTimes as $timeItem)
-                                        <label class="timeSelectionLabel"
+                                        <label class="yearSelectionLabel"
                                             wire:click="timeSelected({{$timeItem->id}})"
                                             >
                                             {{$timeItem->time->name}}
@@ -48,9 +48,9 @@
                                     @endforeach
                                 @endif
                                 <div>
-                                    @if ($this->prodTimeSelectedQuantity == 'outOfStock')
+                                    @if ($this->analysesTimeSelectedQuantity == 'outOfStock')
                                         <label class="btn-sm py-1 mt-2 text-white bg-danger">Appointment unavailable</label>
-                                    @elseif ($this->prodTimeSelectedQuantity > 0)
+                                    @elseif ($this->analysesTimeSelectedQuantity > 0)
                                         <label class="btn-sm py-1 mt-2 text-white bg-success">Appointment available</label>
                                     @endif
                                 </div>
@@ -62,6 +62,7 @@
                                 @endif
                             @endif
                         </div>
+
                         {{-- <div class="mt-2">
                             <div class="input-group">
                                 <span class="btn btn1" wire:click="dencrementQuantity"><i class="fa fa-minus"></i></span>

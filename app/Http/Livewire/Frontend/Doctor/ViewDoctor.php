@@ -11,13 +11,13 @@ use App\Models\Doctor;
 
 class ViewDoctor extends Component
 {
-    public $hospital, $doctor, $prodTimeSelectedQuantity, $quantityCount = 1, $doctorYearId;
-    public function yearSelected($doctorYearId){
-        $this->doctorYearId = $doctorYearId;
-        $doctorYear = $this->doctor->doctorYears()->where('id', $doctorYearId)->first();
-        $this->prodTimeSelectedQuantity = $doctorYear->quantity;
-        if($this->prodTimeSelectedQuantity == 0){
-            $this->prodTimeSelectedQuantity = 'outOfStock';
+    public $hospital, $doctor, $doctorsTimeSelectedQuantity, $quantityCount = 1, $doctorTimeId;
+    public function timeSelected($doctorTimeId){
+        $this->doctorTimeId = $doctorTimeId;
+        $doctorTime = $this->doctor->doctorTimes()->where('id', $doctorTimeId)->first();
+        $this->doctorsTimeSelectedQuantity = $doctorTime->quantity;
+        if($this->doctorsTimeSelectedQuantity == 0){
+            $this->doctorsTimeSelectedQuantity = 'outOfStock';
         }
     }
     public function dencrementQuantity(){

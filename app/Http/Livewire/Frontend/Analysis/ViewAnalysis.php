@@ -11,13 +11,13 @@ use App\Models\Analysis;
 
 class ViewAnalysis extends Component
 {
-    public $hospital, $analysis, $prodTimeSelectedQuantity, $quantityCount = 1, $analysisYearId;
-    public function yearSelected($analysisYearId){
-        $this->analysisYearId = $analysisYearId;
-        $analysisYear = $this->analysis->analysisYears()->where('id', $analysisYearId)->first();
-        $this->prodTimeSelectedQuantity = $analysisYear->quantity;
-        if($this->prodTimeSelectedQuantity == 0){
-            $this->prodTimeSelectedQuantity = 'outOfStock';
+    public $hospital, $analysis, $analysesTimeSelectedQuantity, $quantityCount = 1, $analysisTimeId;
+    public function timeSelected($analysisTimeId){
+        $this->analysisTimeId = $analysisTimeId;
+        $analysisTime = $this->analysis->analysisTimes()->where('id', $analysisTimeId)->first();
+        $this->analysesTimeSelectedQuantity = $analysisTime->quantity;
+        if($this->analysesTimeSelectedQuantity == 0){
+            $this->analysesTimeSelectedQuantity = 'outOfStock';
         }
     }
     public function dencrementQuantity(){
