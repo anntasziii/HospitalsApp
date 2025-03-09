@@ -76,7 +76,7 @@
                             </button>
                             <button type="button" wire:click="addToWishList({{$analysis->id}})" class="btn btn1" style="border-radius: 10px; height: 40px; width: 180px; font-size: 18px;">
                                 <span wire:target="addToWishList">
-                                    <i class="fa fa-heart"></i> Add to wishlist
+                                    <i class="fa fa-heart"></i> Add to plans
                                 </span>
                             </button>
                         </div>

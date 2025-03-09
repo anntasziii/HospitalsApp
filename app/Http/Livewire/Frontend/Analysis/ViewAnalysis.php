@@ -114,39 +114,41 @@ class ViewAnalysis extends Component
     //         session()->flash('message', 'Please Login to Add to the Cart');
     //     }
     // }
-        // public function addToWishList($analysisId){
-    //     if(Auth::check()){
-    //         if(Wishlist::where('user_id', auth()->user()->id)->where('analysis_id', $analysisId)->exists()){
-    //             session()->flash('message', 'Already added to Wishlist');
-    //             $this->dispatchBrowserEvent('message', [
-    //                 'text' =>'Already added to Wishlist',
-    //                 'type' => 'warning',
-    //                 'status' => 409
-    //             ]);
-    //             return false;
-    //         }
-    //         else{
-    //             Wishlist::create([
-    //                 'user_id' => auth()->user()->id,
-    //                 'analysis_id' => $analysisId
-    //             ]);
-    //             $this->emit('wishlistAddedUpdated');
-    //             session()->flash('message', 'Wishlist Added Successfully');
-    //             $this->dispatchBrowserEvent('message', [
-    //                 'text' =>'Wishlist Added Successfully',
-    //                 'type' => 'success',
-    //                 'status' => 200
-    //             ]);
-    //         }
-    //     }
-    //     else{
-    //         session()->flash('message', 'Please Login to Continue');
-    //         $this->dispatchBrowserEvent('message', [
-    //             'text' =>'Please Login to Continue',
-    //             'type' => 'info',
-    //             'status' => 401
-    //         ]);
-    //         return false;
-    //     }
-    // }
+
+        public function addToWishList($analysisId){
+        if(Auth::check()){
+            if(Wishlist::where('user_id', auth()->user()->id)->where('analysis_id', $analysisId)->exists()){
+                session()->flash('message', 'Already added to Plans');
+                $this->dispatchBrowserEvent('message', [
+                    'text' =>'Already added to Plans',
+                    'type' => 'warning',
+                    'status' => 409
+                ]);
+                return false;
+            }
+            else{
+                Wishlist::create([
+                    'user_id' => auth()->user()->id,
+                    'analysis_id' => $analysisId,
+                    'doctor_id' => auth()->user()->doctor_id ?? 10000
+                ]);
+                $this->emit('wishlistAddedUpdated');
+                session()->flash('message', 'Plans Added Successfully');
+                $this->dispatchBrowserEvent('message', [
+                    'text' =>'Plans Added Successfully',
+                    'type' => 'info',
+                    'status' => 200
+                ]);
+            }
+        }
+        else{
+            session()->flash('message', 'Please Login to Continue');
+            $this->dispatchBrowserEvent('message', [
+                'text' =>'Please Login to Continue',
+                'type' => 'info',
+                'status' => 401
+            ]);
+            return false;
+        }
+    }
 }
