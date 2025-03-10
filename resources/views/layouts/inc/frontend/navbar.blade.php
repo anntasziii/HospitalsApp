@@ -25,8 +25,8 @@
                         </li> --}}
                         <li class="nav-item">
                             <a class="nav-link" href="{{url('wishlist')}}">
-                                <i class="fa fa-heart"></i> Plans (0)
-                                {{-- (<livewire:frontend.wishlist-count />) --}}
+                                <i class="fa fa-heart"></i> Plans
+                                (<livewire:frontend.wishlist-count />)
                             </a>
                         </li>
                         @guest

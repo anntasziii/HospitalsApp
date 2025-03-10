@@ -17,9 +17,16 @@
                                 </div>
                             </div>
                         </div>
-                        @forelse ($wishlist as $wishlistItem)
-                            @if ($wishlistItem->analysis)
-                                <div class="cart-item">
+                        @php
+                            $hasDoctor = $wishlist->contains(fn($item) => $item->analysis && $item->analysis->id_doctors != 10000);
+                        @endphp
+
+                        @if (!$hasDoctor)
+                            <h4 style="color: red; margin-left: 10px; font-size: 20px;">No Analyses added to Plans</h4>
+                        @else
+                            @forelse ($wishlist as $wishlistItem)
+                                @if ($wishlistItem->analysis && $wishlistItem->analysis->id_doctors != 10000)
+                                    <div class="cart-item">
                                     <div class="row">
                                         <div class="col-md-6 my-auto">
                                             <a href="{{url('collections/'.$wishlistItem->analysis->hospital->slug.'/analyses/'.$wishlistItem->analysis->slug)}}">
@@ -51,10 +58,11 @@
                                         </div>
                                     </div>
                                 </div>
-                            @endif
-                        @empty
-                            <h4 style="color: red; margin-left: 10px; font-size: 20px;">No Analyses added to Plans</h4>
-                        @endforelse
+                                @endif
+                            @empty
+                                <h4 style="color: red; margin-left: 10px; font-size: 20px;">No Analyses added to Plans</h4>
+                            @endforelse
+                        @endif
                     </div>
                     <div class="shopping-cart mt-5">
                         <div class="cart-header d-none d-sm-none d-mb-block d-lg-block">
@@ -70,8 +78,15 @@
                                 </div>
                             </div>
                         </div>
-                        @forelse ($wishlist as $wishlistItem)
-                            @if ($wishlistItem->doctor)
+                        @php
+                            $hasAnalysis = $wishlist->contains(fn($item) => $item->doctor && $item->doctor->id_analyses != 10000);
+                        @endphp
+
+                        @if (!$hasAnalysis)
+                            <h4 style="color: red; margin-left: 10px; font-size: 20px;">No Doctors added to Plans</h4>
+                        @else
+                            @forelse ($wishlist as $wishlistItem)
+                                @if ($wishlistItem->doctor && $wishlistItem->doctor->id_analyses != 10000)
                                 <div class="cart-item">
                                     <div class="row">
                                         <div class="col-md-6 my-auto">
@@ -104,10 +119,11 @@
                                         </div>
                                     </div>
                                 </div>
+                                @endif
+                                @empty
+                                    <h4 style="color: red; margin-left: 10px; font-size: 20px;">No Analyses added to Plans</h4>
+                                @endforelse
                             @endif
-                        @empty
-                            <h4 style="color: red; margin-left: 10px; font-size: 20px;">No Doctors added to Plans</h4>
-                        @endforelse
                     </div>
                 </div>
             </div>
