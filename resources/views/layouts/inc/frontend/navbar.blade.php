@@ -22,12 +22,13 @@
                             <a class="nav-link" href="{{url('cart')}}">
                                 <i class="fa fa-shopping-cart"></i> Корзина (<livewire:frontend.cart.cart-count />)
                             </a>
-                        </li>
+                        </li> --}}
                         <li class="nav-item">
                             <a class="nav-link" href="{{url('wishlist')}}">
-                                <i class="fa fa-heart"></i> Вподобання (<livewire:frontend.wishlist-count />)
+                                <i class="fa fa-heart"></i> Plans (0)
+                                {{-- (<livewire:frontend.wishlist-count />) --}}
                             </a>
-                        </li> --}}
+                        </li>
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">

@@ -15,8 +15,14 @@ class Wishlist extends Model
         'analysis_id'
     ];
 
-    // public function product(): BelongsTo
-    // {
-    //     return $this->belongsTo(Product::class, 'product_id', 'id');
-    // }
+    public function doctor()
+    {
+        return $this->belongsTo(Doctor::class);
+    }
+
+    public function analysis()
+    {
+        return $this->belongsTo(Analysis::class);
+    }
+
 }

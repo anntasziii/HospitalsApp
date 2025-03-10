@@ -13,9 +13,12 @@
                     <div class="custom-carousel-content">
                         <h1>{!! $sliderItem->title !!}</h1>
                         <p>{!! $sliderItem->description !!}</p>
-                        <div>
-                            <a href="#" class="btn btn-slider" style="border-radius: 10px; width: 300px;">Choose a hospital</a>
-                        </div>
+                        <a href="/hospitals" class="btn btn-slider"
+                            style="border-radius: 10px; width: 300px; background-color: #ccddff; color: ccddff;"
+                            onmouseover="this.style.backgroundColor='#6699ff'"
+                            onmouseout="this.style.backgroundColor='#ccddff'">
+                            Choose a hospital
+                            </a>
                     </div>
                 </div>
             </div>
@@ -206,6 +209,7 @@
     loop:true,
     margin:10,
     nav:true,
+    dots: true,
     responsive:{
         0:{
             items:1
@@ -219,4 +223,5 @@
     }
 })
 </script>
+
 @endsection

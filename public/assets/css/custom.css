@@ -271,8 +271,19 @@
     padding: 10px;
 }
 .shopping-cart .cart-header h4{
-    font-size: 18px;
+    font-size: 20px;
     margin-bottom: 0px;
+    letter-spacing: 1px;
+    color: #002b80;
+}
+.shopping-cart .nameItemPlans{
+    font-size: 18px;
+    letter-spacing: 0.5px;
+    margin-left: 15px;
+    font-weight: normal;
+}
+.price{
+    color: #002b80;
 }
 .shopping-cart .cart-item a{
     text-decoration: none;
@@ -291,6 +302,16 @@
     text-overflow: ellipsis;
     overflow: hidden;
     cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 15%);
+}
+.shopping-cart .cart-item .btnDelete{
+    border-radius: 7px;
+    font-size: 16px;
+    height: 40px;
+    width: 220px;
+    background-color: red;
+    color: white;
 }
 .shopping-cart .cart-item .price{
     font-size: 16px;
