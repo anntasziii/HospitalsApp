@@ -18,11 +18,11 @@
                 <div class="col-md-5 my-auto">
                     <ul class="nav justify-content-end">
 
-                        {{-- <li class="nav-item">
+                        <li class="nav-item">
                             <a class="nav-link" href="{{url('cart')}}">
-                                <i class="fa fa-shopping-cart"></i> Корзина (<livewire:frontend.cart.cart-count />)
+                                <i class="fa fa-shopping-cart"></i> Referral (<livewire:frontend.cart.cart-count />)
                             </a>
-                        </li> --}}
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{url('wishlist')}}">
                                 <i class="fa fa-heart"></i> Plans

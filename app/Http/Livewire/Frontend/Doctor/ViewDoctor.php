@@ -97,7 +97,7 @@ class ViewDoctor extends Component
                                session()->flash('message', 'Doctor added to Referral');
                            }
                            else{
-                               session()->flash('message', 'Only '.$this->analysis->quantity.'Appointment available');
+                               session()->flash('message', 'Only '.$this->doctor->quantity.'Appointment available');
                            }
                        }
                        else{
