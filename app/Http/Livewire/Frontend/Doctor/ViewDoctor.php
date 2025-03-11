@@ -43,77 +43,77 @@ class ViewDoctor extends Component
             'hospital' => $this->hospital,
         ]);
     }
-    // public function addToCart(int $doctorId){
-    //     if(Auth::check()){
-    //         if($this->doctor->where('id', $doctorId)->where('status', '0')->exists()){
-    //             if($this->doctor->doctorYears()->count() > 1){
-    //                 if($this->prodYearSelectedQuantity != NULL){
-    //                     if(Cart::where('user_id', auth()->user()->id)
-    //                             ->where('doctor_id', $doctorId)
-    //                             ->where('doctor_year_id', $this->doctorYearId)
-    //                             ->exists())
-    //                     {
-    //                         session()->flash('message', 'Product Already Added');
-    //                     }
-    //                     else{
-    //                         $doctorYear = $this->doctor->doctorYears()->where('id', $this->doctorYearId)->first();
-    //                         if($doctorYear->quantity > 0){
-    //                             if($doctorYear->quantity > $this->quantityCount){
-    //                                 Cart::create([
-    //                                     'user_id' => auth()->user()->id,
-    //                                     'doctor_id' => $doctorId,
-    //                                     'doctor_year_id' =>  $this->doctorYearId,
-    //                                     'quantity' => $this->quantityCount
-    //                                 ]);
-    //                                 $this->emit('CartAddedUpdated');
-    //                                 session()->flash('message', 'Product Added to Cart');
-    //                             }
-    //                             else{
-    //                                 session()->flash('message', 'Only '.$doctorYear->quantity.' Quantity Available');
-    //                             }
-    //                         }
-    //                         else{
-    //                             session()->flash('message', 'Out of Stock');
-    //                         }
-    //                     }
-    //                 }
-    //                 else{
-    //                     session()->flash('message', 'Select Your Product Year');
-    //                 }
-    //             }
-    //             else{
-    //                 if(Cart::where('user_id', auth()->user()->id)->where('doctor_id', $doctorId)->exists()){
-    //                     session()->flash('message', 'Product Already Added');
-    //                 }
-    //                 else{
-    //                     if($this->doctor->quantity > 0){
-    //                         if($this->doctor->quantity > $this->quantityCount){
-    //                             Cart::create([
-    //                                 'user_id' => auth()->user()->id,
-    //                                 'doctor_id' => $doctorId,
-    //                                 'quantity' => $this->quantityCount
-    //                             ]);
-    //                             $this->emit('CartAddedUpdated');
-    //                             session()->flash('message', 'Product Added to Cart');
-    //                         }
-    //                         else{
-    //                             session()->flash('message', 'Only '.$this->doctor->quantity.' Quantity Available');
-    //                         }
-    //                     }
-    //                     else{
-    //                         session()->flash('message', 'Out of Stock');
-    //                     }
-    //                 }
-    //             }
-    //         }
-    //         else{
-    //             session()->flash('message', 'Please Does not Exists');
-    //         }
-    //     }
-    //     else{
-    //         session()->flash('message', 'Please Login to Add to the Cart');
-    //     }
-    // }
+    public function addToCart(int $doctorId){
+        if(Auth::check()){
+           if($this->doctor->where('id', $doctorId)->where('status', '0')->exists()){
+               if($this->doctor->doctorTimes()->count() > 1){
+                   if($this->doctorsTimeSelectedQuantity != NULL){
+                       if(Cart::where('user_id', auth()->user()->id)
+                               ->where('product_id', $doctorId)
+                               ->where('product_time_id', $this->doctorTimeId)
+                               ->exists())
+                       {
+                           session()->flash('message', 'Doctor Already Added');
+                       }
+                       else{
+                           $doctorTime = $this->doctor->doctorTimes()->where('id', $this->doctorTimeId)->first();
+                           if($doctorTime->quantity > 0){
+                               if($doctorTime->quantity > $this->quantityCount){
+                                   Cart::create([
+                                       'user_id' => auth()->user()->id,
+                                       'product_id' => $doctorId,
+                                       'product_time_id' =>  $this->doctorTimeId,
+                                       'quantity' => $this->quantityCount
+                                   ]);
+                                   $this->emit('CartAddedUpdated');
+                                   session()->flash('message', 'Doctor Added to Cart');
+                               }
+                               else{
+                                   session()->flash('message', 'Only '.$doctorTime->quantity.'Appointment available');
+                               }
+                           }
+                           else{
+                               session()->flash('message', 'Appointment unavailable');
+                           }
+                       }
+                   }
+                   else{
+                       session()->flash('message', 'Select your Analysis Time');
+                   }
+               }
+               else{
+                   if(Cart::where('user_id', auth()->user()->id)->where('product_id', $doctorId)->exists()){
+                       session()->flash('message', 'Doctor already Added');
+                   }
+                   else{
+                       if($this->doctor->quantity > 0){
+                           if($this->doctor->quantity > $this->quantityCount){
+                               Cart::create([
+                                   'user_id' => auth()->user()->id,
+                                   'product_id' => $doctorId,
+                                   'quantity' => $this->quantityCount
+                               ]);
+                               $this->emit('CartAddedUpdated');
+                               session()->flash('message', 'Doctor added to Referral');
+                           }
+                           else{
+                               session()->flash('message', 'Only '.$this->analysis->quantity.'Appointment available');
+                           }
+                       }
+                       else{
+                           session()->flash('message', 'Apointment unavailable');
+                       }
+                   }
+               }
+           }
+           else{
+               session()->flash('message', 'Please Does not Available');
+           }
+       }
+       else{
+           session()->flash('message', 'Please Login to Add to the Referral');
+       }
+   }
         public function addToWishList($doctorId){
         if(Auth::check()){
             if(Wishlist::where('user_id', auth()->user()->id)->where('doctor_id', $doctorId)->exists()){

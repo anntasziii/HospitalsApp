@@ -72,7 +72,7 @@
                         </div> --}}
                         <div class="mt-2">
                             <button type="button" wire:click="addToCart({{$analysis->id}})" class="btn btn1" style="border-radius: 10px; height: 40px; width: 180px; font-size: 18px;">
-                                <i class="fa fa-shopping-cart"></i> Add to entry
+                                <i class="fa fa-plus"></i> Add to entry
                             </button>
                             <button type="button" wire:click="addToWishList({{$analysis->id}})" class="btn btn1" style="border-radius: 10px; height: 40px; width: 180px; font-size: 18px;">
                                 <span wire:target="addToWishList">
