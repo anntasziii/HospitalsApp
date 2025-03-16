@@ -8,40 +8,49 @@
                     <div class="shopping-cart">
                         <div class="cart-header d-none d-sm-none d-mb-block d-lg-block">
                             <div class="row">
-                                <div style="padding-left: 1px;" class="col-md-6">
+                                <div style="padding-left: 1px;" class="col-md-5">
                                     <h4>DOCTORS AND ANALYSES</h4>
+                                </div>
+                                <div class="col-md-2">
+                                    <h4>TIME</h4>
                                 </div>
                                 <div class="col-md-2">
                                     <h4>PRICE</h4>
                                 </div>
-                                <div class="col-md-4">
-                                    <h4>DELETE FROM PLANS</h4>
+                                <div class="col-md-3">
+                                    <h4>DELETE FROM REFERRAL</h4>
                                 </div>
                             </div>
                         </div>
                         @forelse ($cart as $cartItem)
                         <div class="cart-item">
                             <div class="row">
-                                <div class="col-md-6 my-auto">
+                                <div class="col-md-5 my-auto">
                                     <label class="product-name">
                                         @if ($cartItem->doctor)
+                                            <a href="{{url('collections/'.$cartItem->doctor->hospital->slug.'/doctors/'.$cartItem->doctor->slug)}}">
                                             <img src="{{ $cartItem->doctor->doctorImages[0]->image ?? 'default-image.jpg' }}" style="width: 100px; height: 130px; border-radius: 10px;" alt="{{ $cartItem->doctor->name }}" />
                                             <strong style="color: #002b80">Doctor:</strong>
                                             <a class="nameItemPlans">{{ $cartItem->doctor->name_of_specialty }} - {{ $cartItem->doctor->name }} {{ $cartItem->doctor->surname }}</a>
-                                            @if ($cartItem->doctorTime)
-                                                <span>- Time: {{ $cartItem->doctorTime->name ?? 'Time not set' }}</span>
-                                            @endif
                                         @elseif ($cartItem->analysis)
+                                            <a href="{{url('collections/'.$cartItem->analysis->hospital->slug.'/analyses/'.$cartItem->analysis->slug)}}">
                                             <img src="{{ $cartItem->analysis->analysisImages[0]->image ?? 'default-image.jpg' }}" style="width: 100px; height: 130px; border-radius: 10px;" alt="{{ $cartItem->analysis->name }}" />
                                             <strong style="color: #002b80">Analysis:</strong>
                                             <a class="nameItemPlans">{{ $cartItem->analysis->name }}</a>
-                                            @if ($cartItem->analysisTime)
-                                                <span>- Time: {{ $cartItem->analysisTime->name ?? 'Time not set' }}</span>
-                                            @endif
+                                        @endif
+                                    </label>
+                                    @php $totalPrice += $cartItem->doctor ? $cartItem->doctor->original_price : ($cartItem->analysis ? $cartItem->analysis->original_price : 0); @endphp
+                                </div>
+                                <div class="col-md-2 my-auto">
+                                    <label class="product-name">
+                                        @if ($cartItem->doctor)
+                                            <span style="color: #002b80; font-weight: normal">{{ $cartItem->doctorTime?->name ?? 'Time not set' }}</span>
+                                        @elseif ($cartItem->analysis)
+                                            <span style="color: #002b80; font-weight: normal">{{ $cartItem->analysisTime?->name ?? 'Time not set' }}</span>
                                         @endif
                                     </label>
                                 </div>
-                                <div class="col-md-3 my-auto">
+                                <div class="col-md-2 my-auto">
                                     <label class="price"
                                         style="{{ ($cartItem->doctor && $cartItem->doctor->original_price == 0) || ($cartItem->analysis && $cartItem->analysis->original_price == 0)
                                             ? 'color: green; font-weight: bold; font-size: 18px; font-weight: normal; letter-spacing: 1px;'
@@ -68,7 +77,7 @@
                             </div>
                         </div>
                     @empty
-                        <p>No items in cart</p>
+                        <h4 style="color: red; font-size: 20px;">No Analyses and Doctors added to Referral</h4>
                     @endforelse
                     </div>
                 </div>
@@ -76,16 +85,16 @@
             <div class="row">
                 <div class="col-md-8 my-md-auto mt-3">
                     <h5>
-                        Make appointments with doctors and analyses <a href="{{url('/hospitals')}}">NOW</a>
+                        Make appointments with doctors and analyses: <a class="btn" style="background-color: #4d88ff; color: white; border-radius: 10px; margin-left: 10px; width: 100px;" href="{{url('/hospitals')}}">NOW</a>
                     </h5>
                 </div>
-                <div class="col-md-4 mt-3">
-                    <div class="shadow-sm bg-white p-3">
+                <div class="col-md-4 mt-3 shopping-cart">
+                    <div class="bg-white p-3 cart-item" style="border-radius: 10px;">
                         <h4>Total suma:
                             <span class="float-end">₴{{$totalPrice}}</span>
                         </h4>
                         <hr>
-                        <a href="{{url('/checkout')}}" class="btn btn-primary w-100">Formation of a referral to a doctors and analyses</a>
+                        <a href="{{url('/checkout')}}" class="btn w-100" style="background-color: #4d88ff; color: white; border-radius: 10px;">Formation of a referral to a doctors and analyses</a>
                     </div>
                 </div>
             </div>

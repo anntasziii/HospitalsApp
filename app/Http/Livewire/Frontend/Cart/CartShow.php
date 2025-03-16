@@ -79,7 +79,7 @@ class CartShow extends Component
     public function render()
     {
         $this->cart = Cart::where('user_id', auth()->user()->id)
-            ->with(['doctor', 'analysis', 'doctorTime', 'analysisTime'])
+            ->with(['doctor', 'analysis', 'doctorTime', 'analysisTime']) // Завантажуємо час
             ->get();
 
         return view('livewire.frontend.cart.cart-show', [
@@ -89,5 +89,6 @@ class CartShow extends Component
             }),
         ]);
     }
+
 }
 

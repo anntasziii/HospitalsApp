@@ -21,21 +21,36 @@ class Cart extends Model
         'quantity'
     ];
 
-    public function analysis(): BelongsTo
-    {
-        return $this->belongsTo(Analysis::class, 'product_id', 'id');
-    }
-    public function analysisTime(): BelongsTo
-    {
-        return $this->belongsTo(AnalysisTime::class, 'product_time_id', 'id');
-    }
-
     public function doctor(): BelongsTo
     {
         return $this->belongsTo(Doctor::class, 'product_id', 'id');
     }
-    public function doctorTime(): BelongsTo
+
+    public function analysis(): BelongsTo
     {
-        return $this->belongsTo(DoctorTime::class, 'product_time_id', 'id');
+        return $this->belongsTo(Analysis::class, 'product_id', 'id');
     }
+    public function doctorTime()
+    {
+        return $this->hasOneThrough(
+            Time::class,
+            DoctorTime::class,
+            'doctor_id',
+            'id',
+            'product_id',
+            'time_id'
+        );
+    }
+    public function analysisTime()
+    {
+        return $this->hasOneThrough(
+            Time::class,
+            AnalysisTime::class,
+            'analysis_id',
+            'id',
+            'product_id',
+            'time_id'
+        );
+    }
+
 }
