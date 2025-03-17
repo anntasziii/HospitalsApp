@@ -48,7 +48,7 @@ Route::middleware(['auth'])->group(function(){
     // Route::post('change-password', [App\Http\Controllers\Frontend\UserController::class, 'changePassword']);
 
 });
-// Route::get('thank-you', [App\Http\Controllers\Frontend\FrontendController::class, 'thankyou']);
+Route::get('thank-you', [App\Http\Controllers\Frontend\FrontendController::class, 'thankyou']);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

@@ -1,9 +1,9 @@
-<div>
+<div class="bg-light">
     <div class="py-3 py-md-5 checkout">
         <div class="container">
             <h2 style="color: #002b80;letter-spacing: 1px;"><b>MY REFERRAL:</b></h2>
             <hr>
-            @if($this->totalProductAmount != -1)
+            @if($this->totalProductAmount != 0)
                 <div class="row">
                     <div class="col-md-12 mb-4 shopping-cart">
                         <div class="shadow bg-white p-3 cart-item">
@@ -116,10 +116,14 @@
 
                 </div>
             @else
-                <div class="card card-body shadow text-center p-md-5">
-                    <h4>No doctors and analyses in referral</h4>
-                    <a href="{{url('/collections')}}" class="btn btn-warning">Search doctors and analyses now</a>
+            <div class="row" style="text-align: center">
+                <div class="col-md-12 mb-4 shopping-cart">
+                    <div class="cart-item">
+                        <h4 class="mb-4 mt-4" style="color: #002b80">No doctors and analyses in referral</h4>
+                        <a href="{{url('/hospitals')}}" class="btn mb-4" style="background-color: #4d88ff; color: white; border-radius: 10px; font-weight: normal;">Search doctors and analyses now</a>
+                    </div>
                 </div>
+            </div>
             @endif
         </div>
     </div>
