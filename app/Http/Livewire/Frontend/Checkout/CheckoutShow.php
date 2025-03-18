@@ -13,6 +13,29 @@ class CheckoutShow extends Component
     public $carts, $totalProductAmount = 0;
     public $fullname, $email, $phone, $comment, $payment_mode = NULL, $payment_id = NULL;
 
+    public $listeners = [
+        'validationForAll',
+        'transactionEmit' => 'paidOnlineOrder'
+    ];
+    public function validationForAll(){
+        $this->validate();
+    }
+
+    public function paidOnlineOrder($value){
+        $this->payment_id = $value;
+        $this->payment_mode = 'Paid by PayPal';
+
+        $codOrder = $this->placeOrder();
+        if($codOrder){
+            Cart::where('user_id', auth()->user()->id)->delete();
+            session()->flash('message', 'Referral Plased Successfully');
+            return redirect()->to('thank-you');
+        }
+        else{
+            session()->flash('message', 'Something Went Wrong');
+        }
+    }
+
     public function rules(){
         return [
             'fullname' => 'required|string|max:121',

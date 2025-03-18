@@ -83,7 +83,7 @@
                                                 <h6>Card payment</h6>
                                                 <hr/>
                                                 <div>
-                                                    <div id="paypal-button-container"></div>
+                                                    <div style="max-width: 500px;" id="paypal-button-container"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -98,17 +98,13 @@
                                                             btn.style.backgroundColor = "white";
                                                             btn.style.color = "black";
                                                         });
-
                                                         this.style.backgroundColor = "#4d88ff";
                                                         this.style.color = "white";
                                                     });
                                                 });
                                             });
                                         </script>
-
-
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -129,3 +125,61 @@
     </div>
 </div>
 
+
+@push('scripts')
+    <script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD"></script>
+    <script>
+      paypal.Buttons({
+        style: {
+            shape: 'pill',
+            size: 'small',
+            color: 'silver',
+
+        },
+        onClick: function()  {
+            if (!document.getElementById('fullname').value||
+            !document.getElementById('phone').value||
+            !document.getElementById('email').value||
+            !document.getElementById('comment').value)
+            {
+                Livewire.emit('validationForAll');
+                return false;
+            }
+            else{
+                @this.set('fullname', document.getElementById('fullname').value);
+                @this.set('phone', document.getElementById('phone').value);
+                @this.set('email', document.getElementById('email').value);
+                @this.set('comment', document.getElementById('comment').value);
+            }
+        },
+        createOrder: (data, actions) => {
+          return actions.order.create({
+            purchase_units: [{
+                amount: {
+                    value: "{{$this->totalProductAmount}}"
+                }
+            }]
+          });
+        },
+        onApprove(data) {
+          return fetch("/my-server/capture-paypal-order", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              orderID: data.orderID
+            })
+          })
+          .then((response) => response.json())
+          .then((orderData) => {
+            console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+            const transaction = orderData.purchase_units[0].payments.captures[0];
+            if(transaction.status == "COMPLETED"){
+                Livewire.emit('transactionEmit', transaction.id);
+            }
+          });
+        }
+      }).render('#paypal-button-container');
+    </script>
+@endpush
