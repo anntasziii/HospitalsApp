@@ -8,7 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Analysis extends Model
 {
     use HasFactory;
+
     protected $table = 'analyses';
+
     protected $fillable = [
         'hospitals_id',
         'name',
@@ -33,5 +35,15 @@ class Analysis extends Model
     }
     public function analysisTimes(){
         return $this->hasMany(AnalysisTime::class, 'analysis_id', 'id');
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($analysis) {
+            $maxId = self::max('id') ?? 0;
+            $analysis->id = $maxId + 1000;
+        });
     }
 }

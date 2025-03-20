@@ -14,7 +14,11 @@ class OrderController extends Controller
         return view('frontend.orders.index', compact('orders'));
     }
     public function show($orderId){
-        $order = Order::where('user_id', Auth::user()->id)->where('id', $orderId)->first();
+        $order = Order::where('user_id', Auth::id())
+            ->where('id', $orderId)
+            ->with(['orderItems.doctor', 'orderItems.analysis', 'orderItems.doctorTime.time', 'orderItems.analysisTime.time'])
+            ->first();
+
         if($order){
             return view('frontend.orders.view', compact('order'));
         }

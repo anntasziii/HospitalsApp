@@ -15,7 +15,7 @@
                                     <th>Referral ID</th>
                                     <th>Username</th>
                                     <th>Payment Mode</th>
-                                    <th>Referral Date</th>
+                                    <th>Date & Time</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
@@ -34,7 +34,7 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="7">No Referral Available</td>
+                                        <td colspan="7"><h4 style="color: red; margin-top: 10px; font-size: 20px;">No Analyses and Doctors added to Plans</h4></td>
                                     </tr>
                                 @endforelse
                             </tbody>
