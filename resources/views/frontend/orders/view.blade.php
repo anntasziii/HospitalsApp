@@ -43,6 +43,7 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Name</th>
+                                    <th>Image</th>
                                     <th>Date & Time</th>
                                     <th>Price</th>
                                 </tr>
@@ -59,6 +60,16 @@
                                                 {{ $orderItem->analysis->name }}
                                             @else
                                                 <span class="text-danger">No Analyses and Doctors added to Plans</span>
+                                            @endif
+                                        </td>
+
+                                        <td>
+                                            @if ($orderItem->doctor && $orderItem->doctor->doctorImages->isNotEmpty())
+                                                <img style="border-radius: 10px" src="{{ asset($orderItem->doctor->doctorImages->first()->image) }}" width="70" height="100" alt="Doctor Image">
+                                            @elseif ($orderItem->analysis && $orderItem->analysis->analysisImages->isNotEmpty())
+                                                <img style="border-radius: 10px" src="{{ asset($orderItem->analysis->analysisImages->first()->image) }}" width="70" height="100" alt="Analysis Image">
+                                            @else
+                                                <span class="text-danger">No image available</span>
                                             @endif
                                         </td>
 

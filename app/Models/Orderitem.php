@@ -19,9 +19,13 @@ class Orderitem extends Model
 
     public function product()
     {
-        return $this->belongsTo(Doctor::class, 'product_id')->orWhereHas('analysis');
+        if ($this->product_type === 'doctor') {
+            return $this->belongsTo(Doctor::class, 'product_id');
+        } elseif ($this->product_type === 'analysis') {
+            return $this->belongsTo(Analysis::class, 'product_id');
+        }
+        return null;
     }
-
     public function doctor()
     {
         return $this->belongsTo(Doctor::class, 'product_id');

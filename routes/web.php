@@ -113,9 +113,9 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function(){
         Route::get('times/{time_id}/delete', 'destroy');
     });
 
-    // Route::controller(App\Http\Controllers\Admin\OrderController::class)->group(function (){
-    //     Route::get('/orders', 'index');
-    //     Route::get('/orders/{orderId}', 'show');
+    Route::controller(App\Http\Controllers\Admin\OrderController::class)->group(function (){
+        Route::get('/orders', 'index');
+        Route::get('/orders/{orderId}', 'show');
     //     Route::put('/orders/{orderId}', 'updateOrderStatus');
     //     Route::get('/invoice/{orderId}', 'viewInvoice');
     //     Route::get('/invoice/{orderId}/generate', 'generateInvoice');
@@ -128,5 +128,5 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function(){
     //     Route::get('/users/{user_id}/edit', 'edit');
     //     Route::put('/users/{user_id}', 'update');
     //     Route::get('users/{user_id}/delete', 'destroy');
-    // });
+    });
 });
