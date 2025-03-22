@@ -7,18 +7,6 @@
             </div>
             <form wire:submit.prevent="storeType">
                 <div class="modal-body">
-                    {{-- <div class="mb-3">
-                        <label>Select Category</label>
-                        <select wire:model.defer="category_id" required class="form-control">
-                            <option value="">Select Category</option>
-                            @foreach ($categories as $cateItem)
-                                <option value="{{$cateItem->id}}">{{$cateItem->name}}</option>
-                            @endforeach
-                        </select>
-                        @error('category_id')
-                            <small class="text-danger">{{$message}}</small>
-                        @enderror
-                    </div> --}}
                     <div class="mb-3">
                         <label>Type Name</label>
                         <input style="border-radius: 5px" type="text" wire:model.defer="name" class="form-control">
@@ -38,8 +26,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" wire:click="closeModal" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn text-white btn-primary">Save</button>
+                    <button type="button" wire:click="closeModal" class="btn btn-secondary" data-bs-dismiss="modal" style="border-radius: 10px">Close</button>
+                    <button type="submit" class="btn text-white btn-primary" style="border-radius: 10px">Save</button>
                 </div>
             </form>
         </div>
@@ -98,8 +86,8 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" wire:click="closeModal" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn text-white btn-primary">Update</button>
+                        <button type="button" wire:click="closeModal" class="btn btn-secondary" data-bs-dismiss="modal" style="border-radius: 10px">Close</button>
+                        <button type="submit" class="btn text-white btn-primary" style="border-radius: 10px">Update</button>
                     </div>
                 </form>
             </div>
@@ -118,11 +106,11 @@
             <div>
                 <form wire:submit.prevent="destroyType">
                     <div class="modal-body">
-                        <h4>Are you sure? Are you want to delete this data?</h4>
+                        <a>Are you sure? Are you want to delete this data?</a>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" wire:click="closeModal" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Yes. Delete</button>
+                        <button type="button" wire:click="closeModal" class="btn btn-secondary" data-bs-dismiss="modal" style="border-radius: 10px">Close</button>
+                        <button type="submit" class="btn btn-primary" style="border-radius: 10px">Yes. Delete</button>
                     </div>
                 </form>
             </div>

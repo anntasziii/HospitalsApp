@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Order Details')
+@section('title', 'Referral Details')
 @section('content')
 <div class="row">
     <div class="col-md-12">
@@ -7,59 +7,65 @@
             <div class="alert alert-success mb-3">{{ session('message') }}</div>
         @endif
         <div class="card" style="border-radius: 10px; padding-top: 10px;">
-            <div class="card-header">
-                <h3>Order Details</h3>
+            <div class="card-header header-admin">
+                <h3 style="color: #002266">REFERRALS DETAILS:</h3>
             </div>
             <div class="card-body">
-                <h4 class="text-primary">
-                    <i class="fa fa-shopping-cart text-dark"></i> Order Details
-                    <a href="{{ url('admin/orders') }}" class="btn btn-danger btn-sm float-end mx-1">Back</a>
-                    <a href="{{ url('admin/invoice/'.$order->id.'/generate') }}" class="btn btn-primary btn-sm float-end mx-1">
-                        Download Invoice
+                <h4 style="color: #002266">
+                    <i class="fa fa-shopping-cart text-dark"></i> You can choose option:
+                    <a href="{{ url('admin/orders') }}" class="btn btn-danger btn-sm text-white d-flex float-end align-items-center justify-content-center" style="width: 150px; height: 50px; border-radius: 10px;">
+                        <svg viewBox="0 0 24 24"  width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier">
+                            <path d="M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M9.00002 15.3802H13.92C15.62 15.3802 17 14.0002 17 12.3002C17 10.6002 15.62 9.22021 13.92 9.22021H7.15002" stroke="#FFFFFF" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M8.57 10.7701L7 9.19012L8.57 7.62012" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g>
+                        </svg>
+                        <p class="mt-2" style="margin-left: 5px">Back</p>
+                </a>
+                    <a href="{{ url('admin/invoice/'.$order->id.'/generate') }}"
+                        class="btn btn-sm float-end mx-1 text-white d-flex align-items-center justify-content-center"
+                        style="height: 50px; background-color: #6699ff; border-radius: 10px; font-size: 16px">
+                        Download Referral
+                     </a>
+
+                    <a href="{{ url('admin/invoice/'.$order->id) }}" target="_blank"
+                        class="btn btn-sm float-end mx-1 text-white d-flex align-items-center justify-content-center"
+                        style="height: 50px; background-color: #99bbff; border-radius: 10px; font-size: 16px">
+                        View Referral
                     </a>
-                    <a href="{{ url('admin/invoice/'.$order->id) }}" target="_blank" class="btn btn-warning btn-sm float-end mx-1">
-                        View Invoice
-                    </a>
-                    <a href="{{ url('admin/invoice/'.$order->id.'/mail') }}" class="btn btn-info btn-sm float-end mx-1">
-                        Send Invoice on Email
+                    <a href="{{ url('admin/invoice/'.$order->id.'/mail') }}"
+                        class="btn btn-sm float-end mx-1 text-white d-flex align-items-center justify-content-center"
+                        style="height: 50px; background-color: #6699ff; border-radius: 10px; font-size: 16px">
+                        Send Referral on Email
                     </a>
                 </h4>
-                <hr>
-                <div class="row">
+                <div class="row mt-5">
                     <div class="col-md-6">
-                        <h5>Order Details</h5>
+                        <h4>Referral Details:</h4>
                         <hr>
-                        <h6>Order Id: {{ $order->id }}</h6>
-                        <h6>Tracking Id/No: {{ $order->tracking_no }}</h6>
-                        <h6>Ordered Date: {{ $order->created_at->format('d-m-Y h:i A') }}</h6>
-                        <h6>Payment Mode: {{ $order->payment_mode }}</h6>
-                        <h6 class="border p-2 text-success">
-                            Order Status Message: <span class="text-uppercase">{{ $order->status_message }}</span>
+                        <h6><b>Referral Id:</b> {{ $order->id }}</h6>
+                        <h6><b>Referraled Date:</b> {{ $order->created_at->format('d-m-Y h:i A') }}</h6>
+                        <h6><b>Payment Mode:</b> {{ $order->payment_mode }}</h6>
+                        <h6 class="mt-4 text-success">
+                            <b> Referral Status:</b> <span class="text-uppercase">{{ $order->status_message }}</span>
                         </h6>
                     </div>
                     <div class="col-md-6">
-                        <h5>User Details</h5>
+                        <h4>User Details:</h4>
                         <hr>
-                        <h6>Full Name: {{ $order->fullname }}</h6>
-                        <h6>Email Id: {{ $order->email }}</h6>
-                        <h6>Phone: {{ $order->phone }}</h6>
-                        <h6>Address: {{ $order->address }}</h6>
-                        <h6>Pin code: {{ $order->pincode }}</h6>
+                        <h6><b>Full Name:</b> {{ $order->fullname }}</h6>
+                        <h6><b>Email Id:</b> {{ $order->email }}</h6>
+                        <h6><b>Phone:</b> {{ $order->phone }}</h6>
+                        <h6><b>Comment:</b> {{ $order->comment }}</h6>
                     </div>
                 </div>
                 <br />
-                <h5>Order Items</h5>
                 <hr>
                 <div class="table-responsive">
-                    <table class="table table-bordered table-striped">
+                    <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th>Item ID</th>
-                                <th>Image</th>
-                                <th>Product</th>
-                                <th>Price</th>
-                                <th>Quantity</th>
-                                <th>Total</th>
+                                <th><b>ID Doctors & Analyses</b></th>
+                                <th><b>Image</b></th>
+                                <th><b>Doctors & Analyses</b></th>
+                                <th><b>Price</b></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -68,35 +74,33 @@
                             @endphp
                             @foreach ($order->orderItems as $orderItem)
                             <tr>
-                                <td width="10%">{{ $orderItem->id }}</td>
-                                <td width="10%">
-                                    @if ($orderItem->doctor?->image)
-                                        <img src="{{ asset($orderItem->doctor->image) }}" style="width: 50px; height: 50px" alt="Doctor">
-                                    @elseif ($orderItem->analysis?->image)
-                                        <img src="{{ asset($orderItem->analysis->image) }}" style="width: 50px; height: 50px" alt="Analysis">
+                                <td width="20%">{{ $orderItem->id }}</td>
+                                <td style="height: 120px">
+                                    @if ($orderItem->doctor && $orderItem->doctor->doctorImages->isNotEmpty())
+                                        <img style="border-radius: 10px; height: 100px; width: 70px;" src="{{ asset($orderItem->doctor->doctorImages->first()->image) }}"  alt="Doctor Image">
+                                    @elseif ($orderItem->analysis && $orderItem->analysis->analysisImages->isNotEmpty())
+                                        <img style="border-radius: 10px; height: 100px; width: 70px;" src="{{ asset($orderItem->analysis->analysisImages->first()->image) }}" width="70" height="100" alt="Analysis Image">
                                     @else
-                                        <img src="" style="width: 50px; height: 50px" alt="No Image">
+                                        <span class="text-danger">No image available</span>
                                     @endif
                                 </td>
                                 <td>
                                     @if ($orderItem->doctor)
-                                        {{ $orderItem->doctor->name }} {{ $orderItem->doctor->surname }} - {{ $orderItem->doctor->name_of_specialty }} (Лікар)
+                                        {{ $orderItem->doctor->name }} {{ $orderItem->doctor->surname }} - {{ $orderItem->doctor->name_of_specialty }}
                                     @elseif ($orderItem->analysis)
-                                        {{ $orderItem->analysis->name }} (Аналіз)
+                                        {{ $orderItem->analysis->name }}
                                     @else
                                         <span class="text-danger">No Analyses and Doctors added to Plans</span>
                                     @endif
                                 </td>
                                 <td width="10%">${{ $orderItem->price }}</td>
-                                <td width="10%">{{ $orderItem->quantity }}</td>
-                                <td width="10%" class="fw-bold">${{ $orderItem->quantity * $orderItem->price }}</td>
                                 @php
-                                    $totalPrice += $orderItem->quantity * $orderItem->price;
+                                    $totalPrice += $orderItem->price;
                                 @endphp
                             </tr>
                             @endforeach
                             <tr>
-                                <td colspan="5" class="fw-bold">Total Amount:</td>
+                                <td colspan="3" class="fw-bold">Total Amount:</td>
                                 <td colspan="1" class="fw-bold">${{ $totalPrice }}</td>
                             </tr>
                         </tbody>
@@ -104,18 +108,18 @@
                 </div>
             </div>
         </div>
-        <div class="card border mt-3">
+        <div class="card border mt-3" style="border-radius: 10px; padding-top: 10px;">
             <div class="card-body">
-                <h4>Order Process (Order Status Updates)</h4>
+                <h4 style="color: #002266">REFERRAL PROCESS (REFERRAL STATUS UPDATES):</h4>
                 <hr>
                 <div class="row">
                     <div class="col-md-5">
                         <form action="{{ url('admin/orders/'.$order->id) }}" method="POST">
                             @csrf
                             @method('PUT')
-                            <label>Update Order Status</label>
+                            <label class="mb-2"><b>Update Order Status:</b></label>
                             <div class="input-group">
-                                <select name="order_status" class="form-select">
+                                <select name="order_status" class="form-select" style="border-top-left-radius: 10px; border-bottom-left-radius: 10px;">
                                     <option value="">Select All Status</option>
                                     <option value="in progress" {{ Request::get('status') == 'in progress' ? 'selected':'' }}>In Progress</option>
                                     <option value="completed" {{ Request::get('status') == 'completed' ? 'selected':'' }}>Completed</option>
@@ -123,13 +127,15 @@
                                     <option value="cancelled" {{ Request::get('status') == 'cancelled' ? 'selected':'' }}>Cancelled</option>
                                     <option value="out-for-delivery" {{ Request::get('status') == 'out-for-delivery' ? 'selected':'' }}>Out for Delivery</option>
                                 </select>
-                                <button type="submit" class="btn btn-primary text-white">Update</button>
+                                <button type="submit" class="btn btn-primary text-white" style="border-top-right-radius: 10px; border-bottom-right-radius: 10px;">Update</button>
                             </div>
                         </form>
                     </div>
-                    <div class="col-md-7">
+                    <div class="col-md-12">
                         <br />
-                        <h4 class="mt-3">Current Order Status: <span class="text-uppercase">{{ $order->status_message }}</span></h4>
+                        <div>
+                            <h5 class="mt-3 text-success"><b>Current Referral Status:</b> <span class="text-uppercase">{{ $order->status_message }}</span></h5>
+                        </div>
                     </div>
                 </div>
             </div>

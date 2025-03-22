@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'My Order Details')
+@section('title', 'My Referral Details')
 @section('content')
 <div class="py-3 py-md-5 bg-light">
     <div class="container">
