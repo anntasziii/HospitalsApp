@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Invoice #{{$order->id}}</title>
+    <title>Referral #{{$order->id}}</title>
     <style>
         html,
         body {
@@ -15,8 +15,8 @@
         }
         table {
             width: 100%;
-            border-collapse: collapse;
             margin-bottom: 0px !important;
+            border-radius: 10px;
         }
         table thead th {
             height: 28px;
@@ -26,6 +26,7 @@
         }
         table, th, td {
             border: 1px solid #ddd;
+            border-radius: 10px;
             padding: 8px;
             font-size: 14px;
         }
@@ -72,7 +73,7 @@
             border: 1px solid #fff !important;
         }
         .bg-blue {
-            background-color: #414ab1;
+            background-color: #002b80;
             color: #fff;
         }
     </style>
@@ -82,73 +83,63 @@
     <table class="order-details">
         <thead>
             <tr>
-                <th width="50%" colspan="2">
-                    <h2 class="text-start">Automobile spare parts</h2>
+                <th width="50%" colspan="2" style="border: 1px solid #ffffff;">
+                    <h2 class="header-admin" style="color: #002266; "><a style="font-size: 30px">MedBook</a> <a style="font-weight: normal !important;"> - main partner in making an appointment with a Doctor and Analyses</a></h2>
                 </th>
-                <th width="50%" colspan="2" class="text-end company-data">
-                    <span>Invoice Id: #{{$order->id}}</span> <br>
+                <th width="50%" colspan="2" class="text-end company-data" style="border: 1px solid #ffffff;">
+                    <span>Referral Id: #{{$order->id}}</span> <br>
                     <span>Date: {{date('d/m/Y')}}</span> <br>
-                    <span>Zip code : 29000</span> <br>
-                    <span>Address: Ukraine, Khmelnytskyi, Panasa Myrnogo Street</span> <br>
                 </th>
             </tr>
             <tr class="bg-blue">
-                <th width="50%" colspan="2">Order Details</th>
-                <th width="50%" colspan="2">User Details</th>
+                <th width="50%" colspan="2">Referral Details:</th>
+                <th width="50%" colspan="2">User Details:</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td>Order Id:</td>
+                <td>Referral Id:</td>
                 <td>{{$order->id}}</td>
-
-                <td>Full Name:</td>
-                <td>{{$order->fullname}}</td>
-            </tr>
-            <tr>
-                <td>Tracking Id/No.:</td>
-                <td>{{$order->tracking_no}}</td>
 
                 <td>Email Id:</td>
                 <td>{{$order->email}}</td>
             </tr>
             <tr>
-                <td>Ordered Date:</td>
-                <td>2{{$order->created_at->format('d-m-Y h:i A')}}</td>
+                <td>Full Name:</td>
+                <td>{{$order->fullname}}</td>
 
                 <td>Phone:</td>
                 <td>{{$order->phone}}</td>
             </tr>
             <tr>
+                <td>Ordered Date:</td>
+                <td>2{{$order->created_at->format('d-m-Y h:i A')}}</td>
+
+                <td>Comment:</td>
+                <td>{{$order->comment}}</td>
+            </tr>
+            <tr>
                 <td>Payment Mode:</td>
                 <td>{{$order->payment_mode}}</td>
 
-                <td>Address:</td>
-                <td>{{$order->address}}</td>
-            </tr>
-            <tr>
-                <td>Order Status:</td>
+                <td>Referral Status:</td>
                 <td>{{$order->status_message}}</td>
-
-                <td>Pin code:</td>
-                <td>{{$order->pincode}}</td>
             </tr>
         </tbody>
     </table>
 
-    <table>
+    <table style="margin-top: 20px">
         <thead>
             <tr>
-                <th class="no-border text-start heading" colspan="5">
-                    Order Items
+                <th class="no-border text-start heading" style="font-size: 18px" colspan="4">
+                    Referral Items:
                 </th>
             </tr>
             <tr class="bg-blue">
                 <th>ID</th>
-                <th>Product</th>
+                <th>Doctors & Analyses</th>
+                <th>Date & Time</th>
                 <th>Price</th>
-                <th>Quantity</th>
-                <th>Total</th>
             </tr>
         </thead>
         <tbody>
@@ -157,34 +148,43 @@
             @endphp
             @foreach ($order->orderItems as $orderItem)
             <tr>
-                <td width="10%">{{$orderItem->id}}</td>
+                <td width="10%">{{ $orderItem->id }}</td>
                 <td>
-                    {{$orderItem->product->name}}
-                    @if ($orderItem->productYear)
-                        @if($orderItem->productYear->year)
-                            <span>- Year: {{$orderItem->productYear->year->name}}</span>
-                        @endif
+                    @if ($orderItem->doctor)
+                        {{ $orderItem->doctor->name }} {{ $orderItem->doctor->surname }} - {{ $orderItem->doctor->name_of_specialty }}
+                    @elseif ($orderItem->analysis)
+                        {{ $orderItem->analysis->name }}
+                    @else
+                        <span class="text-danger">No Analyses and Doctors added to Plans</span>
                     @endif
                 </td>
-                <td width="10%">${{$orderItem->price}}</td>
-                <td width="10%">{{$orderItem->quantity}}</td>
-                <td width="15%" class="fw-bold">${{$orderItem->quantity * $orderItem->price}}</td>
+                <td>
+                    @if ($orderItem->doctorTime)
+                        {{ $orderItem->doctorTime->time->name }}
+                    @elseif ($orderItem->analysisTime && $orderItem->analysisTime->time)
+                        {{ $orderItem->analysisTime->time->name }}
+                    @else
+                        <span class="text-danger">No time added</span>
+                    @endif
+                </td>
+                <td width="10%">${{ $orderItem->price }}</td>
                 @php
-                    $totalPrice += $orderItem->quantity * $orderItem->price;
+                    $totalPrice += $orderItem->price;
                 @endphp
             </tr>
             @endforeach
+            <tr style="height: 20px;"></tr>
             <tr>
-                <td colspan="4" class="total-heading">Total Amount:</td>
-                <td colspan="1" class="total-heading">${{$totalPrice}}</td>
+                <td colspan="3" class="total-heading">Total Amount:</td>
+                <td colspan="1" class="total-heading">${{ $totalPrice }}</td>
             </tr>
         </tbody>
     </table>
 
     <br>
-    <p class="text-center">
-        Thank your for shopping in our Shop
-    </p>
+    <h3 class="text-center" style="font-weight: normal !important;">
+        Your health is our priority!
+    </h3>
 
 </body>
 </html>

@@ -27,7 +27,7 @@
 
                     <a href="{{ url('admin/invoice/'.$order->id) }}" target="_blank"
                         class="btn btn-sm float-end mx-1 text-white d-flex align-items-center justify-content-center"
-                        style="height: 50px; background-color: #99bbff; border-radius: 10px; font-size: 16px">
+                        style="height: 50px; background-color: #6699ff; border-radius: 10px; font-size: 16px">
                         View Referral
                     </a>
                     <a href="{{ url('admin/invoice/'.$order->id.'/mail') }}"
@@ -65,6 +65,7 @@
                                 <th><b>ID Doctors & Analyses</b></th>
                                 <th><b>Image</b></th>
                                 <th><b>Doctors & Analyses</b></th>
+                                <th><b>Date & Time</b></th>
                                 <th><b>Price</b></th>
                             </tr>
                         </thead>
@@ -93,6 +94,15 @@
                                         <span class="text-danger">No Analyses and Doctors added to Plans</span>
                                     @endif
                                 </td>
+                                <td>
+                                    @if ($orderItem->doctorTime)
+                                        {{ $orderItem->doctorTime->time->name }}
+                                    @elseif ($orderItem->analysisTime && $orderItem->analysisTime->time)
+                                        {{ $orderItem->analysisTime->time->name }}
+                                    @else
+                                        <span class="text-danger">No time added</span>
+                                    @endif
+                                </td>
                                 <td width="10%">${{ $orderItem->price }}</td>
                                 @php
                                     $totalPrice += $orderItem->price;
@@ -100,7 +110,7 @@
                             </tr>
                             @endforeach
                             <tr>
-                                <td colspan="3" class="fw-bold">Total Amount:</td>
+                                <td colspan="4" class="fw-bold">Total Amount:</td>
                                 <td colspan="1" class="fw-bold">${{ $totalPrice }}</td>
                             </tr>
                         </tbody>

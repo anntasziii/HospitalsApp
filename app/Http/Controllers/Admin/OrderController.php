@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use Illuminate\Support\Carbon;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
@@ -42,5 +44,16 @@ class OrderController extends Controller
         else{
             return redirect('admin/orders/'.$orderId)->with('message', 'Referral Id not Found');
         }
+    }
+    public function viewInvoice(int $orderId){
+        $order = Order::findOrFail($orderId);
+        return view('admin.invoice.generate-invoice', compact('order'));
+    }
+    public function generateInvoice(int $orderId){
+        $order = Order::findOrFail($orderId);
+        $data = ['order' => $order];
+        $pdf = Pdf::loadView('admin.invoice.generate-invoice', $data);
+        $todayDate = Carbon::now()->format('d-m-Y');
+        return $pdf->download('Referral - '.$todayDate.'.pdf');
     }
 }
