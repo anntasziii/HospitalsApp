@@ -31,7 +31,9 @@ Route::controller(App\Http\Controllers\Frontend\FrontendController::class)->grou
     // Route::get('/collections/{hospital_slug}/{doctor_slug}','doctorView');
     // Route::get('/collections/{hospital_slug}/{analysis_slug}','analysisView');
 
-    // Route::get('/new-arrivals', 'newArrival');
+    Route::get('/new-arrivals', 'newArrival');
+    // Route::get('/doctors-trending', 'trendingDoctors');
+    // Route::get('/analysys-trending', 'trendingAnalyses');
     // Route::get('/featured-products', 'featuredProducts');
     // Route::get('search', 'searchProduct');
 });

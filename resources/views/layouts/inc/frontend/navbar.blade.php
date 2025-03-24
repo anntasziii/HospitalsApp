@@ -3,7 +3,7 @@
         <div class="container-fluid">
             <div class="row" style="margin-left: 10px;">
                 <div class="col-md-2 my-auto d-none d-sm-none d-md-block d-lg-block">
-                    <h3 style="letter-spacing: 1.5px;" class="brand-name">{{$appSetting->website_name ?? 'website name'}}</h3>
+                    <h3 href="{{url('/')}}" style="letter-spacing: 1.5px;" class="brand-name">{{$appSetting->website_name ?? 'website name'}}</h3>
                 </div>
                 <div class="col-md-5 my-auto">
                     <form action="{{url('search')}}" method="GET" role="search">
@@ -90,13 +90,13 @@
                         <a style="color: #002266; letter-spacing: 0.5px;" class="nav-link" href="{{url('/hospitals')}}">Hospitals</a>
                     </li>
                     <li class="nav-item">
-                        <a style="color: #002266; letter-spacing: 0.5px;" class="nav-link" href="{{url('/doctors')}}">Doctors</a>
+                        <a style="color: #002266; letter-spacing: 0.5px;" class="nav-link" href="{{url('/doctors-trending')}}">Doctors Trending</a>
                     </li>
                     <li class="nav-item">
-                        <a style="color: #002266; letter-spacing: 0.5px;" class="nav-link" href="{{url('/analysys')}}">Analysys</a>
+                        <a style="color: #002266; letter-spacing: 0.5px;" class="nav-link" href="{{url('/analysys-trending')}}">Analysys Trending</a>
                     </li>
                     <li class="nav-item">
-                        <a style="color: #002266; letter-spacing: 0.5px;" class="nav-link" href="{{url('/new-arrivals')}}">Doctors arrivals</a>
+                        <a style="color: #002266; letter-spacing: 0.5px;" class="nav-link" href="{{url('/new-arrivals')}}">Hospiatls arrivals</a>
                     </li>
                     <li class="nav-item">
                         <a style="color: #002266; letter-spacing: 0.5px;" class="nav-link" href="{{url('/featured-products')}}">Analysys featured</a>

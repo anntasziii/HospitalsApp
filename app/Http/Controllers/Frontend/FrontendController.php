@@ -14,11 +14,16 @@ class FrontendController extends Controller
 {
     public function index(){
         $sliders = Slider::where('status', '0')->get();
-        // $trendingProducts = Product::where('trending', '1')->latest()->take(15)->get();
+        $trendingDoctors = Doctor::where('trending', '1')->latest()->take(15)->get();
+        $trendingAnalyses = Analysis::where('trending', '1')->latest()->take(15)->get();
         // $newArrivalsProducts = Product::latest()->take(12)->get();
         // $featuredProducts = Product::where('featured', '1')->latest()->take(8)->get();
-        return view('frontend.index', compact('sliders'));
+        return view('frontend.index', compact('sliders', 'trendingDoctors', 'trendingAnalyses'));
         // return view('frontend.index', compact('sliders', 'trendingProducts', 'newArrivalsProducts', 'featuredProducts'));
+    }
+    public function newArrival(){
+        $newArrivalsHospitals = Hospital::latest()->take(16)->get();
+        return view('frontend.pages.new-arrival', compact('newArrivalsHospitals'));
     }
     public function hospitals(){
         $hospitals = Hospital::where('status', '0')->get();

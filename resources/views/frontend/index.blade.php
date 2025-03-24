@@ -37,9 +37,8 @@
 <div class="py-5">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
-                <h4>Welcome to the doctor's appointment and laboratory analysys system</h4>
-                <div class="underline mx-auto">_________________________</div>
+            <div class="col-md-12">
+                    <h4 class="mb-4 stylized-title">Welcome to the doctor's appointment and laboratory analysys system:</h4>
                 <p>
                     Welcome to our online service for booking doctor appointments and laboratory tests – your one-stop destination
                     for managing your healthcare needs conveniently and efficiently. Whether you are a patient seeking professional
@@ -51,38 +50,55 @@
         </div>
     </div>
 </div>
-{{-- <div class="py-5">
+<div class="py-5 bg-light">
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                <h4>Трендові товари</h4>
+            <div class="col-md-12" style="color: #002b80">
+                <h4>Trending Doctors:</h4>
                 <div class="underline mb-4">________________</div>
             </div>
-            @if($trendingProducts)
+            @if($trendingDoctors)
                 <div class="col-md-12">
                     <div class="owl-carousel owl-theme four-carousel">
-                        @foreach ($trendingProducts as $productItem)
+                        @foreach ($trendingDoctors as $doctorItem)
                             <div class="item">
                                 <div class="product-card">
-                                    <div class="product-card-img" style="width: 100%; height: 250px; text-align: center;">
-                                        <label class="stock bg-success">Тренд</label>
-                                        @if ($productItem->productImages->count()>0)
-                                            <a href="{{url('/collections/'.$productItem->category->slug.'/'.$productItem->slug)}}">
-                                                <img src="{{asset($productItem->productImages[0]->image)}}" alt="{{$productItem->name}}"
-                                                style="max-width: 100%; max-height: 100%; display: inline-block; vertical-align: middle;">
+                                    <div class="product-card-img" style="width: 100%; height: 350px; text-align: center;">
+                                        @if ($doctorItem->quantity > 0)
+                                            <label class="stock bg-success">Appointment available</label>
+                                        @else
+                                            <label class="stock bg-danger">Appointment unavailable</label>
+                                        @endif
+                                        @if ($doctorItem->doctorImages->count() > 0)
+                                            <a href="{{url('/collections/'.$doctorItem->hospital->slug.'/doctors/'.$doctorItem->slug)}}">
+                                                <img src="{{asset($doctorItem->doctorImages[0]->image)}}" alt="{{$doctorItem->name}}"
+                                                style="max-width: 100%; display: inline-block; vertical-align: middle; border-radius: 10px;">
                                             </a>
                                         @endif
                                     </div>
                                     <div class="product-card-body">
-                                        <p class="product-brand">{{$productItem->brand}}</p>
+                                        <p class="product-brand">{{$doctorItem->type}}</p>
                                         <h5 class="product-name">
-                                        <a href="{{url('/collections/'.$productItem->category->slug.'/'.$productItem->slug)}}">
-                                                {{$productItem->name}}
-                                        </a>
+                                            <a href="{{url('/collections/'.$doctorItem->hospital->slug.'/doctors/'.$doctorItem->slug)}}">
+                                                {{$doctorItem->name_of_specialty}}
+                                            </a>
+                                        </h5>
+                                        <h5 class="product-name">
+                                            <a href="{{url('/collections/'.$doctorItem->hospital->slug.'/doctors/'.$doctorItem->slug)}}">
+                                                <span style="color: #000000; font-size: 18px;">{{$doctorItem->name}} {{$doctorItem->surname}}</span>
+                                            </a>
                                         </h5>
                                         <div>
-                                            <span class="selling-price">₴{{$productItem->selling_price}}</span>
-                                            <span class="original-price">₴{{$productItem->original_price}}</span>
+                                            <span>
+                                                @if ($doctorItem->original_price == 0)
+                                                    <span style="color: green; font-size: 20px;">Free</span>
+                                                @else
+                                                    ₴{{$doctorItem->original_price}}
+                                                @endif
+                                            </span>
+                                            @if($doctorItem->type == 'Sale')
+                                                <span style="color: red; font-size: 20px; margin-left: 10px;"> Sale 50% </span>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -93,14 +109,82 @@
             @else
                 <div class="col-md-12">
                     <div class="p-2">
-                        <h4>No Products Available</h4>
+                        <h4>No Doctors Available</h4>
                     </div>
                 </div>
             @endif
         </div>
     </div>
 </div>
-<div class="py-5 bg-white">
+
+<div class="py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12" style="color: #002b80">
+                <h4>Trending Analyses:</h4>
+                <div class="underline mb-4">________________</div>
+            </div>
+            @if($trendingAnalyses)
+                <div class="col-md-12">
+                    <div class="owl-carousel owl-theme four-carousel">
+                        @foreach ($trendingAnalyses as $analysisItem)
+                            <div class="item">
+                                <div class="product-card">
+                                    <div class="product-card-img" style="width: 100%; height: 350px; text-align: center;">
+                                        @if ($analysisItem->quantity > 0)
+                                            <label class="stock bg-success">Appointment available</label>
+                                        @else
+                                            <label class="stock bg-danger">Appointment unavailable</label>
+                                        @endif
+                                        @if ($analysisItem->analysisImages->count() > 0)
+                                            <a href="{{url('/collections/'.$analysisItem->hospital->slug.'/analyses/'.$analysisItem->slug)}}">
+                                                <img src="{{asset($analysisItem->analysisImages[0]->image)}}" alt="{{$analysisItem->name}}"
+                                                style="max-width: 100%; display: inline-block; vertical-align: middle; border-radius: 10px;">
+                                            </a>
+                                        @endif
+                                    </div>
+                                    <div class="product-card-body">
+                                        <p class="product-brand">{{$analysisItem->type}}</p>
+                                        <h5 class="product-name">
+                                            <a href="{{url('/collections/'.$analysisItem->hospital->slug.'/analyses/'.$analysisItem->slug)}}">
+                                                {{$analysisItem->name_of_specialty}}
+                                            </a>
+                                        </h5>
+                                        <h5 class="product-name">
+                                            <a href="{{url('/collections/'.$analysisItem->hospital->slug.'/analyses/'.$analysisItem->slug)}}">
+                                                <span style="color: #000000; font-size: 18px;">{{$analysisItem->name}} {{$analysisItem->surname}}</span>
+                                            </a>
+                                        </h5>
+                                        <div>
+                                            <span>
+                                                @if ($analysisItem->original_price == 0)
+                                                    <span style="color: green; font-size: 20px;">Free</span>
+                                                @else
+                                                    ₴{{$analysisItem->original_price}}
+                                                @endif
+                                            </span>
+                                            @if($analysisItem->type == 'Sale')
+                                                <span style="color: red; font-size: 20px; margin-left: 10px;"> Sale 50% </span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            @else
+                <div class="col-md-12">
+                    <div class="p-2">
+                        <h4>No Doctors Available</h4>
+                    </div>
+                </div>
+            @endif
+        </div>
+    </div>
+</div>
+
+{{-- <div class="py-5 bg-white">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -112,28 +196,28 @@
             @if($newArrivalsProducts)
                 <div class="col-md-12">
                     <div class="owl-carousel owl-theme four-carousel">
-                        @foreach ($newArrivalsProducts as $productItem)
+                        @foreach ($newArrivalsProducts as $doctorItem)
                             <div class="item">
-                                <div class="product-card">
-                                    <div class="product-card-img" style="width: 100%; height: 250px; text-align: center;">
+                                <div class="doctor-card">
+                                    <div class="doctor-card-img" style="width: 100%; height: 250px; text-align: center;">
                                         <label class="stock bg-success">Новинка</label>
-                                        @if ($productItem->productImages->count()>0)
-                                            <a href="{{url('/collections/'.$productItem->category->slug.'/'.$productItem->slug)}}">
-                                                <img src="{{asset($productItem->productImages[0]->image)}}" alt="{{$productItem->name}}"
+                                        @if ($doctorItem->doctorImages->count()>0)
+                                            <a href="{{url('/collections/'.$doctorItem->category->slug.'/'.$doctorItem->slug)}}">
+                                                <img src="{{asset($doctorItem->doctorImages[0]->image)}}" alt="{{$doctorItem->name}}"
                                                 style="max-width: 100%; max-height: 100%; display: inline-block; vertical-align: middle;">
                                             </a>
                                         @endif
                                     </div>
-                                    <div class="product-card-body">
-                                        <p class="product-brand">{{$productItem->brand}}</p>
-                                        <h5 class="product-name">
-                                        <a href="{{url('/collections/'.$productItem->category->slug.'/'.$productItem->slug)}}">
-                                                {{$productItem->name}}
+                                    <div class="doctor-card-body">
+                                        <p class="doctor-brand">{{$doctorItem->brand}}</p>
+                                        <h5 class="doctor-name">
+                                        <a href="{{url('/collections/'.$doctorItem->category->slug.'/'.$doctorItem->slug)}}">
+                                                {{$doctorItem->name}}
                                         </a>
                                         </h5>
                                         <div>
-                                            <span class="selling-price">₴{{$productItem->selling_price}}</span>
-                                            <span class="original-price">₴{{$productItem->original_price}}</span>
+                                            <span class="selling-price">₴{{$doctorItem->selling_price}}</span>
+                                            <span class="original-price">₴{{$doctorItem->original_price}}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -156,35 +240,35 @@
         <div class="row">
             <div class="col-md-12">
                 <h4>Рекомендовані товари
-                    <a href="{{url('featured-products')}}"  class="btn btn-primary float-end">Переглянути більше</a>
+                    <a href="{{url('featured-doctors')}}"  class="btn btn-primary float-end">Переглянути більше</a>
                 </h4>
                 <div class="underline mb-4">________________</div>
             </div>
             @if($featuredProducts)
                 <div class="col-md-12">
                     <div class="owl-carousel owl-theme four-carousel">
-                        @foreach ($featuredProducts as $productItem)
+                        @foreach ($featuredProducts as $doctorItem)
                             <div class="item">
-                                <div class="product-card">
-                                    <div class="product-card-img" style="width: 100%; height: 250px; text-align: center;">
+                                <div class="doctor-card">
+                                    <div class="doctor-card-img" style="width: 100%; height: 250px; text-align: center;">
                                         <label class="stock bg-success">Рекомендуємо</label>
-                                        @if ($productItem->productImages->count()>0)
-                                            <a href="{{url('/collections/'.$productItem->category->slug.'/'.$productItem->slug)}}">
-                                                <img src="{{asset($productItem->productImages[0]->image)}}" alt="{{$productItem->name}}"
+                                        @if ($doctorItem->doctorImages->count()>0)
+                                            <a href="{{url('/collections/'.$doctorItem->category->slug.'/'.$doctorItem->slug)}}">
+                                                <img src="{{asset($doctorItem->doctorImages[0]->image)}}" alt="{{$doctorItem->name}}"
                                                 style="max-width: 100%; max-height: 100%; display: inline-block; vertical-align: middle;">
                                             </a>
                                         @endif
                                     </div>
-                                    <div class="product-card-body">
-                                        <p class="product-brand">{{$productItem->brand}}</p>
-                                        <h5 class="product-name">
-                                        <a href="{{url('/collections/'.$productItem->category->slug.'/'.$productItem->slug)}}">
-                                                {{$productItem->name}}
+                                    <div class="doctor-card-body">
+                                        <p class="doctor-brand">{{$doctorItem->brand}}</p>
+                                        <h5 class="doctor-name">
+                                        <a href="{{url('/collections/'.$doctorItem->category->slug.'/'.$doctorItem->slug)}}">
+                                                {{$doctorItem->name}}
                                         </a>
                                         </h5>
                                         <div>
-                                            <span class="selling-price">₴{{$productItem->selling_price}}</span>
-                                            <span class="original-price">₴{{$productItem->original_price}}</span>
+                                            <span class="selling-price">₴{{$doctorItem->selling_price}}</span>
+                                            <span class="original-price">₴{{$doctorItem->original_price}}</span>
                                         </div>
                                     </div>
                                 </div>
