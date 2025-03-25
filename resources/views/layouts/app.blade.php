@@ -22,6 +22,28 @@
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
 
     @livewireStyles
+
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        #app {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        main {
+            flex: 1;
+        }
+        .footer-area, .copyright-area {
+            background: #002b80;
+            color: white;
+        }
+    </style>
+
 </head>
 <body>
     <div id="app">
@@ -29,7 +51,7 @@
         <main>
             @yield('content')
         </main>
-        {{-- @include('layouts.inc.frontend.footer') --}}
+        @include('layouts.inc.frontend.footer')
     </div>
 
 
@@ -51,3 +73,4 @@
     @stack('scripts')
 </body>
 </html>
+
