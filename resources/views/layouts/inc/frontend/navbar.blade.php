@@ -90,16 +90,13 @@
                         <a style="color: #002266; letter-spacing: 0.5px;" class="nav-link" href="{{url('/hospitals')}}">Hospitals</a>
                     </li>
                     <li class="nav-item">
-                        <a style="color: #002266; letter-spacing: 0.5px;" class="nav-link" href="{{url('/doctors-trending')}}">Doctors Trending</a>
+                        <a style="color: #002266; letter-spacing: 0.5px;" class="nav-link" href="{{url('/doctors-featured')}}">Doctors featured</a>
                     </li>
                     <li class="nav-item">
-                        <a style="color: #002266; letter-spacing: 0.5px;" class="nav-link" href="{{url('/analysys-trending')}}">Analysys Trending</a>
+                        <a style="color: #002266; letter-spacing: 0.5px;" class="nav-link" href="{{url('/analysys-featured')}}">Analysys featured</a>
                     </li>
                     <li class="nav-item">
                         <a style="color: #002266; letter-spacing: 0.5px;" class="nav-link" href="{{url('/new-arrivals')}}">Hospiatls arrivals</a>
-                    </li>
-                    <li class="nav-item">
-                        <a style="color: #002266; letter-spacing: 0.5px;" class="nav-link" href="{{url('/featured-products')}}">Analysys featured</a>
                     </li>
                 </ul>
             </div>

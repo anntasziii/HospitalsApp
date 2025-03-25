@@ -32,10 +32,10 @@ Route::controller(App\Http\Controllers\Frontend\FrontendController::class)->grou
     // Route::get('/collections/{hospital_slug}/{analysis_slug}','analysisView');
 
     Route::get('/new-arrivals', 'newArrival');
-    // Route::get('/doctors-trending', 'trendingDoctors');
-    // Route::get('/analysys-trending', 'trendingAnalyses');
+    Route::get('/doctors-featured', 'featuredDoctors');
+    Route::get('/analysys-featured', 'featuredAnalyses');
     // Route::get('/featured-products', 'featuredProducts');
-    // Route::get('search', 'searchProduct');
+    // Route::get('search', 'searchProduct')i;
 });
 
 Route::middleware(['auth'])->group(function(){

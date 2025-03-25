@@ -29,6 +29,14 @@ class FrontendController extends Controller
         $hospitals = Hospital::where('status', '0')->get();
         return view('frontend.collections.hospital.index', compact('hospitals'));
     }
+    public function featuredDoctors(){
+        $featuredDoctors = Doctor::where('featured', '1')->latest()->get();
+        return view('frontend.pages.featured-doctors', compact('featuredDoctors'));
+    }
+    public function featuredAnalyses(){
+        $featuredAnalyses = Analysis::where('featured', '1')->latest()->get();
+        return view('frontend.pages.featured-analyses', compact('featuredAnalyses'));
+    }
     public function choose($hospital_slug)
     {
         $hospital = Hospital::where('slug', $hospital_slug)->first();
