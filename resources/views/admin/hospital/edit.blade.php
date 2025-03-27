@@ -23,32 +23,32 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label>Name</label>
-                            <input style="border-radius: 5px"  type="text" name="name" value="{{ $hospital->name }}" class="form-control" />
+                            <input style="border-radius: 10px"  type="text" name="name" value="{{ $hospital->name }}" class="form-control" />
                             @error('name') <small class="text-danger">{{$message}}</small> @enderror
                         </div>
                         <div class="col-md-6 mb-3">
                             <label>Sity</label>
-                            <input style="border-radius: 5px"  type="text" name="sity" value="{{ $hospital->sity }}" class="form-control" />
+                            <input style="border-radius: 10px"  type="text" name="sity" value="{{ $hospital->sity }}" class="form-control" />
                             @error('sity') <small class="text-danger">{{$message}}</small> @enderror
                         </div>
                         <div class="col-md-6 mb-3">
                             <label>Region</label>
-                            <input style="border-radius: 5px"  type="text" name="region" value="{{ $hospital->region }}" class="form-control" />
+                            <input style="border-radius: 10px"  type="text" name="region" value="{{ $hospital->region }}" class="form-control" />
                             @error('region') <small class="text-danger">{{$message}}</small> @enderror
                         </div>
                         <div class="col-md-6 mb-3">
                             <label>Slug</label>
-                            <input style="border-radius: 5px"  type="text" name="slug" value="{{ $hospital->slug }}" class="form-control" />
+                            <input style="border-radius: 10px"  type="text" name="slug" value="{{ $hospital->slug }}" class="form-control" />
                             @error('slug') <small class="text-danger">{{$message}}</small> @enderror
                         </div>
                         <div class="col-md-12 mb-3">
                             <label>Description</label>
-                            <textarea style="border-radius: 5px"  name="description" class="form-control" rows="3">{{ $hospital->description }}</textarea>
+                            <textarea style="border-radius: 10px"  name="description" class="form-control" rows="3">{{ $hospital->description }}</textarea>
                             @error('description') <small class="text-danger">{{$message}}</small> @enderror
                         </div>
                         <div class="col-md-12 mb-3">
                             <label>Image</label>
-                            <input style="border-radius: 5px"  type="file" name="image" class="form-control" />
+                            <input style="border-radius: 10px"  type="file" name="image" class="form-control" />
                             <img src="{{ asset('/uploads/hospital/'.$hospital->image) }}" width="65px" height="60px"/>
                             @error('image') <small class="text-danger">{{$message}}</small> @enderror
                         </div>
@@ -65,17 +65,17 @@
                         </div>
                         <div class="col-md-12 mb-3">
                             <label>Meta Title</label>
-                            <input style="border-radius: 5px"  type="text" name="meta_title" value="{{ $hospital->meta_title }}" class="form-control" />
+                            <input style="border-radius: 10px"  type="text" name="meta_title" value="{{ $hospital->meta_title }}" class="form-control" />
                             @error('meta_title') <small class="text-danger">{{$message}}</small> @enderror
                         </div>
                         <div class="col-md-12 mb-3">
                             <label>Meta Keyword</label>
-                            <textarea style="border-radius: 5px"  name="meta_keyword" class="form-control" rows="3">{{ $hospital->meta_keyword }}</textarea>
+                            <textarea style="border-radius: 10px"  name="meta_keyword" class="form-control" rows="3">{{ $hospital->meta_keyword }}</textarea>
                             @error('meta_keyword') <small class="text-danger">{{$message}}</small> @enderror
                         </div>
                         <div class="col-md-12 mb-3">
                             <label>Meta Description</label>
-                            <textarea style="border-radius: 5px"  name="meta_description" class="form-control" rows="3">{{ $hospital->meta_description }}</textarea>
+                            <textarea style="border-radius: 10px"  name="meta_description" class="form-control" rows="3">{{ $hospital->meta_description }}</textarea>
                             @error('meta_description') <small class="text-danger">{{$message}}</small> @enderror
                         </div>
                         <div class="col-md-12 mb-3">

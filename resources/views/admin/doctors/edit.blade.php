@@ -59,7 +59,7 @@
                         <div class="tab-pane fade border p-3 show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
                             <div class="mb-3">
                                 <label class="mb-2 mt-3">Hospital</label>
-                                <select name="hospitals_id" class="form-control">
+                                <select name="hospitals_id" class="form-control" style="height: 45px; border-radius: 10px;">
                                     @foreach ($hospitals as $hospital)
                                         <option value="{{ $hospital->id }}" {{ $hospital->id == $doctor->hospitals_id ? 'selected':'' }}>
                                             {{ $hospital->name }}
@@ -69,25 +69,25 @@
                             </div>
                             <div class="mb-3">
                                 <label class="mb-2 mt-2">Doctor Specialty</label>
-                                <input style="border-radius: 5px" type="text" name="name_of_specialty" value="{{ $doctor->name_of_specialty }}" class="form-control" />
+                                <input style="border-radius: 10px" type="text" name="name_of_specialty" value="{{ $doctor->name_of_specialty }}" class="form-control" />
                             </div>
                             <div class="mb-3">
                                 <label class="mb-2 mt-2">Doctor Name</label>
-                                <input style="border-radius: 5px" type="text" name="name" value="{{ $doctor->name }}" class="form-control" />
+                                <input style="border-radius: 10px" type="text" name="name" value="{{ $doctor->name }}" class="form-control" />
                             </div>
                             <div class="mb-3">
                                 <label class="mb-2 mt-2">Doctor Surname</label>
-                                <input style="border-radius: 5px" type="text" name="surname" value="{{ $doctor->surname }}" class="form-control" />
+                                <input style="border-radius: 10px" type="text" name="surname" value="{{ $doctor->surname }}" class="form-control" />
                             </div>
                             <div class="mb-3">
                                 <label class="mb-2 mt-2">Doctor Slug</label>
-                                <input style="border-radius: 5px" type="text" name="slug" value="{{ $doctor->slug }}" class="form-control" />
+                                <input style="border-radius: 10px" type="text" name="slug" value="{{ $doctor->slug }}" class="form-control" />
                             </div>
                             <div class="mb-3">
                                 <label class="mb-2 mt-2">Select Type</label>
-                                <select name="type" class="form-control">
+                                <select name="type" class="form-control" style="height: 45px; border-radius: 10px;">
                                     @foreach ($types as $type)
-                                        <option style="border-radius: 5px" value="{{ $type->name }}" {{ $type->name == $doctor->type ? 'selected':'' }}>
+                                        <option style="border-radius: 10px" value="{{ $type->name }}" {{ $type->name == $doctor->type ? 'selected':'' }}>
                                             {{ $type->name }}
                                         </option>
                                     @endforeach
@@ -95,25 +95,25 @@
                             </div>
                             <div class="mb-3">
                                 <label class="mb-2 mt-2">Small Description (500 words)</label>
-                                <textarea style="border-radius: 5px" name="small_description" class="form-control" rows="4">{{ $doctor->small_description }}</textarea>
+                                <textarea style="border-radius: 10px" name="small_description" class="form-control" rows="4">{{ $doctor->small_description }}</textarea>
                             </div>
                             <div class="mb-3">
                                 <label class="mb-2 mt-2">Description</label>
-                                <textarea style="border-radius: 5px" name="description" class="form-control" rows="4">{{ $doctor->description }}</textarea>
+                                <textarea style="border-radius: 10px" name="description" class="form-control" rows="4">{{ $doctor->description }}</textarea>
                             </div>
                         </div>
                         <div class="tab-pane fade border p-3" id="seotag-tab-pane" role="tabpanel" aria-labelledby="seotag-tab" tabindex="0">
                             <div class="mb-3">
                                 <label class="mb-2 mt-3">Meta Title</label>
-                                <input style="border-radius: 5px" type="text" name="meta_title" value="{{ $doctor->meta_title }}" class="form-control" />
+                                <input style="border-radius: 10px" type="text" name="meta_title" value="{{ $doctor->meta_title }}" class="form-control" />
                             </div>
                             <div class="mb-3">
                                 <label class="mb-2 mt-2">Meta Description</label>
-                                <textarea style="border-radius: 5px" name="meta_description" class="form-control" rows="4">{{ $doctor->meta_description }}</textarea>
+                                <textarea style="border-radius: 10px" name="meta_description" class="form-control" rows="4">{{ $doctor->meta_description }}</textarea>
                             </div>
                             <div class="mb-3">
                                 <label class="mb-2 mt-2">Meta Keyword</label>
-                                <textarea style="border-radius: 5px" name="meta_keyword" class="form-control" rows="4">{{ $doctor->meta_keyword }}</textarea>
+                                <textarea style="border-radius: 10px" name="meta_keyword" class="form-control" rows="4">{{ $doctor->meta_keyword }}</textarea>
                             </div>
                         </div>
                         <div class="tab-pane fade border p-3" id="details-tab-pane" role="tabpanel" aria-labelledby="details-tab" tabindex="0">
@@ -121,13 +121,13 @@
                                 <div class="col-md-4">
                                     <div class="mb-3">
                                         <label class="mb-2 mt-3">Original Price</label>
-                                        <input type="text" name="original_price" value="{{ $doctor->original_price }}" class="form-control" />
+                                        <input style="border-radius: 10px" type="text" name="original_price" value="{{ $doctor->original_price }}" class="form-control" />
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="mb-3">
                                         <label class="mb-2 mt-3">Quantity</label>
-                                        <input style="border-radius: 5px" type="number" name="quantity" value="{{ $doctor->quantity }}" class="form-control" />
+                                        <input style="border-radius: 10px" type="number" name="quantity" value="{{ $doctor->quantity }}" class="form-control" />
                                     </div>
                                 </div>
                                 <div class="mb-3">

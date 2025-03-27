@@ -69,9 +69,6 @@
                             @if ($appSetting->instagram)
                                 <a href="{{$appSetting->instagram}}" target="_blank"><i class="fa fa-instagram"></i></a>
                             @endif
-                            @if ($appSetting->youtube)
-                                <a href="{{$appSetting->youtube}}" target="_blank"><i class="fa fa-youtube"></i></a>
-                            @endif
                         </a>
                     </div>
                 </div>

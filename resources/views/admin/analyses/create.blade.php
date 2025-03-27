@@ -55,7 +55,7 @@
                         <div class="tab-pane fade border p-3 show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
                             <div class="mb-3">
                                 <label class="mb-2 mt-3">Hospital</label>
-                                <select name="hospitals_id" class="form-control">
+                                <select name="hospitals_id" class="form-control" style="height: 45px; border-radius: 10px;">
                                     @foreach ($hospitals as $hospital)
                                         <option value="{{ $hospital->id }}">{{ $hospital->name }}</option>
                                     @endforeach
@@ -63,41 +63,41 @@
                             </div>
                             <div class="mb-3">
                                 <label class="mb-2 mt-2">Analysis Name</label>
-                                <input style="border-radius: 5px" type="text" name="name" class="form-control" />
+                                <input style="border-radius: 10px" type="text" name="name" class="form-control" />
                             </div>
                             <div class="mb-3">
                                 <label class="mb-2 mt-2">Analysis Slug</label>
-                                <input style="border-radius: 5px" type="text" name="slug" class="form-control" />
+                                <input style="border-radius: 10px" type="text" name="slug" class="form-control" />
                             </div>
                             <div class="mb-3">
                                 <label class="mb-2 mt-2">Select Type</label>
                                 <select name="type" class="form-control">
                                     @foreach ($types as $type)
-                                        <option style="border-radius: 5px" value="{{ $type->name }}">{{ $type->name }}</option>
+                                        <option style="border-radius: 10px" value="{{ $type->name }}">{{ $type->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="mb-3">
                                 <label class="mb-2 mt-2">Small Description (500 words)</label>
-                                <textarea style="border-radius: 5px" name="small_description" class="form-control" rows="4"></textarea>
+                                <textarea style="border-radius: 10px" name="small_description" class="form-control" rows="4"></textarea>
                             </div>
                             <div class="mb-3">
                                 <label class="mb-2 mt-2">Description</label>
-                                <textarea style="border-radius: 5px" name="description" class="form-control" rows="4"></textarea>
+                                <textarea style="border-radius: 10px" name="description" class="form-control" rows="4"></textarea>
                             </div>
                         </div>
                         <div class="tab-pane fade border p-3" id="seotag-tab-pane" role="tabpanel" aria-labelledby="seotag-tab" tabindex="0">
                             <div class="mb-3">
                                 <label class="mb-2 mt-3">Meta Title</label>
-                                <input style="border-radius: 5px" type="text" name="meta_title" class="form-control" />
+                                <input style="border-radius: 10px" type="text" name="meta_title" class="form-control" />
                             </div>
                             <div class="mb-3">
                                 <label class="mb-2 mt-2">Meta Description</label>
-                                <textarea style="border-radius: 5px" name="meta_description" class="form-control" rows="4"></textarea>
+                                <textarea style="border-radius: 10px" name="meta_description" class="form-control" rows="4"></textarea>
                             </div>
                             <div class="mb-3">
                                 <label class="mb-2 mt-2">Meta Keyword</label>
-                                <textarea style="border-radius: 5px" name="meta_keyword" class="form-control" rows="4"></textarea>
+                                <textarea style="border-radius: 10px" name="meta_keyword" class="form-control" rows="4"></textarea>
                             </div>
                         </div>
                         <div class="tab-pane fade border p-3" id="details-tab-pane" role="tabpanel" aria-labelledby="details-tab" tabindex="0">
@@ -105,13 +105,13 @@
                                 <div class="col-md-4">
                                     <div class="mb-3">
                                         <label class="mb-2 mt-3">Original Price</label>
-                                        <input style="border-radius: 5px" type="text" name="original_price" class="form-control" />
+                                        <input style="border-radius: 10px" type="text" name="original_price" class="form-control" />
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="mb-3">
                                         <label class="mb-2 mt-3">Quantity</label>
-                                        <input style="border-radius: 5px" type="number" name="quantity" class="form-control" />
+                                        <input style="border-radius: 10px" type="number" name="quantity" class="form-control" />
                                     </div>
                                 </div>
                                 <div class="mb-3">
@@ -140,7 +140,7 @@
                         <div class="tab-pane fade border p-3" id="image-tab-pane" role="tabpanel" aria-labelledby="image-tab" tabindex="0">
                             <div class="mb-3">
                                 <label class="mb-2 mt-3">Upload analysis Images</label>
-                                <input style="border-radius: 5px" type="file" name="image[]" multiple class="form-control" />
+                                <input style="border-radius: 10px" type="file" name="image[]" multiple class="form-control" />
                             </div>
                         </div>
                         <div class="tab-pane fade border p-3" id="time-tab-pane" role="tabpanel" aria-labelledby="time-tab" tabindex="0">

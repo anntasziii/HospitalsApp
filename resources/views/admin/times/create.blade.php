@@ -22,7 +22,7 @@
                     @csrf
                     <div class="mb-3">
                         <label>Time</label>
-                        <input style="border-radius: 5px" type="text" name="name" class="form-control" placeholder="00:00">
+                        <input style="border-radius: 10px" type="text" name="name" class="form-control" placeholder="00:00">
                     </div>
                     <div class="mb-3">
                         <label class="mb-2">Status (Checked = Hidden, UnChacked = Visible)</label><br />

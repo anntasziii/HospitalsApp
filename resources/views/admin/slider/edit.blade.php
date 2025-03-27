@@ -23,15 +23,15 @@
                     @method('PUT')
                     <div class="mb-3">
                         <label>Title</label>
-                        <input style="border-radius: 5px" type="text" name="title" value="{{$slider->title}}" class="form-control">
+                        <input style="border-radius: 10px" type="text" name="title" value="{{$slider->title}}" class="form-control">
                     </div>
                     <div class="mb-3">
                         <label>Description</label>
-                        <textarea style="border-radius: 5px" name="description" class="form-control" rows="3">{{$slider->description}}</textarea>
+                        <textarea style="border-radius: 10px" name="description" class="form-control" rows="3">{{$slider->description}}</textarea>
                     </div>
                     <div class="mb-3">
                         <label>Image</label>
-                        <input style="border-radius: 5px" type="file" name="image" class="form-control" />
+                        <input style="border-radius: 10px" type="file" name="image" class="form-control" />
                         <img src="{{asset("$slider->image")}}" style="width: 150px; height: 70px; border-radius: 10px; margin-top: 10px;" alt="Slider" />
                     </div>
                     <div class="mb-3">

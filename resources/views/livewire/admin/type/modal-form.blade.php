@@ -9,12 +9,12 @@
                 <div class="modal-body">
                     <div class="mb-3">
                         <label>Type Name</label>
-                        <input style="border-radius: 5px" type="text" wire:model.defer="name" class="form-control">
+                        <input style="border-radius: 10px" type="text" wire:model.defer="name" class="form-control">
                         @error('name') <small class="text-danger">{{$message}}</small> @enderror
                     </div>
                     <div class="mb-3">
                         <label>Type Slug</label>
-                        <input style="border-radius: 5px" type="text" wire:model.defer="slug" class="form-control">
+                        <input style="border-radius: 10px" type="text" wire:model.defer="slug" class="form-control">
                         @error('slug') <small class="text-danger">{{$message}}</small> @enderror
                     </div>
                     <div class="mb-3">
@@ -59,12 +59,12 @@
                         </div> --}}
                         <div class="mb-3">
                             <label>Type Name</label>
-                            <input style="border-radius: 5px" type="text" wire:model.defer="name" class="form-control">
+                            <input style="border-radius: 10px" type="text" wire:model.defer="name" class="form-control">
                             @error('name') <small class="text-danger">{{$message}}</small> @enderror
                         </div>
                         <div class="mb-3">
                             <label>Type Slug</label>
-                            <input style="border-radius: 5px" type="text" wire:model.defer="slug" class="form-control">
+                            <input style="border-radius: 10px" type="text" wire:model.defer="slug" class="form-control">
                             @error('slug') <small class="text-danger">{{$message}}</small> @enderror
                         </div>
 

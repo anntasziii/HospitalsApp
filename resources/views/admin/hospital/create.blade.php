@@ -22,32 +22,32 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label>Name</label>
-                            <input style="border-radius: 5px" type="text" name="name" class="form-control" />
+                            <input style="border-radius: 10px" type="text" name="name" class="form-control" />
                             @error('name') <small class="text-danger">{{$message}}</small> @enderror
                         </div>
                         <div class="col-md-6 mb-3">
                             <label>Sity</label>
-                            <input style="border-radius: 5px" type="text" name="sity" class="form-control" />
+                            <input style="border-radius: 10px" type="text" name="sity" class="form-control" />
                             @error('sity') <small class="text-danger">{{$message}}</small> @enderror
                         </div>
                         <div class="col-md-6 mb-3">
                             <label>Region</label>
-                            <input style="border-radius: 5px" type="text" name="region" class="form-control" />
+                            <input style="border-radius: 10px" type="text" name="region" class="form-control" />
                             @error('region') <small class="text-danger">{{$message}}</small> @enderror
                         </div>
                         <div class="col-md-6 mb-3">
                             <label>Slug</label>
-                            <input style="border-radius: 5px" type="text" name="slug" class="form-control" />
+                            <input style="border-radius: 10px" type="text" name="slug" class="form-control" />
                             @error('slug') <small class="text-danger">{{$message}}</small> @enderror
                         </div>
                         <div class="col-md-12 mb-3">
                             <label>Description</label>
-                            <textarea style="border-radius: 5px" name="description" class="form-control" rows="3"></textarea>
+                            <textarea style="border-radius: 10px" name="description" class="form-control" rows="3"></textarea>
                             @error('description') <small class="text-danger">{{$message}}</small> @enderror
                         </div>
                         <div class="col-md-12 mb-3">
                             <label>Image</label>
-                            <input style="border-radius: 5px" type="file" name="image" class="form-control" />
+                            <input style="border-radius: 10px" type="file" name="image" class="form-control" />
                         </div>
                         <div class="col-md-12 mb-3">
                             <label class="mb-2">Status (Checked = Hidden, UnChacked = Visible)</label><br />
@@ -61,15 +61,15 @@
                         </div>
                         <div class="col-md-12 mb-3">
                             <label>Meta Title</label>
-                            <input style="border-radius: 5px" type="text" name="meta_title" class="form-control" />
+                            <input style="border-radius: 10px" type="text" name="meta_title" class="form-control" />
                         </div>
                         <div class="col-md-12 mb-3">
                             <label>Meta Keyword</label>
-                            <textarea style="border-radius: 5px" name="meta_keyword" class="form-control" rows="3"></textarea>
+                            <textarea style="border-radius: 10px" name="meta_keyword" class="form-control" rows="3"></textarea>
                         </div>
                         <div class="col-md-12 mb-3">
                             <label>Meta Description</label>
-                            <textarea style="border-radius: 5px" name="meta_description" class="form-control" rows="3"></textarea>
+                            <textarea style="border-radius: 10px" name="meta_description" class="form-control" rows="3"></textarea>
                         </div>
                         <div class="col-md-12 mb-3">
                             <button type="submit" class="btn btn-primary text-white" style="width: 200px; border-radius: 10px;">

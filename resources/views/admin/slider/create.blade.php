@@ -22,15 +22,15 @@
                     @csrf
                     <div class="mb-3">
                         <label>Title</label>
-                        <input style="border-radius: 5px" type="text" name="title" class="form-control">
+                        <input style="border-radius: 10px" type="text" name="title" class="form-control">
                     </div>
                     <div class="mb-3">
                         <label>Description</label>
-                        <textarea style="border-radius: 5px" name="description" class="form-control" rows="3"></textarea>
+                        <textarea style="border-radius: 10px" name="description" class="form-control" rows="3"></textarea>
                     </div>
                     <div class="mb-3">
                         <label>Image</label>
-                        <input style="border-radius: 5px" type="file" name="image" class="form-control" />
+                        <input style="border-radius: 10px" type="file" name="image" class="form-control" />
                     </div>
                     <div class="mb-3">
                         <label class="mb-2">Status (Checked = Hidden, UnChacked = Visible)</label><br />
