@@ -98,4 +98,14 @@ class FrontendController extends Controller
         return view('frontend.thank-you');
     }
 
+    public function searchHospital(Request $request){
+        if($request->search){
+            $searchHospital = Hospital::where('name', 'LIKE', '%'.$request->search.'%')->latest()->paginate(15);
+            return view('frontend.pages.search', compact('searchHospital'));
+        }
+        else{
+            return redirect()->back()->with('message', 'Empty Search');
+        }
+    }
+
 }

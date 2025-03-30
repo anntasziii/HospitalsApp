@@ -34,8 +34,7 @@ Route::controller(App\Http\Controllers\Frontend\FrontendController::class)->grou
     Route::get('/new-arrivals', 'newArrival');
     Route::get('/doctors-featured', 'featuredDoctors');
     Route::get('/analysys-featured', 'featuredAnalyses');
-    // Route::get('/featured-products', 'featuredProducts');
-    // Route::get('search', 'searchProduct')i;
+    Route::get('search', 'searchHospital');
 });
 
 Route::middleware(['auth'])->group(function(){
