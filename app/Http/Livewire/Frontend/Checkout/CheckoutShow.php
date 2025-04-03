@@ -2,9 +2,14 @@
 
 namespace App\Http\Livewire\Frontend\Checkout;
 use App\Models\Cart;
+use App\Models\UserDetail;
 use App\Models\Order;
 use App\Models\Orderitem;
+use Exception;
 use Illuminate\Support\Str;
+use App\Mail\PlaceOrderMailable;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Log;
 
 use Livewire\Component;
 
@@ -12,6 +17,7 @@ class CheckoutShow extends Component
 {
     public $carts, $totalProductAmount = 0;
     public $fullname, $email, $phone, $comment, $payment_mode = NULL, $payment_id = NULL;
+    public $pincode, $address;
 
     public $listeners = [
         'validationForAll',
@@ -28,6 +34,13 @@ class CheckoutShow extends Component
         $codOrder = $this->placeOrder();
         if($codOrder){
             Cart::where('user_id', auth()->user()->id)->delete();
+
+            try{
+                $order = Order::findOrFail($codOrder->id);
+                Mail::to($order->email)->send(new PlaceOrderMailable($order));
+            }
+            catch(Exception $e){}
+
             session()->flash('message', 'Referral Plased Successfully');
             return redirect()->to('thank-you');
         }
@@ -58,14 +71,14 @@ class CheckoutShow extends Component
             'payment_id' => $this->payment_id
         ]);
         foreach ($this->carts as $cartItem){
-            $orderItems = Orderitem::create([
+            Orderitem::create([
                 'order_id' => $order->id,
                 'product_id' => $cartItem->product_id,
                 'product_time_id' => $cartItem->product_time_id,
                 'price' => $cartItem->doctor ? $cartItem->doctor->original_price : ($cartItem->analysis ? $cartItem->analysis->original_price : 0)
             ]);
         }
-        return true;
+        return $order;
     }
 
     public function codOrder(){
@@ -73,6 +86,13 @@ class CheckoutShow extends Component
         $codOrder = $this->placeOrder();
         if($codOrder){
             Cart::where('user_id', auth()->user()->id)->delete();
+
+            try{
+                $order = Order::findOrFail($codOrder->id);
+                Mail::to($order->email)->send(new PlaceOrderMailable($order));
+            }
+            catch(Exception $e){}
+
             session()->flash('message', 'Referral Plased Successfully');
             return redirect()->to('thank-you');
         }
@@ -93,6 +113,12 @@ class CheckoutShow extends Component
     {
         $this->fullname = auth()->user()->name;
         $this->email = auth()->user()->email;
+
+        $userDetail = auth()->user()->userDetail;
+
+        $this->phone = $userDetail ? $userDetail->phone : null;
+        $this->pincode = $userDetail ? $userDetail->pin_code : null;
+        $this->address = $userDetail ? $userDetail->address : null;
 
         $this->totalProductAmount = $this->totalProductAmount();
         return view('livewire.frontend.checkout.checkout-show', [

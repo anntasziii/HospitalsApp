@@ -15,7 +15,6 @@ Route::controller(App\Http\Controllers\Frontend\FrontendController::class)->grou
     Route::get('/','index');
     Route::get('/hospitals','hospitals');
 
-    // У routes/web.php
     Route::get('/collections/{hospital_slug}', 'choose');
 
     Route::get('/collections/{hospital_slug}/doctors', 'doctors')->name('doctors');
@@ -26,10 +25,6 @@ Route::controller(App\Http\Controllers\Frontend\FrontendController::class)->grou
         Route::get('/doctors/{doctor_slug}', 'doctorView')->name('doctorView');
         Route::get('/analyses/{analysis_slug}', 'analysisView')->name('analysisView');
     });
-
-
-    // Route::get('/collections/{hospital_slug}/{doctor_slug}','doctorView');
-    // Route::get('/collections/{hospital_slug}/{analysis_slug}','analysisView');
 
     Route::get('/new-arrivals', 'newArrival');
     Route::get('/doctors-featured', 'featuredDoctors');
@@ -120,8 +115,8 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function(){
         Route::put('/orders/{orderId}', 'updateOrderStatus');
         Route::get('/invoice/{orderId}', 'viewInvoice');
         Route::get('/invoice/{orderId}/generate', 'generateInvoice');
-    //     Route::get('/invoice/{orderId}/mail', 'mailInvoice');
-    // });
+        Route::get('/invoice/{orderId}/mail', 'mailInvoice');
+    });
     Route::controller(App\Http\Controllers\Admin\UserController::class)->group(function (){
         Route::get('/users', 'index');
         Route::get('/users/create', 'create');
@@ -131,4 +126,4 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function(){
         Route::get('users/{user_id}/delete', 'destroy');
         });
     });
-});
+
