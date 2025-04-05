@@ -23,7 +23,7 @@ class LoginController extends Controller
             return redirect('admin/dashboard')->with('message', 'Welcome to Admin panel ');
         }
         else{
-            return redirect('/home')->with('status', 'Logged is Successfully');
+            return redirect('/');
         }
     }
     /**

@@ -50,23 +50,24 @@
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="fa fa-user"></i> {{ Auth::user()->name }}
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="{{url('profile')}}"><i class="fa fa-user"></i> Profile</a></li>
-                            <li><a class="dropdown-item" href="{{url('orders')}}"><i class="fa fa-list"></i> My orders</a></li>
-                            <li><a class="dropdown-item" href="{{url('wishlist')}}"><i class="fa fa-heart"></i> My wishlist</a></li>
-                            <li><a class="dropdown-item" href="{{url('cart')}}"><i class="fa fa-shopping-cart"></i> My chart</a></li>
-                            <li>
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();">
-                                    <i class="fa fa-sign-out"></i>Sign out
-                                </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
-                            </li>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="min-width: 220px; border-radius: 12px;">
+                                <li><a class="dropdown-item" href="{{url('profile')}}" style="padding: 10px 20px; border-radius: 8px;"><i class="fa fa-user"></i> Profile</a></li>
+                                <li><a class="dropdown-item" href="{{url('orders')}}" style="padding: 10px 20px; "><i class="fa fa-list"></i> My orders</a></li>
+                                <li><a class="dropdown-item" href="{{url('wishlist')}}" style="padding: 10px 20px;"><i class="fa fa-heart"></i> My wishlist</a></li>
+                                <li><a class="dropdown-item" href="{{url('cart')}}" style="padding: 10px 20px;"><i class="fa fa-shopping-cart"></i> My chart</a></li>
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                                       style="padding: 10px 20px; border-radius: 8px;">
+                                        <i class="fa fa-sign-out"></i> Sign out
+                                    </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </li>
                             </ul>
                         </li>
+
                         @endguest
                     </ul>
                 </div>
