@@ -22,8 +22,27 @@ class FrontendController extends Controller
         $newArrivalsHospitals = Hospital::latest()->take(16)->get();
         return view('frontend.pages.new-arrival', compact('newArrivalsHospitals'));
     }
-    public function hospitals(){
-        $hospitals = Hospital::where('status', '0')->get();
+    public function hospitals(Request $request)
+    {
+        $query = Hospital::where('status', '0');
+
+        if ($request->has('region') && $request->region != '') {
+            $query->where('region', $request->region);
+        }
+
+        if ($request->has('sity') && $request->sity != '') {
+            $query->where('sity', $request->sity);
+        }
+
+        if ($request->has('sort') && $request->sort == 'asc') {
+            $query->orderBy('name', 'asc');
+        }
+         elseif ($request->has('sort') && $request->sort == 'desc') {
+            $query->orderBy('name', 'desc');
+        }
+
+        $hospitals = $query->get();
+
         return view('frontend.collections.hospital.index', compact('hospitals'));
     }
     public function featuredDoctors(){
