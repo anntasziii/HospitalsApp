@@ -32,7 +32,7 @@
                                             <a href="{{url('collections/'.$wishlistItem->analysis->hospital->slug.'/analyses/'.$wishlistItem->analysis->slug)}}">
                                                 <label class="analysis-name">
                                                     <img src="{{$wishlistItem->analysis->analysisImages[0]->image}}"
-                                                        style="width: 100px; height: 130px; border-radius: 10px;"
+                                                        style="width: 100px; height: 130px; border-radius: 10px; object-fit: cover;"
                                                         alt="{{$wishlistItem->analysis->name}}" />
                                                         <a class="nameItemPlans">{{$wishlistItem->analysis->name}}</a>
                                                 </label>
@@ -93,7 +93,7 @@
                                             <a href="{{url('collections/'.$wishlistItem->doctor->hospital->slug.'/doctors/'.$wishlistItem->doctor->slug)}}">
                                                 <label class="doctor-name">
                                                     <img src="{{$wishlistItem->doctor->doctorImages[0]->image}}"
-                                                        style="width: 100px; height: 130px; border-radius: 10px;"
+                                                        style="width: 100px; height: 130px; border-radius: 10px; object-fit: cover;"
                                                         alt="{{$wishlistItem->doctor->name}}" />
                                                     <a class="nameItemPlans">{{$wishlistItem->doctor->name_of_specialty}} - {{$wishlistItem->doctor->name}} {{$wishlistItem->doctor->surname}}</a>
                                                 </label>

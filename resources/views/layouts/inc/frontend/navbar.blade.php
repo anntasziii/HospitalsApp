@@ -52,9 +52,9 @@
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="min-width: 220px; border-radius: 12px;">
                                 <li><a class="dropdown-item" href="{{url('profile')}}" style="padding: 10px 20px; border-radius: 8px;"><i class="fa fa-user"></i> Profile</a></li>
-                                <li><a class="dropdown-item" href="{{url('orders')}}" style="padding: 10px 20px; "><i class="fa fa-list"></i> My orders</a></li>
-                                <li><a class="dropdown-item" href="{{url('wishlist')}}" style="padding: 10px 20px;"><i class="fa fa-heart"></i> My wishlist</a></li>
-                                <li><a class="dropdown-item" href="{{url('cart')}}" style="padding: 10px 20px;"><i class="fa fa-shopping-cart"></i> My chart</a></li>
+                                <li><a class="dropdown-item" href="{{url('orders')}}" style="padding: 10px 20px; "><i class="fa fa-list"></i> My referrals</a></li>
+                                <li><a class="dropdown-item" href="{{url('wishlist')}}" style="padding: 10px 20px;"><i class="fa fa-heart"></i> My plans</a></li>
+                                <li><a class="dropdown-item" href="{{url('cart')}}" style="padding: 10px 20px;"><i class="fa fa-shopping-cart"></i> My referral</a></li>
                                 <li>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();"

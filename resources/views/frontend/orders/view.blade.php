@@ -62,17 +62,19 @@
                                                 <span class="text-danger">No Analyses and Doctors added to Plans</span>
                                             @endif
                                         </td>
-
                                         <td>
                                             @if ($orderItem->doctor && $orderItem->doctor->doctorImages->isNotEmpty())
-                                                <img style="border-radius: 10px" src="{{ asset($orderItem->doctor->doctorImages->first()->image) }}" width="70" height="100" alt="Doctor Image">
+                                                <img style="border-radius: 10px; width: 70px; height: 100px; object-fit: cover; display: block;"
+                                                     src="{{ asset($orderItem->doctor->doctorImages->first()->image) }}"
+                                                     alt="Doctor Image">
                                             @elseif ($orderItem->analysis && $orderItem->analysis->analysisImages->isNotEmpty())
-                                                <img style="border-radius: 10px" src="{{ asset($orderItem->analysis->analysisImages->first()->image) }}" width="70" height="100" alt="Analysis Image">
+                                                <img style="border-radius: 10px; width: 70px; height: 100px; object-fit: cover; display: block;"
+                                                     src="{{ asset($orderItem->analysis->analysisImages->first()->image) }}"
+                                                     alt="Analysis Image">
                                             @else
                                                 <span class="text-danger">No image available</span>
                                             @endif
                                         </td>
-
                                         <td>
                                             @if ($orderItem->doctorTime)
                                                 {{ $orderItem->doctorTime->time->name }}

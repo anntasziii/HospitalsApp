@@ -39,9 +39,14 @@
                                             </a>
                                         </h5>
                                         <div>
-                                            <span>₴ {{$doctorItem->original_price}}</span>
+                                            @if($doctorItem->original_price == 0)
+                                                <span style="color: green;">Free</span>
+                                            @else
+                                                <span>₴ {{$doctorItem->original_price}}</span>
+                                            @endif
+
                                             @if($doctorItem->type == 'Sale')
-                                                <span style="color: red; font-size: 20px; margin-left: 10px;"> Sale 50% </span>
+                                                <span style="color: red; font-size: 20px; margin-left: 10px;">Sale 50%</span>
                                             @endif
                                         </div>
                                     </div>
