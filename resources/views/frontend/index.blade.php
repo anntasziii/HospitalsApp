@@ -14,9 +14,9 @@
                         <h1>{!! $sliderItem->title !!}</h1>
                         <p>{!! $sliderItem->description !!}</p>
                         <a href="/hospitals" class="btn btn-slider"
-                            style="border-radius: 10px; width: 300px; background-color: #ccddff; color: ccddff;"
-                            onmouseover="this.style.backgroundColor='#6699ff'"
-                            onmouseout="this.style.backgroundColor='#ccddff'">
+                            style="border-radius: 10px; width: 300px; background-color: #1a66ff; color: 0044cc;"
+                            onmouseover="this.style.backgroundColor='#0044cc'"
+                            onmouseout="this.style.backgroundColor='#1a66ff'">
                             Choose a hospital
                             </a>
                     </div>
@@ -54,7 +54,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12" style="color: #002b80">
-                <h4>Trending Doctors:</h4>
+                <h4>Recommended Doctors:</h4>
                 <div class="underline mb-4">________________</div>
             </div>
             @if($trendingDoctors)
@@ -121,7 +121,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12" style="color: #002b80">
-                <h4>Trending Analyses:</h4>
+                <h4>Recommended Analyses:</h4>
                 <div class="underline mb-4">________________</div>
             </div>
             @if($trendingAnalyses)
@@ -130,16 +130,16 @@
                         @foreach ($trendingAnalyses as $analysisItem)
                             <div class="item">
                                 <div class="product-card">
-                                    <div class="product-card-img" style="width: 100%; height: 350px; text-align: center;">
+                                    <div class="product-card-img" style="width: 100%; height: 250px; text-align: center; position: relative; overflow: hidden;">
                                         @if ($analysisItem->quantity > 0)
-                                            <label class="stock bg-success">Appointment available</label>
+                                            <label class="stock bg-success" style="position: absolute; top: 10px; left: 10px;">Appointment available</label>
                                         @else
-                                            <label class="stock bg-danger">Appointment unavailable</label>
+                                            <label class="stock bg-danger" style="position: absolute; top: 10px; left: 10px;">Appointment available</label>
                                         @endif
                                         @if ($analysisItem->analysisImages->count() > 0)
-                                            <a href="{{url('/collections/'.$analysisItem->hospital->slug.'/analyses/'.$analysisItem->slug)}}">
-                                                <img src="{{asset($analysisItem->analysisImages[0]->image)}}" alt="{{$analysisItem->name}}"
-                                                style="max-width: 100%; display: inline-block; vertical-align: middle; border-radius: 10px;">
+                                            <a href="{{ url('/collections/'.$analysisItem->hospital->slug.'/analyses/'.$analysisItem->slug) }}">
+                                                <img src="{{ asset($analysisItem->analysisImages[0]->image) }}" alt="{{ $analysisItem->name }}"
+                                                    style="width: 100%; height: 100%; object-fit: cover;">
                                             </a>
                                         @endif
                                     </div>

@@ -45,16 +45,16 @@
                 @forelse ($analyses as $analysisItem)
                     <div class="col-md-4">
                         <div class="product-card">
-                            <div class="product-card-img" style="width: 100%; height: 350px; text-align: center;">
+                            <div class="product-card-img" style="width: 100%; height: 250px; text-align: center; position: relative; overflow: hidden;">
                                 @if ($analysisItem->quantity > 0)
-                                    <label class="stock bg-success">Appointment available</label>
+                                    <label class="stock bg-success" style="position: absolute; top: 10px; left: 10px;">Appointment available</label>
                                 @else
-                                    <label class="stock bg-danger">Appointment available</label>
+                                    <label class="stock bg-danger" style="position: absolute; top: 10px; left: 10px;">Appointment available</label>
                                 @endif
-                                @if ($analysisItem->analysisImages->count()>0)
-                                    <a href="{{url('/collections/'.$analysisItem->hospital->slug.'/analyses/'.$analysisItem->slug)}}">
-                                        <img src="{{asset($analysisItem->analysisImages[0]->image)}}" alt="{{$analysisItem->name}}"
-                                        style="max-width: 100%; display: inline-block; vertical-align: middle;">
+                                @if ($analysisItem->analysisImages->count() > 0)
+                                    <a href="{{ url('/collections/'.$analysisItem->hospital->slug.'/analyses/'.$analysisItem->slug) }}">
+                                        <img src="{{ asset($analysisItem->analysisImages[0]->image) }}" alt="{{ $analysisItem->name }}"
+                                            style="width: 100%; height: 100%; object-fit: cover;">
                                     </a>
                                 @endif
                             </div>
@@ -66,9 +66,14 @@
                                     </a>
                                 </h5>
                                 <div>
-                                    <span>₴ {{$analysisItem->original_price}}</span>
+                                    @if($analysisItem->original_price == 0)
+                                        <span style="color: green;">Free</span>
+                                    @else
+                                        <span>₴ {{$analysisItem->original_price}}</span>
+                                    @endif
+
                                     @if($analysisItem->type == 'Sale')
-                                        <span style="color: red; font-size: 20px; margin-left: 10px;"> Sale 50% </span>
+                                        <span style="color: red; font-size: 20px; margin-left: 10px;">Sale 50%</span>
                                     @endif
                                 </div>
                             </div>

@@ -46,12 +46,12 @@
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="image-tab" data-bs-toggle="tab" data-bs-target="#image-tab-pane" type="button" role="tab" aria-controls="image-tab-pane" aria-selected="false">
-                                <b>Doctor Image</b>
+                                <b>Analysis Image</b>
                             </button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="times-tab" data-bs-toggle="tab" data-bs-target="#times-tab-pane" type="button">
-                                <b>Doctor Times</b>
+                                <b>Analysis Times</b>
                             </button>
                         </li>
                     </ul>

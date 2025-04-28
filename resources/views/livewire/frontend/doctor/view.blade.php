@@ -42,7 +42,7 @@
                                     @foreach ($doctor->doctorTimes as $timeItem)
                                         <label class="yearSelectionLabel"
                                             wire:click="timeSelected({{$timeItem->id}})"
-                                            >
+                                            style="display: inline-block; margin-bottom: 8px;">
                                             {{$timeItem->time->name}}
                                         </label>
                                     @endforeach

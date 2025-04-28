@@ -10,11 +10,11 @@
             </div>
             <div class="row">
                 <div class="col-md-5">
-                    <div class="text-center p-3" wire:ignore>
+                    <div class="text-center p-3" wire:ignore style="height: 400px; overflow: hidden; position: relative;">
                         @if($analysis->analysisImages && $analysis->analysisImages->isNotEmpty())
                             <img src="{{ asset($analysis->analysisImages->first()->image) }}"
                                  alt="Doctor Image"
-                                 style="border-radius: 15px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); max-width: 100%; height: 500px;">
+                                 style="border-radius: 15px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); width: 100%; height: 100%; object-fit: cover;">
                         @else
                             <p>No Images Added</p>
                         @endif
@@ -35,14 +35,13 @@
                             @endif
                         </div>
 
-
                         <div>
                             @if ($analysis->analysisTimes->count()>0)
                                 @if($analysis->analysisTimes)
                                     @foreach ($analysis->analysisTimes as $timeItem)
                                         <label class="yearSelectionLabel"
                                             wire:click="timeSelected({{$timeItem->id}})"
-                                            >
+                                            style="display: inline-block; margin-bottom: 8px;">
                                             {{$timeItem->time->name}}
                                         </label>
                                     @endforeach

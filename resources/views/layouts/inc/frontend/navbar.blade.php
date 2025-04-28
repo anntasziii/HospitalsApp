@@ -20,7 +20,7 @@
 
                         <li class="nav-item">
                             <a class="nav-link" href="{{url('cart')}}">
-                                <i class="fa fa-shopping-cart"></i> Referral (<livewire:frontend.cart.cart-count />)
+                                <i class="fa fa-list"></i> Referral (<livewire:frontend.cart.cart-count />)
                             </a>
                         </li>
                         <li class="nav-item">

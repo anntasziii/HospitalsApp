@@ -26,7 +26,7 @@
             </div>
         </div>
     </div>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
     <script src="{{ asset('admin/vendors/base/vendor.bundle.base.js')}}"></script>
     <script src="{{ asset('admin/vendors/datatables.net/jquery.dataTables.js') }}"></script>
     <script src="{{ asset('admin/vendors/datatables.net-bs4/dataTables.bootstrap4.js') }}"></script>
@@ -40,6 +40,6 @@
 
     @yield('scripts')
     @livewireScripts
-    @stack('script');
+    @stack('script')
 </body>
 </html>
